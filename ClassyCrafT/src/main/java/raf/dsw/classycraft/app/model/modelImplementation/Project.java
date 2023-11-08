@@ -18,5 +18,8 @@ public class Project extends ClassyNodeComposite {
     @Override
     public void removeChild() {
 
+
+
+
     }
 }
