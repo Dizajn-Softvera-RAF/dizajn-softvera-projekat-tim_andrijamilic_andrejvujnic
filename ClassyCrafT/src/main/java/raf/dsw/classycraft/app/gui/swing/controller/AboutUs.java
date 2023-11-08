@@ -11,6 +11,10 @@ public class AboutUs extends AbstractClassyAction{
 
     public AboutUs(){
         putValue(NAME, "About us");
+        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
+        putValue(SMALL_ICON, loadIcon("/images/AboutUs.png"));
+        putValue(SHORT_DESCRIPTION, "About us");
+
     }
 
     @Override
