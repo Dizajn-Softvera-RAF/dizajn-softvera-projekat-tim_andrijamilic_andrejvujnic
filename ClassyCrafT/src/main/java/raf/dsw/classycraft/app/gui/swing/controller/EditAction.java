@@ -8,7 +8,7 @@ public class EditAction extends AbstractClassyAction{
 
     public EditAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
-        putValue(SMALL_ICON, loadIcon("/images/plus.png"));
+        putValue(SMALL_ICON, loadIcon("/images/edit.png"));
         putValue(NAME, "Edit");
         putValue(SHORT_DESCRIPTION, "Edit");
     }

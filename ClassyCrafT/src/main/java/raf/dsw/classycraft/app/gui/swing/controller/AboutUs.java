@@ -2,6 +2,7 @@ package raf.dsw.classycraft.app.gui.swing.controller;
 
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -25,9 +26,17 @@ public class AboutUs extends AbstractClassyAction{
         aboutUs.setSize(300,300);
 
         aboutUs.setTitle("About us");
-        JLabel l=new JLabel("Andrija Milić  Andrej Vujnic");
-        aboutUs.add(l);
+        JPanel panel = new JPanel(new BorderLayout());
+        JLabel l1 = new JLabel("Andrija Milić");
+        JLabel l2 = new JLabel("Andrej Vujnić");
 
+        panel.add(l1);
+        panel.add(l2);
+
+        panel.setBorder(new EmptyBorder(10, 10, 10, 10));
+        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+
+        aboutUs.add(panel);
 
         aboutUs.setVisible(true);
     }
