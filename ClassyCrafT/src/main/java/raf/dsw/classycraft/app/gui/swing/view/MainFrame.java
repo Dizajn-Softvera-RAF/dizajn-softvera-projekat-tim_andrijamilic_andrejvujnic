@@ -3,6 +3,8 @@ package raf.dsw.classycraft.app.gui.swing.view;
 import lombok.Getter;
 import lombok.Setter;
 import raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
+import raf.dsw.classycraft.app.gui.swing.tree.ClassyTree;
+import raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +18,7 @@ public class MainFrame extends JFrame {
     private JMenuBar menu;
     private JToolBar toolBar;
     private static MainFrame instance;
+    private ClassyTree classyTree;
 
 
     //buduca polja za sve komponente view-a na glavnom prozoru
@@ -23,7 +26,8 @@ public class MainFrame extends JFrame {
 
     private void initialize()
     {
-        actionManager=new ActionManager();
+        actionManager = new ActionManager();
+        classyTree = new ClassyTreeImpl();
         initializeGui();
     }
 

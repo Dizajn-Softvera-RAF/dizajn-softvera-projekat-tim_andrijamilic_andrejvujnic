@@ -10,7 +10,12 @@ import java.util.List;
 
 public abstract class ClassyNodeComposite extends ClassyNode {
     private List<ClassyNode> children;
-    public abstract void addChild();
+
+    public ClassyNodeComposite(String name, ClassyNode parent) {
+        super();
+    }
+
+    public abstract void addChild(ClassyNode child);
 
     public abstract void removeChild();
 }
