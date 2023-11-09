@@ -14,8 +14,8 @@ public class ApplicationFramework {
 
     protected Gui gui;
     private ActionManager actionManager;
-    private ClassyRepositoryImpl classyRepositoryImpl;
-    private ClassyRepository classyRepository;
+    protected ClassyRepositoryImpl classyRepositoryImpl;
+    protected ClassyRepository classyRepository;
     private ProjectExplorer projectExplorer;
     private MessageGenerator messageGenerator;
     private static ApplicationFramework instance;

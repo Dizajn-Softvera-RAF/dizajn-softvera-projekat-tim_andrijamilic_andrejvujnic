@@ -51,8 +51,8 @@ public class MainFrame extends JFrame {
         JPanel desktop=new JPanel();
         desktop.setBackground(Color.WHITE);
 
-        JPanel left=new JPanel();
-        left.setBackground(Color.WHITE);
+        /*JPanel left=new JPanel();
+        left.setBackground(Color.WHITE);*/
 
         JTree projectExplorer = classyTree.generateTree(ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer());
 
