@@ -12,7 +12,6 @@ public class AboutUs extends AbstractClassyAction{
     public AboutUs(){
         putValue(NAME, "About us");
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
-        putValue(SMALL_ICON, loadIcon("/images/AboutUs.png"));
         putValue(SHORT_DESCRIPTION, "About us");
 
     }
@@ -27,18 +26,36 @@ public class AboutUs extends AbstractClassyAction{
         aboutUs.setSize(screenWidth / 2, screenHeight / 2);
         aboutUs.setLocationRelativeTo(null);
         aboutUs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        aboutUs.setSize(300,300);
+        aboutUs.setSize(450,350);
 
         aboutUs.setTitle("About us");
+
         JPanel panel = new JPanel(new BorderLayout());
+        JPanel desno = new JPanel(new BorderLayout());
+        JPanel levo = new JPanel(new BorderLayout());
+
+        panel.add(levo, BorderLayout.WEST);
+        panel.add(desno, BorderLayout.CENTER);
+
         JLabel l1 = new JLabel("Andrija Milić");
         JLabel l2 = new JLabel("Andrej Vujnić");
 
-        panel.add(l1);
-        panel.add(l2);
+        JLabel img1 = new JLabel();
+        img1.setIcon(new ImageIcon(getClass().getResource("/images/andrija.jpeg")));
+        JLabel img2 = new JLabel();
+        img2.setIcon(new ImageIcon(getClass().getResource("/images/andrej.jpeg")));
 
-        panel.setBorder(new EmptyBorder(10, 10, 10, 10));
-        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        levo.add(l1);
+        levo.add(img1);
+
+        desno.add(l2);
+        desno.add(img2);
+
+        levo.setBorder(new EmptyBorder(10, 10, 10, 10));
+        desno.setBorder(new EmptyBorder(10, 10, 10, 10));
+
+        levo.setLayout(new BoxLayout(levo, BoxLayout.Y_AXIS));
+        desno.setLayout(new BoxLayout(desno, BoxLayout.Y_AXIS));
 
         aboutUs.add(panel);
 

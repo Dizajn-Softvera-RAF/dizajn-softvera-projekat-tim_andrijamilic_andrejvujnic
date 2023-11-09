@@ -14,7 +14,8 @@ public class ApplicationFramework {
 
     protected Gui gui;
     private ActionManager actionManager;
-    private ClassyRepositoryImpl classyRepository;
+    private ClassyRepositoryImpl classyRepositoryImpl;
+    private ClassyRepository classyRepository;
     private ProjectExplorer projectExplorer;
     private MessageGenerator messageGenerator;
     private static ApplicationFramework instance;
@@ -25,8 +26,9 @@ public class ApplicationFramework {
     {
         this.gui.start();
     }
-    public void initialize(Gui gui){
+    public void initialize(Gui gui, ClassyRepository classyRepository){
         this.gui=gui;
+        this.classyRepository = classyRepository;
         messageGenerator = new MessageGenerator();
         //messageGenerator.addSubscriber("CONSOLE_LOGGER");
         //messageGenerator.addSubscriber("FILE_LOGGER");
