@@ -14,7 +14,7 @@ public class Package extends ClassyNodeComposite {
     }
 
     @Override
-    public void removeChild() {
+    public void removeChild(ClassyNode child) {
 
     }
 }

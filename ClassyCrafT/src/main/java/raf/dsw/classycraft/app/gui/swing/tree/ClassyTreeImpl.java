@@ -1,6 +1,8 @@
 package raf.dsw.classycraft.app.gui.swing.tree;
 
+import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
+import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeModel;
 import raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTreeView;
 import raf.dsw.classycraft.app.model.modelImplementation.Project;
 import raf.dsw.classycraft.app.model.modelImplementation.ProjectExplorer;
@@ -13,12 +15,12 @@ import java.util.Random;
 
 public class ClassyTreeImpl implements ClassyTree{
     private ClassyTreeView treeView;
-    private DefaultTreeModel treeModel;
+    private ClassyTreeModel treeModel;
 
     @Override
     public ClassyTreeView generateTree(ProjectExplorer projectExplorer) {
         ClassyTreeItem root = new ClassyTreeItem(projectExplorer);
-        treeModel = new DefaultTreeModel(root);
+        treeModel = new ClassyTreeModel(root);
         treeView = new ClassyTreeView(treeModel);
         return treeView;
     }
@@ -28,9 +30,12 @@ public class ClassyTreeImpl implements ClassyTree{
         if (!(parent.getClassyNode() instanceof ClassyNodeComposite))
             return;
 
-        ClassyNode child = createChild(parent.getClassyNode());
+        /*ClassyNode child = createChild(parent.getClassyNode());
         parent.add(new ClassyTreeItem(child));
         ((ClassyNodeComposite) parent.getClassyNode()).addChild(child);
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);*/
+        ClassyTreeItem child = new ClassyTreeItem(createChild(parent.getClassyNode()));
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
     }
@@ -39,6 +44,23 @@ public class ClassyTreeImpl implements ClassyTree{
     @Override
     public ClassyTreeItem getSelectedNode() {
         return (ClassyTreeItem) treeView.getLastSelectedPathComponent();
+    }
+
+    @Override
+    public ClassyTreeView getTreeView() {
+        return treeView;
+    }
+
+    @Override
+    public void loadProject(Project node) {
+        ClassyTreeItem loadedProject = new ClassyTreeItem(node);
+        treeModel.getRoot().add(loadedProject);
+
+        ClassyNodeComposite classyNode = (ClassyNodeComposite) treeModel.getRoot().getClassyNode();
+        classyNode.addChild(node);
+
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);
     }
 
     private ClassyNode createChild(ClassyNode parent) {

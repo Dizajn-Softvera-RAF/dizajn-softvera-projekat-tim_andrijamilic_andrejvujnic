@@ -2,6 +2,7 @@ package raf.dsw.classycraft.app.gui.swing.view;
 
 import lombok.Getter;
 import lombok.Setter;
+import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
 import raf.dsw.classycraft.app.gui.swing.tree.ClassyTree;
 import raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImpl;
@@ -24,14 +25,14 @@ public class MainFrame extends JFrame {
     //buduca polja za sve komponente view-a na glavnom prozoru
 
 
-    private void initialize()
+    private void initialise()
     {
         actionManager = new ActionManager();
         classyTree = new ClassyTreeImpl();
-        initializeGui();
+        initialiseGui();
     }
 
-    private void initializeGui(){
+    private void initialiseGui(){
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
         int screenHeight = screenSize.height;
@@ -53,7 +54,11 @@ public class MainFrame extends JFrame {
         JPanel left=new JPanel();
         left.setBackground(Color.WHITE);
 
-        JSplitPane split=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,left,desktop);
+        JTree projectExplorer = classyTree.generateTree(ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer());
+
+        JScrollPane scroll = new JScrollPane(projectExplorer);
+        scroll.setMinimumSize(new Dimension(200,150));
+        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
         getContentPane().add(split,BorderLayout.CENTER);
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
@@ -68,7 +73,7 @@ public class MainFrame extends JFrame {
         if(instance == null)
         {
             instance = new MainFrame();
-            instance.initialize();
+            instance.initialise();
         }
         return instance;
     }
