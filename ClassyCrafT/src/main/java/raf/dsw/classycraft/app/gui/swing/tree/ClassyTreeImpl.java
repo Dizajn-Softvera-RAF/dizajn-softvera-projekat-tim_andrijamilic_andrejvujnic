@@ -30,14 +30,14 @@ public class ClassyTreeImpl implements ClassyTree{
         if (!(parent.getClassyNode() instanceof ClassyNodeComposite))
             return;
 
-        /*ClassyNode child = createChild(parent.getClassyNode());
+        ClassyNode child = createChild(parent.getClassyNode());
         parent.add(new ClassyTreeItem(child));
         ((ClassyNodeComposite) parent.getClassyNode()).addChild(child);
         treeView.expandPath(treeView.getSelectionPath());
-        SwingUtilities.updateComponentTreeUI(treeView);*/
-        ClassyTreeItem child = new ClassyTreeItem(createChild(parent.getClassyNode()));
-        treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
+        /*ClassyTreeItem child = new ClassyTreeItem(createChild(parent.getClassyNode()));
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);*/
     }
 
 

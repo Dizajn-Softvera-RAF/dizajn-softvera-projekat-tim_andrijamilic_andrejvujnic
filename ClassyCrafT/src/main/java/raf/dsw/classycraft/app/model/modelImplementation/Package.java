@@ -4,6 +4,7 @@ import raf.dsw.classycraft.app.model.repositoryModel.ClassyNode;
 import raf.dsw.classycraft.app.model.repositoryModel.ClassyNodeComposite;
 
 public class Package extends ClassyNodeComposite {
+    protected boolean changed = true;
     public Package(String name, ClassyNode parent) {
         super(name, parent);
     }
@@ -16,5 +17,10 @@ public class Package extends ClassyNodeComposite {
     @Override
     public void removeChild(ClassyNode child) {
 
+    }
+    @Override
+    public void setName(String name) {
+        super.setName(name);
+        changed = true;
     }
 }

@@ -8,6 +8,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 @Setter
 @Getter
 public class ClassyTreeItem extends DefaultMutableTreeNode {
+
     private ClassyNode classyNode;
 
     public ClassyTreeItem(ClassyNode nodeModel) {

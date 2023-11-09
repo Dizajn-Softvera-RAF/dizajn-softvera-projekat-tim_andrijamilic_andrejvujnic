@@ -19,9 +19,9 @@ public class ActionManager {
 
     public void initialiseAction()
     {
-        exitAction=new ExitAction();
-        newProjectAction=new NewProjectAction();
-        editAction=new EditAction();
-        aboutUs=new AboutUs();
+        exitAction = new ExitAction();
+        newProjectAction = new NewProjectAction();
+        editAction = new EditAction();
+        aboutUs = new AboutUs();
     }
 }
