@@ -1,9 +1,8 @@
-package raf.dsw.classycraft.app.model.messanger;
+package raf.dsw.classycraft.app.messanger;
 
 import raf.dsw.classycraft.app.observer.IPublisher;
 import raf.dsw.classycraft.app.observer.ISubscriber;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;

@@ -20,7 +20,12 @@ public class Project extends ClassyNodeComposite {
 
     @Override
     public void addChild(ClassyNode child) {
-
+        if (child != null &&  child instanceof Package){
+            Package pkg = (Package) child;
+            if (!this.getChildren().contains(pkg)){
+                this.getChildren().add(pkg);
+            }
+        }
     }
 
     @Override

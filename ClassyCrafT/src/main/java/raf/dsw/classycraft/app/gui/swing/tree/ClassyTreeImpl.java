@@ -4,6 +4,8 @@ import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeModel;
 import raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTreeView;
+import raf.dsw.classycraft.app.model.modelImplementation.Diagram;
+import raf.dsw.classycraft.app.model.modelImplementation.Package;
 import raf.dsw.classycraft.app.model.modelImplementation.Project;
 import raf.dsw.classycraft.app.model.modelImplementation.ProjectExplorer;
 import raf.dsw.classycraft.app.model.repositoryModel.ClassyNode;
@@ -16,6 +18,9 @@ import java.util.Random;
 public class ClassyTreeImpl implements ClassyTree{
     private ClassyTreeView treeView;
     private ClassyTreeModel treeModel;
+    private static int cout = 1;
+    private static int cout1 = 1;
+    private static int cout2 = 1;
 
     @Override
     public ClassyTreeView generateTree(ProjectExplorer projectExplorer) {
@@ -64,8 +69,13 @@ public class ClassyTreeImpl implements ClassyTree{
     }
 
     private ClassyNode createChild(ClassyNode parent) {
-        if (parent instanceof ProjectExplorer)
-            return  new Project("Project" +new Random().nextInt(100), parent);
+        if (parent instanceof ProjectExplorer){
+            return  new Project("Project" +(cout++), parent);
+        }else if (parent instanceof Project){
+            return  new Package("Package" + (cout1++), parent);
+        }else if (parent instanceof Package){
+            return  new Diagram("Diagram" +(cout2++), parent);
+        }
         return null;
     }
 }

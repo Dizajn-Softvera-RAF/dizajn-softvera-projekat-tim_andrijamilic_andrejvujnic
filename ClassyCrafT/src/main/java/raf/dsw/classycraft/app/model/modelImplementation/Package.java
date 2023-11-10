@@ -10,7 +10,12 @@ public class Package extends ClassyNodeComposite {
 
     @Override
     public void addChild(ClassyNode child) {
-
+        if (child != null &&  child instanceof Diagram){
+            Diagram dim = (Diagram) child;
+            if (!this.getChildren().contains(dim)){
+                this.getChildren().add(dim);
+            }
+        }
     }
 
     @Override
