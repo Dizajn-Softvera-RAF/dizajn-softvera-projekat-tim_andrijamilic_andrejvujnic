@@ -2,8 +2,7 @@ package raf.dsw.classycraft.app.core;
 
 import lombok.Getter;
 import lombok.Setter;
-import raf.dsw.classycraft.app.model.messanger.MessageGenerator;
-import raf.dsw.classycraft.app.model.messanger.MessageType;
+import raf.dsw.classycraft.app.messanger.MessageGenerator;
 import raf.dsw.classycraft.app.model.modelImplementation.ProjectExplorer;
 import raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
 import raf.dsw.classycraft.app.gui.swing.view.MainFrame;
