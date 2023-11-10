@@ -26,10 +26,10 @@ public class ApplicationFramework {
     {
         this.gui.start();
     }
-    public void initialize(Gui gui, ClassyRepository classyRepository){
+    public void initialize(Gui gui, ClassyRepository classyRepository, MessageGenerator messageGenerator){
         this.gui=gui;
         this.classyRepository = classyRepository;
-        messageGenerator = new MessageGenerator();
+        this.messageGenerator = messageGenerator;
         //messageGenerator.addSubscriber("CONSOLE_LOGGER");
         //messageGenerator.addSubscriber("FILE_LOGGER");
         //messageGenerator.addSubscriber("MAINFRAME");

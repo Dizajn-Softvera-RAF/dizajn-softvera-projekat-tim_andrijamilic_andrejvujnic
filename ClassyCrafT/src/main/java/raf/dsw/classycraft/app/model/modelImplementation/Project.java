@@ -11,7 +11,6 @@ import raf.dsw.classycraft.app.model.repositoryModel.ClassyNodeComposite;
 @Setter
 public class Project extends ClassyNodeComposite {
 
-    private String autor;
     protected boolean changed = true;
     protected String filePath;
 

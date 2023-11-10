@@ -2,9 +2,18 @@ package raf.dsw.classycraft.app.model.logger;
 
 import raf.dsw.classycraft.app.observer.ISubscriber;
 
-public class FileLogger implements ISubscriber {
+import java.io.File;
+
+public class FileLogger implements Logger {
+    File f;
+
+    @Override
+    public void log() {
+
+    }
+
     @Override
     public void update(Object notification) {
-        //ispis u fajl
+
     }
 }
