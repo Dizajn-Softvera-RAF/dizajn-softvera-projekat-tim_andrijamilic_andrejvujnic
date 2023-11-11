@@ -45,6 +45,21 @@ public class ClassyTreeImpl implements ClassyTree{
         SwingUtilities.updateComponentTreeUI(treeView);*/
     }
 
+    @Override
+    public void deleteNode(ClassyTreeItem node) {
+        if (!(node.getClassyNode() instanceof ClassyNodeComposite))
+            return;
+
+        ClassyTreeItem parent = (ClassyTreeItem) node.getParent();
+        if(parent != null){
+            parent.remove(node);
+            //ClassyNode m = parent.getClassyNode();
+            //((ClassyNodeComposite) parent.getClassyNode()) deleteNode(m);
+            SwingUtilities.updateComponentTreeUI(treeView);
+        }
+
+    }
+
 
     @Override
     public ClassyTreeItem getSelectedNode() {

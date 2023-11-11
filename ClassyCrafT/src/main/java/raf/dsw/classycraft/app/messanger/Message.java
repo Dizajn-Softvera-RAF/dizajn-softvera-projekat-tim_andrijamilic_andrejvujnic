@@ -1,5 +1,8 @@
 package raf.dsw.classycraft.app.messanger;
 
+import lombok.ToString;
+
+import java.lang.reflect.Type;
 import java.sql.Timestamp;
 
 public class Message {
@@ -11,5 +14,10 @@ public class Message {
         this.type = type;
         this.tekst = tekst;
         this.vreme = vreme;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + type + "]" + "[" + vreme + "]" + tekst;
     }
 }

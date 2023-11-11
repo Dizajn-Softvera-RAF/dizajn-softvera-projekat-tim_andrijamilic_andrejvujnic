@@ -46,4 +46,6 @@ public class MessageGenerator implements IPublisher {
             subscriber.update(message);
         }
     }
+
+
 }
