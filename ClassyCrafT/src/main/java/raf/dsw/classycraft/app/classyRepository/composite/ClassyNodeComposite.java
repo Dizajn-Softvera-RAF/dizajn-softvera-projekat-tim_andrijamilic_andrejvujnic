@@ -1,4 +1,4 @@
-package raf.dsw.classycraft.app.model.repositoryModel;
+package raf.dsw.classycraft.app.classyRepository.composite;
 
 import lombok.Getter;
 import lombok.Setter;
