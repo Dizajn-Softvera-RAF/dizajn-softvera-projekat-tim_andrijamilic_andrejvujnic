@@ -1,19 +1,16 @@
 package raf.dsw.classycraft.app.gui.swing.tree;
 
-import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeModel;
 import raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTreeView;
-import raf.dsw.classycraft.app.model.modelImplementation.Diagram;
-import raf.dsw.classycraft.app.model.modelImplementation.Package;
-import raf.dsw.classycraft.app.model.modelImplementation.Project;
-import raf.dsw.classycraft.app.model.modelImplementation.ProjectExplorer;
-import raf.dsw.classycraft.app.model.repositoryModel.ClassyNode;
-import raf.dsw.classycraft.app.model.repositoryModel.ClassyNodeComposite;
+import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
+import raf.dsw.classycraft.app.classyRepository.implementation.Package;
+import raf.dsw.classycraft.app.classyRepository.implementation.Project;
+import raf.dsw.classycraft.app.classyRepository.implementation.ProjectExplorer;
+import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
+import raf.dsw.classycraft.app.classyRepository.composite.ClassyNodeComposite;
 
 import javax.swing.*;
-import javax.swing.tree.DefaultTreeModel;
-import java.util.Random;
 
 public class ClassyTreeImpl implements ClassyTree{
     private ClassyTreeView treeView;
