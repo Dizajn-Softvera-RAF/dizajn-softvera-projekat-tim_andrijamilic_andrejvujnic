@@ -25,7 +25,6 @@ public class AboutUs extends AbstractClassyAction{
         int screenWidth = screenSize.width;
         aboutUs.setSize(screenWidth / 2, screenHeight / 2);
         aboutUs.setLocationRelativeTo(null);
-        aboutUs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         aboutUs.setSize(450,350);
 
         aboutUs.setTitle("About us");

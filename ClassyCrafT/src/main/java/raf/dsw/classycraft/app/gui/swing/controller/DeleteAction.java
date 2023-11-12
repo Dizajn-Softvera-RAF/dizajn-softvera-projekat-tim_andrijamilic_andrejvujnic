@@ -30,7 +30,7 @@ public class DeleteAction extends AbstractClassyAction{
             LocalDateTime ldt = LocalDateTime.now();
             ApplicationFramework.getInstance().getMessageGenerator().generateMessage("Poruka", MessageType.WARNING);
         }else{
-            MainFrame.getInstance().getClassyTree().deleteNode(selected);
+            MainFrame.getInstance().getClassyTree().removeChild(selected);
         }
 
 
