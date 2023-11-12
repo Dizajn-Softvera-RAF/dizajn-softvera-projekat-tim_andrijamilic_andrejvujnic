@@ -7,11 +7,14 @@ import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import raf.dsw.classycraft.app.gui.swing.tree.view.OptionView;
 import raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+import raf.dsw.classycraft.app.messanger.Message;
 import raf.dsw.classycraft.app.messanger.MessageType;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -29,13 +32,24 @@ public class NewProjectAction extends AbstractClassyAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         ClassyTreeItem selected = (ClassyTreeItem) MainFrame.getInstance().getClassyTree().getSelectedNode();
-        if(!(selected.getClassyNode() instanceof Diagram)){
+
+        if(selected == null)
+        {
+            ApplicationFramework.getInstance().getMessageGenerator().notifySubscriber(new Message(MessageType.WARNING, "Morate selektovati node za kreiranje", Timestamp.from(Instant.now())));
+
+        }
+        else if(!(selected.getClassyNode() instanceof Diagram)){
             if((selected.getClassyNode() instanceof Package)){
                 OptionView p = new OptionView();
                 p.setVisible(true);
             }else{
                 MainFrame.getInstance().getClassyTree().addChild(selected, 0);
             }
+        }
+        else
+        {
+            ApplicationFramework.getInstance().getMessageGenerator().notifySubscriber(new Message(MessageType.WARNING, "Ne mozete kreirati node u dijagramu", Timestamp.from(Instant.now())));
+
         }
 
     }
