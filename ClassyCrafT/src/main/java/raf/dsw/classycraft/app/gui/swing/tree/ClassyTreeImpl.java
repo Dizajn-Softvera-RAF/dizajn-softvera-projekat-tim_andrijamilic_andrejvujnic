@@ -28,11 +28,11 @@ public class ClassyTreeImpl implements ClassyTree{
     }
 
     @Override
-    public void addChild(ClassyTreeItem parent) {
+    public void addChild(ClassyTreeItem parent, int a) {
         if (!(parent.getClassyNode() instanceof ClassyNodeComposite))
             return;
 
-        ClassyNode child = createChild(parent.getClassyNode());
+        ClassyNode child = createChild(parent.getClassyNode(), a);
         parent.add(new ClassyTreeItem(child));
         ((ClassyNodeComposite) parent.getClassyNode()).addChild(child);
         treeView.expandPath(treeView.getSelectionPath());
@@ -43,7 +43,7 @@ public class ClassyTreeImpl implements ClassyTree{
     }
 
     @Override
-    public void deleteNode(ClassyTreeItem node) {
+    public void removeChild(ClassyTreeItem node) {
         if (!(node.getClassyNode() instanceof ClassyNodeComposite))
             return;
 
@@ -80,12 +80,14 @@ public class ClassyTreeImpl implements ClassyTree{
         SwingUtilities.updateComponentTreeUI(treeView);
     }
 
-    private ClassyNode createChild(ClassyNode parent) {
+    private ClassyNode createChild(ClassyNode parent, int a) {
         if (parent instanceof ProjectExplorer){
             return  new Project("Project" +(cout++), parent);
         }else if (parent instanceof Project){
             return  new Package("Package" + (cout1++), parent);
-        }else if (parent instanceof Package){
+        }else if (parent instanceof Package && a == 1){
+            return  new Package("Package" + (cout1++), parent);
+        }else if(parent instanceof Package && a == 0){
             return  new Diagram("Diagram" +(cout2++), parent);
         }
         return null;
