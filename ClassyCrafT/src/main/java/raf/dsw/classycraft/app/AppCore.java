@@ -16,8 +16,5 @@ public class AppCore {
         appCore.initialize(gui, classyRepository, messageGenerator);
         appCore.run();
 
-
-
-
     }
 }
