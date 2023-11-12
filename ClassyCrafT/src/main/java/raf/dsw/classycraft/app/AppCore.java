@@ -15,5 +15,9 @@ public class AppCore {
         MessageGenerator messageGenerator = new MessageGenerator();
         appCore.initialize(gui, classyRepository, messageGenerator);
         appCore.run();
+
+
+
+
     }
 }
