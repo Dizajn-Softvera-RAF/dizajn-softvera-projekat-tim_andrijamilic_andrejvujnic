@@ -51,8 +51,19 @@ public class MainFrame extends JFrame {
         JPanel desktop=new JPanel();
         desktop.setBackground(Color.WHITE);
 
-        /*JPanel left=new JPanel();
-        left.setBackground(Color.WHITE);*/
+        /*JTabbedPane tp = new JTabbedPane();
+        tp = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.WRAP_TAB_LAYOUT);
+
+
+        tp.addTab("Listing", new JPanel());
+        tp.addTab("Comment", new JTextArea(10, 40));
+
+        tp.addTab("Register", new JPanel());
+        tp.addTab("Contact Us", new JPanel());
+
+        tp.addTab("More..", new JPanel());
+
+        desktop.add(tp);*/
 
         JTree projectExplorer = classyTree.generateTree(ApplicationFramework.getInstance().getClassyRepository().getProjectExplorer());
 
