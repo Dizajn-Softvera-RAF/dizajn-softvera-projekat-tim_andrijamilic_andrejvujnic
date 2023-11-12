@@ -4,11 +4,13 @@ import lombok.ToString;
 
 import java.lang.reflect.Type;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class Message {
     private MessageType type;
     private String tekst;
     private Timestamp vreme;
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy. HH.mm");
 
     public Message(MessageType type, String tekst, Timestamp vreme) {
         this.type = type;
@@ -18,6 +20,6 @@ public class Message {
 
     @Override
     public String toString() {
-        return "[" + type + "]" + "[" + vreme + "]" + tekst;
+        return "[" + type + "] " + "[" + sdf.format(vreme) + "] " + tekst + ".";
     }
 }
