@@ -6,6 +6,9 @@ import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
 import raf.dsw.classycraft.app.gui.swing.tree.ClassyTree;
 import raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImpl;
+import raf.dsw.classycraft.app.messanger.Message;
+import raf.dsw.classycraft.app.messanger.MessageType;
+import raf.dsw.classycraft.app.observer.ISubscriber;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +16,7 @@ import java.awt.*;
 @Getter
 @Setter
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements ISubscriber {
 
     private ActionManager actionManager;
     private JMenuBar menu;
@@ -87,5 +90,16 @@ public class MainFrame extends JFrame {
             instance.initialise();
         }
         return instance;
+    }
+
+    @Override
+    public void update(Object notification) {
+        if(notification instanceof Message){
+            if(((Message) notification).getType().equals(MessageType.WARNING)){
+                JOptionPane.showMessageDialog(this, notification, "Warning", JOptionPane.WARNING_MESSAGE);
+            }else if(((Message) notification).getType().equals(MessageType.ERROR)){
+                JOptionPane.showMessageDialog(this, notification, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 }

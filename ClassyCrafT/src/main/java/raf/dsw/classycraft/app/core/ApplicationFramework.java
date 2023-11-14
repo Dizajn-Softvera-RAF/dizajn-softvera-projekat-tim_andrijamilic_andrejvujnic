@@ -36,7 +36,7 @@ public class ApplicationFramework {
         this.messageGenerator = messageGenerator;
         messageGenerator.addSubscriber(consoleLogger);
         messageGenerator.addSubscriber(fileLogger);
-        //messageGenerator.addSubscriber("MAINFRAME");
+        messageGenerator.addSubscriber(MainFrame.getInstance());
         MainFrame.getInstance().setVisible(true);
     }
 
