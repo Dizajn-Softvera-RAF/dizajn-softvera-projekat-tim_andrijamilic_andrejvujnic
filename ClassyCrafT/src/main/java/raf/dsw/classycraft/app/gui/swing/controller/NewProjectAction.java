@@ -2,10 +2,9 @@ package raf.dsw.classycraft.app.gui.swing.controller;
 
 import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
 import raf.dsw.classycraft.app.classyRepository.implementation.Package;
-import raf.dsw.classycraft.app.classyRepository.implementation.ProjectExplorer;
 import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
-import raf.dsw.classycraft.app.gui.swing.tree.view.OptionView;
+import raf.dsw.classycraft.app.gui.swing.view.OptionView;
 import raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import raf.dsw.classycraft.app.messanger.Message;
 import raf.dsw.classycraft.app.messanger.MessageType;
@@ -15,10 +14,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import static javax.swing.Action.*;
 
 public class NewProjectAction extends AbstractClassyAction {
 

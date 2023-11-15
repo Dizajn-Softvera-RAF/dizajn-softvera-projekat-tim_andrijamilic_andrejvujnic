@@ -1,4 +1,4 @@
-package raf.dsw.classycraft.app.gui.swing.tree.view;
+package raf.dsw.classycraft.app.gui.swing.view;
 
 import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
