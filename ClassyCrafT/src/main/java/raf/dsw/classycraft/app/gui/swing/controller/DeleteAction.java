@@ -34,6 +34,7 @@ public class DeleteAction extends AbstractClassyAction{
             ApplicationFramework.getInstance().getMessageGenerator().notifySubscriber(new Message(MessageType.WARNING, "Project Explorer se ne moze obrisati", Timestamp.from(Instant.now())));
         }else{
             MainFrame.getInstance().getClassyTree().removeChild(selected);
+
         }
 
 

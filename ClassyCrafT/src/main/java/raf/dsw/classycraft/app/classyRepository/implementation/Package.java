@@ -2,8 +2,14 @@ package raf.dsw.classycraft.app.classyRepository.implementation;
 
 import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
 import raf.dsw.classycraft.app.classyRepository.composite.ClassyNodeComposite;
+import raf.dsw.classycraft.app.observer.IPublisher;
+import raf.dsw.classycraft.app.observer.ISubscriber;
 
-public class Package extends ClassyNodeComposite {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Package extends ClassyNodeComposite implements IPublisher {
+    private List<ISubscriber> subs = new ArrayList<>();
     public Package(String name, ClassyNode parent) {
         super(name, parent);
     }
@@ -14,12 +20,32 @@ public class Package extends ClassyNodeComposite {
             Diagram dim = (Diagram) child;
             if (!this.getChildren().contains(dim)){
                 this.getChildren().add(dim);
+                notifySubscriber(child);
             }
         }
     }
 
     @Override
     public void removeChild(ClassyNode child) {
+       this.getChildren().remove(child);
+       notifySubscriber(child);
+    }
 
+    @Override
+    public void addSubscriber(ISubscriber iSubscriber) {
+        subs.add(iSubscriber);
+    }
+
+    @Override
+    public void removeSubscriber(ISubscriber iSubscriber) {
+
+    }
+
+    @Override
+    public void notifySubscriber(Object notification) {
+        System.out.println(subs);
+        for(ISubscriber subscriber : subs){
+            subscriber.update(notification);
+        }
     }
 }

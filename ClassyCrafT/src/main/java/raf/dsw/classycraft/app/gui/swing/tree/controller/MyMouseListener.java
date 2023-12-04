@@ -3,6 +3,7 @@ package raf.dsw.classycraft.app.gui.swing.tree.controller;
 import raf.dsw.classycraft.app.classyRepository.implementation.Package;
 import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+import raf.dsw.classycraft.app.gui.swing.view.PackageView;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -13,7 +14,7 @@ public class MyMouseListener implements MouseListener {
         ClassyTreeItem selected = (ClassyTreeItem) MainFrame.getInstance().getClassyTree().getSelectedNode();
         if(selected.getClassyNode() instanceof Package) {
             if (e.getClickCount() == 2) {
-                System.out.println("Assss");
+                MainFrame.getInstance().getSplit().setRightComponent(new PackageView((Package) selected.getClassyNode()));
             }
         }
     }
