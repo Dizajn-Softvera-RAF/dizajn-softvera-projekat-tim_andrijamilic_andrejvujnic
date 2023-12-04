@@ -23,6 +23,7 @@ public class MainFrame extends JFrame implements ISubscriber {
     private JToolBar toolBar;
     private static MainFrame instance;
     private ClassyTree classyTree;
+    private JSplitPane split;
 
 
     //buduca polja za sve komponente view-a na glavnom prozoru
@@ -72,7 +73,7 @@ public class MainFrame extends JFrame implements ISubscriber {
 
         JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200,150));
-        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
+        /*JSplitPane*/ split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
         getContentPane().add(split,BorderLayout.CENTER);
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
