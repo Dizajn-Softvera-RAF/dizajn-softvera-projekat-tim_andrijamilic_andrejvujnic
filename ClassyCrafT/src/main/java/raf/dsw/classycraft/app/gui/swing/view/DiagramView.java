@@ -22,12 +22,6 @@ public class DiagramView extends JPanel {
         this.setSize(screenWidth / 2, screenHeight / 2);
         this.setSize(450,350);
 
-        JLabel l1 = new JLabel("Andrija Milić");
-        JLabel l2 = new JLabel("Andrej Vujnić");
-
-        this.add(l1);
-        this.add(l2);
-
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 

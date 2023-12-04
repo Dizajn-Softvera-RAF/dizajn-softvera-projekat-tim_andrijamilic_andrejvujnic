@@ -15,6 +15,7 @@ import java.awt.*;
 public class PackageView extends JPanel implements ISubscriber {
 
     private Package model;
+    private PackageToolBar ptb = new PackageToolBar();
     private JTabbedPane tp = new JTabbedPane();
 
     public PackageView(Package model)
@@ -32,8 +33,8 @@ public class PackageView extends JPanel implements ISubscriber {
 
         //JPanel panel = new JPanel(new BorderLayout());
 
-        JLabel l1 = new JLabel("Andrija Milić");
-        JLabel l2 = new JLabel("Andrej Vujnić");
+        JLabel l1 = new JLabel(model.getName());
+        JLabel l2 = new JLabel("user");
 
         this.add(l1);
         this.add(l2);
@@ -45,6 +46,7 @@ public class PackageView extends JPanel implements ISubscriber {
         }
 
         this.add(tp);
+        this.add(ptb);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         //this.add(panel);
