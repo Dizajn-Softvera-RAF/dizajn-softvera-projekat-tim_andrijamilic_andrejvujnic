@@ -3,9 +3,11 @@ package raf.dsw.classycraft.app.gui.swing.view;
 import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
 import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
 import raf.dsw.classycraft.app.classyRepository.implementation.Package;
+import raf.dsw.classycraft.app.classyRepository.implementation.Project;
 import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
 import raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImpl;
+import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import raf.dsw.classycraft.app.observer.ISubscriber;
 
 import javax.swing.*;
@@ -32,8 +34,13 @@ public class PackageView extends JPanel implements ISubscriber {
     private void initialiseGui(){
 
         //JPanel panel = new JPanel(new BorderLayout());
+        ClassyNode parent = model.getParent();
 
-        JLabel l1 = new JLabel(model.getName());
+        while(!(parent instanceof Project)){
+            parent = parent.getParent();
+        }
+
+        JLabel l1 = new JLabel(parent.getName());
         JLabel l2 = new JLabel("user");
 
         this.add(l1);
@@ -41,7 +48,9 @@ public class PackageView extends JPanel implements ISubscriber {
 
         for(ClassyNode child : model.getChildren()){
             if(child instanceof Diagram){
-                tp.addTab(child.getName(), new DiagramView());
+                DiagramView dw = new DiagramView();
+                ((Diagram) child).addSubscriber(dw);
+                tp.addTab(child.getName(), dw);
             }
         }
 
