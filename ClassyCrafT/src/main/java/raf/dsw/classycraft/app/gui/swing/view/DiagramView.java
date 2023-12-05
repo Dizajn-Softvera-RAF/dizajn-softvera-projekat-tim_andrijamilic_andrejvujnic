@@ -30,6 +30,13 @@ public class DiagramView extends JPanel implements ISubscriber {
     }
 
     @Override
+    public void paintComponents(Graphics g) {
+        super.paintComponents(g);
+
+        Graphics2D g2 = (Graphics2D) g;
+    }
+
+    @Override
     public void update(Object notification) {
 
     }

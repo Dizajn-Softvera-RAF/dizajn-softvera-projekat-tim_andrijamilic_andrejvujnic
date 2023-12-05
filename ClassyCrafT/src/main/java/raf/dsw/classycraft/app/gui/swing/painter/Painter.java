@@ -7,4 +7,5 @@ public class Painter extends DiagramElement {
     public Painter(String name, ClassyNode parent) {
         super(name, parent);
     }
+
 }
