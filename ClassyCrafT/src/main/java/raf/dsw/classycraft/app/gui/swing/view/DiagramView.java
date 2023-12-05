@@ -1,9 +1,11 @@
 package raf.dsw.classycraft.app.gui.swing.view;
 
+import raf.dsw.classycraft.app.observer.ISubscriber;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class DiagramView extends JPanel {
+public class DiagramView extends JPanel implements ISubscriber {
 
     public DiagramView()
     {
@@ -24,6 +26,11 @@ public class DiagramView extends JPanel {
 
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+    }
+
+    @Override
+    public void update(Object notification) {
 
     }
 }
