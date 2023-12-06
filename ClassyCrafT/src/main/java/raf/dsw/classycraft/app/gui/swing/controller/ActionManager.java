@@ -12,7 +12,7 @@ public class ActionManager {
     private EditAction editAction;
     private AboutUs aboutUs;
     private DeleteAction deleteAction;
-
+// sve nove akcije
     public ActionManager()
     {
         initialiseAction();
