@@ -4,9 +4,12 @@ import raf.dsw.classycraft.app.observer.ISubscriber;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DiagramView extends JPanel implements ISubscriber {
 
+    private List<Painter> p = new ArrayList<>();
     public DiagramView()
     {
         initialise();

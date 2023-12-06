@@ -3,12 +3,17 @@ package raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.
 import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.classContet.ClassContent;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Interface extends InterClass {
+public class Klasa extends InterClass {
+
     private List<ClassContent> kontent = new ArrayList<>();
-    public Interface(String name, ClassyNode parent) {
+    private Point position;
+    private Dimension size;
+    public Klasa(String name, ClassyNode parent) {
         super(name, parent);
     }
+
 }

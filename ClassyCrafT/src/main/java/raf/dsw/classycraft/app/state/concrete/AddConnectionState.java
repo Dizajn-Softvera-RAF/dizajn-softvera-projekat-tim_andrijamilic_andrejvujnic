@@ -3,7 +3,7 @@ package raf.dsw.classycraft.app.state.concrete;
 import raf.dsw.classycraft.app.gui.swing.view.DiagramView;
 import raf.dsw.classycraft.app.state.State;
 
-public class MoveState implements State {
+public class AddConnectionState implements State {
     @Override
     public void misKliknut(int x, int y, DiagramView dw) {
 

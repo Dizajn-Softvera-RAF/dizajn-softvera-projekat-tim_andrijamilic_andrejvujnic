@@ -5,7 +5,12 @@ import raf.dsw.classycraft.app.classyRepository.composite.ClassyNodeComposite;
 import raf.dsw.classycraft.app.observer.IPublisher;
 import raf.dsw.classycraft.app.observer.ISubscriber;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Diagram extends ClassyNodeComposite implements IPublisher {
+
+    private List<ISubscriber> subs = new ArrayList<>();
 
     public Diagram(String name, ClassyNode parent) {
         super(name, parent);
@@ -18,7 +23,7 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
 
     @Override
     public void addSubscriber(ISubscriber iSubscriber) {
-
+        subs.add(iSubscriber);
     }
 
     @Override
