@@ -5,11 +5,10 @@ import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.D
 
 import java.awt.*;
 
-public class Painter extends DiagramElement {
+public class Painter {
 
+    private DiagramElement de;
     private Shape shape;
-    public Painter(String name, ClassyNode parent) {
-        super(name, parent);
-    }
+
 
 }

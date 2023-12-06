@@ -26,6 +26,7 @@ public class MainFrame extends JFrame implements ISubscriber {
     private JSplitPane split;
 
 
+
     //buduca polja za sve komponente view-a na glavnom prozoru
 
 

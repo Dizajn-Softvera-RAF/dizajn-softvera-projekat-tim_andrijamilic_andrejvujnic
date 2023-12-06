@@ -6,8 +6,9 @@ import raf.dsw.classycraft.app.gui.swing.view.PackageView;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-public class StateMouseListener implements MouseListener {
+public class StateMouseListener implements MouseListener, MouseMotionListener {
 
     private DiagramView dw;
     @Override
@@ -35,4 +36,14 @@ public class StateMouseListener implements MouseListener {
 
     }
 
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
 }
