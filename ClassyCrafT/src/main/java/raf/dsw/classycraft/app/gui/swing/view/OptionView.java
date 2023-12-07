@@ -1,13 +1,10 @@
 package raf.dsw.classycraft.app.gui.swing.view;
 
-import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
-import raf.dsw.classycraft.app.gui.swing.controller.NewDiagramAction;
-import raf.dsw.classycraft.app.gui.swing.controller.NewPackageAction;
+import raf.dsw.classycraft.app.gui.swing.controller.action.NewDiagramAction;
+import raf.dsw.classycraft.app.gui.swing.controller.action.NewPackageAction;
 import raf.dsw.classycraft.app.gui.swing.tree.ClassyTree;
 import raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImpl;
-import raf.dsw.classycraft.app.gui.swing.view.MyMenyBar;
-import raf.dsw.classycraft.app.gui.swing.view.MyToolBar;
 
 import javax.swing.*;
 import java.awt.*;
