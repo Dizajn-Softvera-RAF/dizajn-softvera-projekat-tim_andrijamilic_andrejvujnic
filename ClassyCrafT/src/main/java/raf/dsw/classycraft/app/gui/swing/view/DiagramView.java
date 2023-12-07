@@ -32,6 +32,10 @@ public class DiagramView extends JPanel implements ISubscriber {
 
     }
 
+    public void misKliknut(int x, int y, DiagramView dw){
+
+    };
+
     @Override
     public void paintComponents(Graphics g) {
         super.paintComponents(g);

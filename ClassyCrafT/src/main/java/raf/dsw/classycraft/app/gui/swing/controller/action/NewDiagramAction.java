@@ -1,14 +1,15 @@
-package raf.dsw.classycraft.app.gui.swing.controller;
+package raf.dsw.classycraft.app.gui.swing.controller.action;
 
+import raf.dsw.classycraft.app.gui.swing.controller.AbstractClassyAction;
 import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 
 import java.awt.event.ActionEvent;
 
-public class NewPackageAction extends AbstractClassyAction{
+public class NewDiagramAction extends AbstractClassyAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         ClassyTreeItem selected = (ClassyTreeItem) MainFrame.getInstance().getClassyTree().getSelectedNode();
-        MainFrame.getInstance().getClassyTree().addChild(selected, 1);
+        MainFrame.getInstance().getClassyTree().addChild(selected, 0);
     }
 }

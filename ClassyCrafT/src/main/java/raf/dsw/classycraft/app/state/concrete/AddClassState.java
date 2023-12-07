@@ -17,7 +17,6 @@ import static javax.swing.Action.SMALL_ICON;
 public class AddClassState implements State{
 
     public AddClassState(){
-
     }
     @Override
     public void misKliknut(int x, int y, DiagramView dw) {

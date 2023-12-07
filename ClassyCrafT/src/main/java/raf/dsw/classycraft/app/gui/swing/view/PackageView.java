@@ -67,6 +67,15 @@ public class PackageView extends JPanel implements ISubscriber {
 
     }
 
+
+    public void startAddClassState(){
+        this.stateManager.setAddClassState();
+    }
+
+    public void startMoveState(){
+        this.stateManager.setMoveState();
+    }
+
     @Override
     public void update(Object notification) {
         tp.removeAll();

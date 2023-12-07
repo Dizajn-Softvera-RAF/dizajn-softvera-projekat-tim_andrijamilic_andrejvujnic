@@ -4,8 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import raf.dsw.classycraft.app.gui.swing.view.PackageView;
 import raf.dsw.classycraft.app.state.concrete.*;
-@Getter
-@Setter
+
 public class StateManager {
 
     private State currentState;
@@ -29,7 +28,9 @@ public class StateManager {
 
     public State getCurrentState(){ return currentState; }
 
-    public void setAddClassState(){ currentState = addClassState; }
+    public void setAddClassState(){
+        currentState = addClassState;
+    }
     public void setEditState(){ currentState = editState; }
     public void setMoveState(){ currentState = moveState; }
     public void setSelectState(){ currentState = selectState; }
