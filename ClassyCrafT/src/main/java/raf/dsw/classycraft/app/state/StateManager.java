@@ -8,6 +8,7 @@ import raf.dsw.classycraft.app.state.concrete.*;
 public class StateManager {
 
     private State currentState;
+    private AddConnectionState addConnectionState;
     private AddClassState addClassState;
     private EditState editState;
     private MoveState moveState;
@@ -19,6 +20,7 @@ public class StateManager {
     }
     private void initState(){
         addClassState = new AddClassState();
+        addConnectionState = new AddConnectionState();
         editState = new EditState();
         moveState = new MoveState();
         selectState = new SelectState();
@@ -28,8 +30,10 @@ public class StateManager {
 
     public State getCurrentState(){ return currentState; }
 
-    public void setAddClassState(){
-        currentState = addClassState;
+    public void setAddClassState(){currentState = addClassState;
+    }
+    public void setAddConnectionStateState(){
+        currentState = addConnectionState;
     }
     public void setEditState(){ currentState = editState; }
     public void setMoveState(){ currentState = moveState; }

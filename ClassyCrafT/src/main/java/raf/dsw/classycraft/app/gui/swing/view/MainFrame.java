@@ -2,6 +2,7 @@ package raf.dsw.classycraft.app.gui.swing.view;
 
 import lombok.Getter;
 import lombok.Setter;
+import raf.dsw.classycraft.app.classyRepository.implementation.Package;
 import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.gui.swing.controller.ActionManager;
 import raf.dsw.classycraft.app.gui.swing.tree.ClassyTree;
@@ -19,6 +20,7 @@ import java.awt.*;
 public class MainFrame extends JFrame implements ISubscriber {
 
     private ActionManager actionManager;
+    private PackageView packageView;
     private JMenuBar menu;
     private JToolBar toolBar;
     private static MainFrame instance;
@@ -33,6 +35,7 @@ public class MainFrame extends JFrame implements ISubscriber {
     private void initialise()
     {
         actionManager = new ActionManager();
+        packageView = new PackageView();
         classyTree = new ClassyTreeImpl();
         initialiseGui();
     }

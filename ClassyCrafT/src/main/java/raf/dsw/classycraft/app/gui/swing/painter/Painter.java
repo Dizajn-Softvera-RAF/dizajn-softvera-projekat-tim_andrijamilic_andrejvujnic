@@ -5,10 +5,12 @@ import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.D
 
 import java.awt.*;
 
-public class Painter {
+public abstract class Painter {
 
-    private DiagramElement de;
-    private Shape shape;
+    public Painter(DiagramElement element) {	}
+    public abstract void paint(Graphics2D g, DiagramElement element);
+
+    public abstract boolean elementAt(DiagramElement element, Point pos);
 
 
 }
