@@ -33,6 +33,11 @@ public class PackageView extends JPanel implements ISubscriber {
         model.addSubscriber(this);
         initialise();
     }
+
+    public PackageView() {
+
+    }
+
     private void initialise()
     {
         initialiseGui();
@@ -69,11 +74,25 @@ public class PackageView extends JPanel implements ISubscriber {
 
 
     public void startAddClassState(){
+        if(stateManager == null)
+            return;
         this.stateManager.setAddClassState();
-    }
 
+    }
+    public void startAddConnectionState(){
+        this.stateManager.setAddConnectionStateState();
+    }
+    public void startEditState(){
+        this.stateManager.setEditState();
+    }
     public void startMoveState(){
         this.stateManager.setMoveState();
+    }
+    public void startSelectState(){
+        this.stateManager.setSelectState();
+    }
+    public void startZoomState(){
+        this.stateManager.setZoomState();
     }
 
     @Override
@@ -84,7 +103,6 @@ public class PackageView extends JPanel implements ISubscriber {
                 tp.addTab(child.getName(), new DiagramView());
             }
         }
-
 
     }
 }

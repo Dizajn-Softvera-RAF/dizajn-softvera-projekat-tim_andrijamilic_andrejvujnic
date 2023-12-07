@@ -3,8 +3,7 @@ package raf.dsw.classycraft.app.gui.swing.controller;
 import lombok.Getter;
 import lombok.Setter;
 import raf.dsw.classycraft.app.gui.swing.controller.action.*;
-import raf.dsw.classycraft.app.gui.swing.controller.stateAction.AddClassAction;
-import raf.dsw.classycraft.app.gui.swing.controller.stateAction.MoveAction;
+import raf.dsw.classycraft.app.gui.swing.controller.stateAction.*;
 
 @Getter
 @Setter
@@ -17,7 +16,12 @@ public class ActionManager {
     private DeleteAction deleteAction;
 // sve nove akcije
     private AddClassAction addClassAction;
+    private AddConnectionAction addConnectionAction;
+    private EditActionS editActionS;
     private MoveAction moveAction;
+    private SelectAction selectAction;
+    private ZoomAction zoomAction;
+
     public ActionManager()
     {
         initialiseAction();
@@ -25,8 +29,13 @@ public class ActionManager {
 
     public void initialiseAction()
     {
-        moveAction = new MoveAction();
         addClassAction = new AddClassAction();
+        addConnectionAction = new AddConnectionAction();
+        editActionS = new EditActionS();
+        moveAction = new MoveAction();
+        selectAction = new SelectAction();
+        zoomAction = new ZoomAction();
+
         exitAction = new ExitAction();
         newProjectAction = new NewProjectAction();
         editAction = new EditAction();

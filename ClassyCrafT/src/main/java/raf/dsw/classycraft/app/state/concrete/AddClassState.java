@@ -20,7 +20,7 @@ public class AddClassState implements State{
     }
     @Override
     public void misKliknut(int x, int y, DiagramView dw) {
-        //Klasa k = new Klasa("Klasa");
+        System.out.println("add");
     }
 
     @Override
