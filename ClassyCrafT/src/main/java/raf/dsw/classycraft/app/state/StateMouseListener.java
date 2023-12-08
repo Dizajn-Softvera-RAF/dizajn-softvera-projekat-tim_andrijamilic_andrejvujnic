@@ -1,9 +1,11 @@
 package raf.dsw.classycraft.app.state;
 
+import com.sun.tools.javac.Main;
 import raf.dsw.classycraft.app.gui.swing.view.DiagramView;
 import raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import raf.dsw.classycraft.app.gui.swing.view.PackageView;
 import raf.dsw.classycraft.app.state.concrete.AddClassState;
+import raf.dsw.classycraft.app.state.concrete.MoveState;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -15,17 +17,11 @@ public class StateMouseListener extends MouseAdapter {
 
     private DiagramView dw;
     private static int cout = 1;
-    private State currentState;
     @Override
     public void mouseClicked(MouseEvent e) {
         System.out.println(cout++);
-        if(currentState== null)
-            return;
-        if(currentState instanceof AddClassState)
-        {
-            System.out.println("ADD");
-        }
-            currentState.misKliknut(e.getX(), e.getY(), dw);
+        MainFrame.getInstance().getPackageView().misKliknut(e.getX(), e.getY(), dw);
+
     }
 
     @Override

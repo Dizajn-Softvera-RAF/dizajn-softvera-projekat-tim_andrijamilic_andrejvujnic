@@ -12,7 +12,7 @@ public class ZavisnostPainter extends ConnectionPainter {
     }
 
     @Override
-    public void paint(Graphics2D g, DiagramElement element) {
+    public void paint(Graphics2D g) {
 
     }
 

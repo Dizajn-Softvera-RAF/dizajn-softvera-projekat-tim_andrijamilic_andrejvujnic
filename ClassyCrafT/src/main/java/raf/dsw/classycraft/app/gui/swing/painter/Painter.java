@@ -7,8 +7,9 @@ import java.awt.*;
 
 public abstract class Painter {
 
+    private DiagramElement de;
     public Painter(DiagramElement element) {	}
-    public abstract void paint(Graphics2D g, DiagramElement element);
+    public abstract void paint(Graphics2D g);
 
     public abstract boolean elementAt(DiagramElement element, Point pos);
 

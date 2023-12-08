@@ -25,7 +25,7 @@ public class StateManager {
         moveState = new MoveState();
         selectState = new SelectState();
         zoomState = new ZoomState();
-        currentState = null;
+        currentState = addClassState;
     }
 
     public State getCurrentState(){ return currentState; }

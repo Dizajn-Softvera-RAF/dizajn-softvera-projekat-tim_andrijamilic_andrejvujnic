@@ -12,8 +12,8 @@ public class KlasaPainter extends InterClassPainter{
     }
 
     @Override
-    public void paint(Graphics2D g, DiagramElement element) {
-
+    public void paint(Graphics2D g) {
+        //crtamo ovde
     }
 
     @Override
