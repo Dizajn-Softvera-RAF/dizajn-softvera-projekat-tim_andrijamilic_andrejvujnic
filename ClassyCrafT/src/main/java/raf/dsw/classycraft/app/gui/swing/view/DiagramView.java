@@ -1,8 +1,11 @@
 package raf.dsw.classycraft.app.gui.swing.view;
 
+import lombok.Getter;
+import lombok.Setter;
 import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.Klasa;
+import raf.dsw.classycraft.app.gui.swing.painter.Painter;
 import raf.dsw.classycraft.app.observer.ISubscriber;
 import raf.dsw.classycraft.app.state.StateMouseListener;
 
@@ -12,9 +15,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+@Setter
+@Getter
 public class DiagramView extends JPanel implements ISubscriber {
 
-    private List<Painter> p = new ArrayList<>();
+    private List<raf.dsw.classycraft.app.gui.swing.painter.Painter> painters = new ArrayList<>();
     private Diagram diagram;
     public DiagramView()
     {
@@ -39,9 +44,7 @@ public class DiagramView extends JPanel implements ISubscriber {
 
     }
 
-    public void misKliknut(int x, int y, DiagramView dw){
 
-    };
 
     public void setDiagram(Diagram diagram) {
         this.diagram = diagram;
@@ -57,12 +60,9 @@ public class DiagramView extends JPanel implements ISubscriber {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
         g2.setComposite(AlphaComposite.getInstance(3, 0.8F));
-        //Iterator<DiagramElement> it = DiagramView.this.diagram;
-
-       /* while(it.hasNext()) {
-            Klasa d = (Klasa) it.next();
-            Painter painter = d.getPainter();
-        }*/
+        for(Painter p : painters){
+            p.paint(g2);
+        }
 
         System.out.println("Izvršena paintComponent metoda view-a");
     }

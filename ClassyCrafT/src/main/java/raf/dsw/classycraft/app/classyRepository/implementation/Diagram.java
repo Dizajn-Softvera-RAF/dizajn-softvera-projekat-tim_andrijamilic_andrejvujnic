@@ -18,7 +18,8 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
 
     @Override
     public void addChild(ClassyNode child) {
-
+        getChildren().add(child);
+        notifySubscriber(child);
     }
 
     @Override
@@ -33,6 +34,9 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
 
     @Override
     public void notifySubscriber(Object notification) {
-
+        //updade
+        for(ISubscriber subscriber : subs){
+            subscriber.update(notification);
+        }
     }
 }

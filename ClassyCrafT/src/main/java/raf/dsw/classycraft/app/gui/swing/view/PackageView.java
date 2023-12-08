@@ -22,14 +22,14 @@ public class PackageView extends JPanel implements ISubscriber {
 
     private Package model;
 
-    private StateManager stateManager;
+    private StateManager stateManager = new StateManager();
     private PackageToolBar ptb = new PackageToolBar();
     private JTabbedPane tp = new JTabbedPane();
 
     public PackageView(Package model)
     {
         this.model = model;
-        stateManager = new StateManager();
+        //stateManager = new StateManager();
         model.addSubscriber(this);
         initialise();
     }
@@ -72,6 +72,16 @@ public class PackageView extends JPanel implements ISubscriber {
 
     }
 
+    public void misKliknut(int x, int y, DiagramView dw){
+        this.stateManager.getCurrentState().misKliknut(x, y, dw);
+
+    };
+    public void misOtpusten(int x, int y, DiagramView dw){
+
+    };
+    public void misPovucen(int x, int y, DiagramView dw){
+
+    };
 
     public void startAddClassState(){
         if(stateManager == null)
