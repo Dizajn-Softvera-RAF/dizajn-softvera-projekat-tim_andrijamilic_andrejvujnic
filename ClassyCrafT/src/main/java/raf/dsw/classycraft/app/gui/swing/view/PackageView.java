@@ -26,8 +26,12 @@ public class PackageView extends JPanel implements ISubscriber {
     private PackageToolBar ptb = new PackageToolBar();
     private JTabbedPane tp = new JTabbedPane();
 
+    //menjano
+    private DiagramView diagramView;
+
     public PackageView(Package model)
     {
+        diagramView = new DiagramView();
         this.model = model;
         //stateManager = new StateManager();
         model.addSubscriber(this);
@@ -73,6 +77,7 @@ public class PackageView extends JPanel implements ISubscriber {
     }
 
     public void misKliknut(int x, int y, DiagramView dw){
+        //dw = this.dw;
         this.stateManager.getCurrentState().misKliknut(x, y, dw);
 
     };

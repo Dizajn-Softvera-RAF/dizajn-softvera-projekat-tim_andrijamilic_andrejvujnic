@@ -17,9 +17,16 @@ public class StateMouseListener extends MouseAdapter {
 
     private DiagramView dw;
     private static int cout = 1;
+
+    //menjano
+    public StateMouseListener(){
+        dw = MainFrame.getInstance().getPackageView().getDiagramView();
+        //dw = ((PackageView)MainFrame.getInstance().getSplit().getRightComponent()).getDiagramView();
+    }
     @Override
     public void mouseClicked(MouseEvent e) {
         System.out.println(cout++);
+
         MainFrame.getInstance().getPackageView().misKliknut(e.getX(), e.getY(), dw);
 
     }
