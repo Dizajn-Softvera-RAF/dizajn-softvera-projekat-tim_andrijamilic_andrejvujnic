@@ -9,7 +9,7 @@ public class MoveState implements State {
     }
     @Override
     public void misKliknut(int x, int y, DiagramView dw) {
-        System.out.println("mis");
+        System.out.println("move");
     }
 
     @Override

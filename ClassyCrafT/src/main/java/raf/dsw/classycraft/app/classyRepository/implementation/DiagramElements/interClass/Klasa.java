@@ -14,6 +14,7 @@ public class Klasa extends InterClass {
     private Dimension size;
     public Klasa(String name, ClassyNode parent) {
         super(name, parent);
+        //System.out.println("Klasa");
     }
 
 }

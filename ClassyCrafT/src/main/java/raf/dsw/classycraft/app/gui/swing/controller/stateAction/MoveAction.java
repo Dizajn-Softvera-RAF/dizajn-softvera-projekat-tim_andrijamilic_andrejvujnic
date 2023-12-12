@@ -17,6 +17,7 @@ public class MoveAction extends AbstractClassyAction {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        ((PackageView) MainFrame.getInstance().getSplit().getRightComponent()).startMoveState();
+        //((PackageView) MainFrame.getInstance().getSplit().getRightComponent()).startMoveState();
+        MainFrame.getInstance().getPackageView().startMoveState();
     }
 }

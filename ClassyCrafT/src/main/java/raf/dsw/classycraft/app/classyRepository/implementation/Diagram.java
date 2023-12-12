@@ -14,7 +14,10 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
 
     public Diagram(String name, ClassyNode parent) {
         super(name, parent);
+        //System.out.println("Diagram");
     }
+
+
 
     @Override
     public void addChild(ClassyNode child) {
