@@ -16,6 +16,7 @@ public class ActionManager {
     private DeleteAction deleteAction;
 // sve nove akcije
     private AddClassAction addClassAction;
+    private DeleteStateAction deleteStateAction;
     private AddConnectionAction addConnectionAction;
     private EditActionS editActionS;
     private MoveAction moveAction;
@@ -30,6 +31,7 @@ public class ActionManager {
     public void initialiseAction()
     {
         addClassAction = new AddClassAction();
+        deleteStateAction = new DeleteStateAction();
         addConnectionAction = new AddConnectionAction();
         editActionS = new EditActionS();
         moveAction = new MoveAction();

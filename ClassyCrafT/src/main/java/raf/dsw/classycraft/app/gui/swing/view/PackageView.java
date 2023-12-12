@@ -89,13 +89,15 @@ public class PackageView extends JPanel implements ISubscriber {
     };
 
     public void startAddClassState(){
-        if(stateManager == null)
-            return;
         this.stateManager.setAddClassState();
 
     }
+    public void startDeleteState()
+    {
+        this.stateManager.setDeleteState();
+    }
     public void startAddConnectionState(){
-        this.stateManager.setAddConnectionStateState();
+        this.stateManager.setAddConnectionState();
     }
     public void startEditState(){
         this.stateManager.setEditState();

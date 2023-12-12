@@ -1,12 +1,24 @@
 package raf.dsw.classycraft.app.gui.swing.controller.stateAction;
 
 import raf.dsw.classycraft.app.gui.swing.controller.AbstractClassyAction;
+import raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 public class EditActionS extends AbstractClassyAction {
+
+    public EditActionS()
+    {
+        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, ActionEvent.ALT_MASK));
+        putValue(SMALL_ICON, loadIcon("/images/edit.png"));
+        putValue(NAME, "Edit");
+        putValue(SHORT_DESCRIPTION, "Edit");
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        MainFrame.getInstance().getPackageView().startEditState();
     }
 }

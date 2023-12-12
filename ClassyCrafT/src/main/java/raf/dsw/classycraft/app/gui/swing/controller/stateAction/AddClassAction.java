@@ -13,8 +13,8 @@ public class AddClassAction extends AbstractClassyAction {
     public AddClassAction(){
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, ActionEvent.ALT_MASK));
         putValue(SMALL_ICON, loadIcon("/images/plus.png"));
-        putValue(NAME, "AddClass");
-        putValue(SHORT_DESCRIPTION, "AddClass");
+        putValue(NAME, "Add inter class");
+        putValue(SHORT_DESCRIPTION, "Add inter class");
     }
     @Override
     public void actionPerformed(ActionEvent e) {
