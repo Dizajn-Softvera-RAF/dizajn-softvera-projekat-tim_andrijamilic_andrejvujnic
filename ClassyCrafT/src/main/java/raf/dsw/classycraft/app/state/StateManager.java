@@ -9,6 +9,7 @@ public class StateManager {
 
     private State currentState;
     private AddConnectionState addConnectionState;
+    private DeleteState deleteState;
     private AddClassState addClassState;
     private EditState editState;
     private MoveState moveState;
@@ -20,6 +21,7 @@ public class StateManager {
     }
     private void initState(){
         addClassState = new AddClassState();
+        deleteState = new DeleteState();
         addConnectionState = new AddConnectionState();
         editState = new EditState();
         moveState = new MoveState();
@@ -32,7 +34,12 @@ public class StateManager {
 
     public void setAddClassState(){currentState = addClassState;
     }
-    public void setAddConnectionStateState(){
+
+    public void setDeleteState() {
+        currentState = deleteState;
+    }
+
+    public void setAddConnectionState(){
         currentState = addConnectionState;
     }
     public void setEditState(){ currentState = editState; }

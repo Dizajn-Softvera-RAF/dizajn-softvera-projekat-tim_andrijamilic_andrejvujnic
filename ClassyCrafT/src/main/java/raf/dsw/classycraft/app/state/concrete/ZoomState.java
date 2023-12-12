@@ -6,7 +6,7 @@ import raf.dsw.classycraft.app.state.State;
 public class ZoomState implements State {
     @Override
     public void misKliknut(int x, int y, DiagramView dw) {
-
+        System.out.println("zoom");
     }
 
     @Override
