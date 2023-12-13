@@ -11,6 +11,7 @@ import raf.dsw.classycraft.app.gui.swing.view.PackageView;
 import raf.dsw.classycraft.app.state.State;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -28,9 +29,9 @@ public class AddClassState implements State{
             System.out.println("null pointer");
             return;
         }*/
-
         System.out.println("add");
-        Klasa k = new Klasa("Klasa", dw.getDiagram());
+        System.out.println("painters" + dw.getPainters().size());
+        Klasa k = new Klasa("Klasa", dw.getDiagram(), new Point(x, y));
         KlasaPainter kp = new KlasaPainter(k);
         dw.getDiagram().addChild(k);
         dw.getPainters().add(kp);
