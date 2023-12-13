@@ -26,12 +26,8 @@ public class PackageView extends JPanel implements ISubscriber {
     private PackageToolBar ptb = new PackageToolBar();
     private JTabbedPane tp = new JTabbedPane();
 
-    //menjano
-    private DiagramView diagramView;
-
     public PackageView(Package model)
     {
-        diagramView = new DiagramView();
         this.model = model;
         //stateManager = new StateManager();
         model.addSubscriber(this);
@@ -64,7 +60,7 @@ public class PackageView extends JPanel implements ISubscriber {
 
         for(ClassyNode child : model.getChildren()){
             if(child instanceof Diagram){
-                DiagramView dw = new DiagramView();
+                DiagramView dw = new DiagramView((Diagram)child );
                 ((Diagram) child).addSubscriber(dw);
                 tp.addTab(child.getName(), dw);
             }
@@ -117,7 +113,7 @@ public class PackageView extends JPanel implements ISubscriber {
         tp.removeAll();
         for(ClassyNode child : model.getChildren()){
             if(child instanceof Diagram){
-                tp.addTab(child.getName(), new DiagramView());
+                tp.addTab(child.getName(), new DiagramView((Diagram) child));
             }
         }
 

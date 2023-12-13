@@ -28,15 +28,16 @@ public class DiagramView extends JPanel implements ISubscriber {
 
     private List<raf.dsw.classycraft.app.gui.swing.painter.Painter> painters = new ArrayList<>();
     private Diagram diagram;
-    private JPanel framework;
+    //private JPanel framework;
     private State currentState;
 
-    public DiagramView()
+    public DiagramView(Diagram model)
     {
         currentState = getCurrentState();
-        framework = new Framework();
-        add(framework);
-        diagram = new Diagram("Diagram", null);
+        //framework = new Framework();
+        //add(framework);
+        this.diagram = model;
+        model.addSubscriber(this);
         addMouseListener(new StateMouseListener());
         initialise();
     }
@@ -87,8 +88,19 @@ public class DiagramView extends JPanel implements ISubscriber {
         this.repaint();
 
     }
-
-    private class Framework extends JPanel{
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        int i = 0;
+        g2.setComposite(AlphaComposite.getInstance(3, 0.8F));
+        System.out.println(painters.size());
+        for (Painter p : painters) {
+            p.paint(g2);
+        }
+        System.out.println("Izvršena paintComponent metoda view-a");
+    }
+    /*private class Framework extends JPanel{
 
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -99,18 +111,10 @@ public class DiagramView extends JPanel implements ISubscriber {
             for(Painter p : painters){
                 p.paint(g2);
             }
-            Painter p = new KlasaPainter(new Klasa("Klasa", diagram, new Point()));
-            p.paint(g2);
-            /*if(currentState instanceof AddClassState){
-                g2.drawRect(50 , 50 , 100, 150);
-                a += 20;
-                repaint();
-            }*/
-            //repaint();
             System.out.println("Izvršena paintComponent metoda view-a");
         }
 
-    }
+    }*/
 }
 
 

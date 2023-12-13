@@ -24,7 +24,6 @@ public class AddClassState implements State{
     }
     @Override
     public void misKliknut(int x, int y, DiagramView dw) {
-        dw = ((PackageView)MainFrame.getInstance().getSplit().getRightComponent()).getDiagramView();
         /*if(dw == null){
             System.out.println("null pointer");
             return;
