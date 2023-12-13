@@ -30,13 +30,11 @@ public class DiagramView extends JPanel implements ISubscriber {
     private Diagram diagram;
     private JPanel framework;
     private State currentState;
-    static int a = 0;
+
     public DiagramView()
     {
         currentState = getCurrentState();
         framework = new Framework();
-        //framework.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        //framework.setBackground(Color.WHITE);
         add(framework);
         diagram = new Diagram("Diagram", null);
         addMouseListener(new StateMouseListener());
@@ -85,8 +83,9 @@ public class DiagramView extends JPanel implements ISubscriber {
 
     @Override
     public void update(Object notification) {
-
+        System.out.println("update");
         this.repaint();
+
     }
 
     private class Framework extends JPanel{
@@ -97,10 +96,10 @@ public class DiagramView extends JPanel implements ISubscriber {
             int i = 0;
             g2.setComposite(AlphaComposite.getInstance(3, 0.8F));
             System.out.println(painters.size());
-            //for(Painter p : painters){
-                //p.paint(g2);
-            //}
-            Painter p = new KlasaPainter(new Klasa("Klasa", diagram));
+            for(Painter p : painters){
+                p.paint(g2);
+            }
+            Painter p = new KlasaPainter(new Klasa("Klasa", diagram, new Point()));
             p.paint(g2);
             /*if(currentState instanceof AddClassState){
                 g2.drawRect(50 , 50 , 100, 150);

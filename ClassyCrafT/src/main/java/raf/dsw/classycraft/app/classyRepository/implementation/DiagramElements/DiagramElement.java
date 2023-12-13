@@ -1,11 +1,15 @@
 package raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements;
 
+import lombok.Getter;
+import lombok.Setter;
 import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
 
 import javax.swing.*;
 import javax.swing.border.StrokeBorder;
 import javax.swing.plaf.synth.ColorType;
 
+@Getter
+@Setter
 public abstract class DiagramElement extends ClassyNode {
 
     private ColorType boja;
