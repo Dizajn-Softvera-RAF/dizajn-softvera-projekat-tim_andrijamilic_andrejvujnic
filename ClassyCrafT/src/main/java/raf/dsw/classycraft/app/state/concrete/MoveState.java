@@ -13,6 +13,11 @@ public class MoveState implements State {
     }
 
     @Override
+    public void misPritisnut(int x, int y, DiagramView dw) {
+
+    }
+
+    @Override
     public void misOtpusten(int x, int y, DiagramView dw) {
 
     }

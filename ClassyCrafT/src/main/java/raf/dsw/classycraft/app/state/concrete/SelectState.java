@@ -16,8 +16,13 @@ public class SelectState implements State {
     @Override
     public void misKliknut(int x, int y, DiagramView dw) {
 
+
+    }
+
+    @Override
+    public void misPritisnut(int x, int y, DiagramView dw) {
         System.out.println("select");
-        selekcijaShape = new Rectangle2D.Double(x, y, 10 ,10);
+        selekcijaShape = new Rectangle2D.Double(x, y, 1 ,1);
         dw.setSelekcijaRect(selekcijaShape);
         startX = x;
         startY = y;

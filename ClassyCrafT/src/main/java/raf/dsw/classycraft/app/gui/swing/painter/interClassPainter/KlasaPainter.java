@@ -26,14 +26,21 @@ public class KlasaPainter extends InterClassPainter{
 
         g.fill(getShape());
 
+        g.setStroke(new BasicStroke(2));
+
+        if (isSelected())
+            g.setPaint(Color.BLACK);
+        else
+            g.setPaint(k.getBoja());
+
+
         g.draw(getShape());
 
-        if (isSelected()) g.setPaint(Color.YELLOW);
-            else g.setPaint(k.getBoja());
+
     }
 
     @Override
-    public boolean elementAt(DiagramElement element, Point pos) {
+    public boolean elementAt(Point pos) {
         return false;
     }
 }

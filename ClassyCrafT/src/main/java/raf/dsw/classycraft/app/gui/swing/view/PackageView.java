@@ -75,9 +75,13 @@ public class PackageView extends JPanel implements ISubscriber {
         this.stateManager.getCurrentState().misKliknut(x, y, dw);
 
     };
+    public void misPritisnut(int x, int y, DiagramView dw){
+        this.stateManager.getCurrentState().misPritisnut(x, y, dw);
+    };
     public void misOtpusten(int x, int y, DiagramView dw){
         this.stateManager.getCurrentState().misOtpusten(x, y, dw);
     };
+
     public void misPovucen(int x, int y, DiagramView dw){
         this.stateManager.getCurrentState().misPovucen(x, y, dw);
     };

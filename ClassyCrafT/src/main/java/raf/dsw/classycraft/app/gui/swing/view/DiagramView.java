@@ -26,7 +26,7 @@ import java.util.List;
 @Getter
 public class DiagramView extends JPanel implements ISubscriber {
 
-    private List<raf.dsw.classycraft.app.gui.swing.painter.Painter> painters = new ArrayList<>();
+    private List<Painter> painters = new ArrayList<>();
     private List<Painter> selectedPainters = new ArrayList<>();
     private Rectangle2D selekcijaRect = new Rectangle2D.Double();
     private Diagram diagram;
@@ -39,6 +39,7 @@ public class DiagramView extends JPanel implements ISubscriber {
         this.diagram = model;
         model.addSubscriber(this);
         addMouseListener(new StateMouseListener());
+        addMouseMotionListener(new StateMouseListener());
         this.painters = new ArrayList<>();
         this.selectedPainters = new ArrayList<>();
         initialise();
@@ -79,7 +80,6 @@ public class DiagramView extends JPanel implements ISubscriber {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        int i = 0;
         g2.setComposite(AlphaComposite.getInstance(3, 0.8F));
         for (Painter p : painters) {
             p.paint(g2);
@@ -115,17 +115,6 @@ public class DiagramView extends JPanel implements ISubscriber {
         selectedPainters.clear();
     }
 
-    public Point2D getMousePoint(int x, int y) {
-        Point2D oldPoint = new Point(x, y);
-        Point2D point = null;
-        try {
-            point = transform.inverseTransform(oldPoint, oldPoint);
-        } catch (NoninvertibleTransformException ex) {
-            throw new RuntimeException(ex);
-        }
-
-        return point;
-    }
 
     public void setSelekcijaRect(Rectangle2D selekcijaRect) {
         this.selekcijaRect = selekcijaRect;
