@@ -1,19 +1,35 @@
 package raf.dsw.classycraft.app.state.concrete;
 
+import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
+import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.InterClass;
+import raf.dsw.classycraft.app.gui.swing.painter.Painter;
 import raf.dsw.classycraft.app.gui.swing.view.DiagramView;
 import raf.dsw.classycraft.app.state.State;
 
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 public class MoveState implements State {
 
+    private int startX;
+    private int startY;
     public MoveState(){
     }
     @Override
-    public void misKliknut(int x, int y, DiagramView dw) {
+    public void misKliknut(int x, int y, DiagramView dw, MouseEvent event) {
         System.out.println("move");
     }
 
     @Override
     public void misPritisnut(int x, int y, DiagramView dw) {
+        startX = x;
+        startY = y;
+
+    }
+
+    @Override
+    public void desniKlik(int x, int y, DiagramView dw) {
 
     }
 
@@ -24,6 +40,25 @@ public class MoveState implements State {
 
     @Override
     public void misPovucen(int x, int y, DiagramView dw) {
+
+        ArrayList<Painter> selected = (ArrayList<Painter>) dw.getSelectedPainters();
+        for (Painter p: selected) {
+            DiagramElement diagElem = p.getDiagramElement();
+            if(!(diagElem instanceof InterClass)) continue;
+
+            InterClass inter = (InterClass) diagElem;
+            Point pos = inter.getPosition();
+
+            int diff_x = x - startX;
+            int diff_y = y - startY;
+
+            inter.setPosition(new Point(pos.x + diff_x, pos.y + diff_y));
+        }
+
+        startX = x;
+        startY = y;
+
+        dw.repaint();
 
     }
 }

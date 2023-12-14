@@ -8,11 +8,12 @@ import raf.dsw.classycraft.app.gui.swing.view.DiagramView;
 import raf.dsw.classycraft.app.state.State;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class DeleteState implements State {
     @Override
-    public void misKliknut(int x, int y, DiagramView dw) {
+    public void misKliknut(int x, int y, DiagramView dw, MouseEvent event) {
         System.out.println("delete");
         //Painter selected = getPainterAtClickedLocation(dw, new Point(x, y));
 
@@ -21,9 +22,7 @@ public class DeleteState implements State {
 
         for(Painter pe : selected)
         {
-
             dw.getPainters().remove(pe);
-
         }
         for(DiagramElement d : l )
         {
@@ -34,6 +33,11 @@ public class DeleteState implements State {
 
     @Override
     public void misPritisnut(int x, int y, DiagramView dw) {
+
+    }
+
+    @Override
+    public void desniKlik(int x, int y, DiagramView dw) {
 
     }
 

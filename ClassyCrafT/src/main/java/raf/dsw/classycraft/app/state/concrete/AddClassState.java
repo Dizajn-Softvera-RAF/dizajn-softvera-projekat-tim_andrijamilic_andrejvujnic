@@ -14,6 +14,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 import static javax.swing.Action.ACCELERATOR_KEY;
 import static javax.swing.Action.SMALL_ICON;
@@ -23,17 +24,25 @@ public class AddClassState implements State{
     public AddClassState(){
     }
     @Override
-    public void misKliknut(int x, int y, DiagramView dw) {
+    public void misKliknut(int x, int y, DiagramView dw, MouseEvent event) {
         System.out.println("add");
         Klasa k = new Klasa("Klasa", dw.getDiagram(), new Point(x, y));
         KlasaPainter kp = new KlasaPainter(k);
         dw.getDiagram().addChild(k);
         dw.getPainters().add(kp);
+        k.setPainter(kp);
+
+    }
+
+
+
+    @Override
+    public void misPritisnut(int x, int y, DiagramView dw) {
 
     }
 
     @Override
-    public void misPritisnut(int x, int y, DiagramView dw) {
+    public void desniKlik(int x, int y, DiagramView dw) {
 
     }
 

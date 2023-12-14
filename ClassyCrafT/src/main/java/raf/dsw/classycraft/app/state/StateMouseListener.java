@@ -24,11 +24,12 @@ public class StateMouseListener extends MouseAdapter {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        MainFrame.getInstance().getPackageView().misKliknut(e.getX(), e.getY(), (DiagramView) e.getComponent());
+        MainFrame.getInstance().getPackageView().misKliknut(e.getX(), e.getY(), (DiagramView) e.getComponent(),e);
         //Point2D point = dw.getMousePoint(e.getX(), e.getY());
         //MainFrame.getInstance().getPackageView().misKliknut((int) point.getX(), (int) point.getY(), ((DiagramView) e.getSource()));
 
     }
+
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -54,6 +55,7 @@ public class StateMouseListener extends MouseAdapter {
     public void mouseExited(MouseEvent e) {
 
     }
+
 
     @Override
     public void mouseDragged(MouseEvent e) {
