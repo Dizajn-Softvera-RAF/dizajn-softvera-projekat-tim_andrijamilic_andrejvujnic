@@ -14,8 +14,11 @@ public class ActionManager {
     private EditAction editAction;
     private AboutUs aboutUs;
     private DeleteAction deleteAction;
+    private AddInterClassAction addInterClassAction;
 // sve nove akcije
     private AddClassAction addClassAction;
+    private AddInterfaceAction addInterfaceAction;
+    private AddEnumAction addEnumAction;
     private DeleteStateAction deleteStateAction;
     private AddConnectionAction addConnectionAction;
     private EditActionS editActionS;
@@ -31,6 +34,8 @@ public class ActionManager {
     public void initialiseAction()
     {
         addClassAction = new AddClassAction();
+        addInterfaceAction = new AddInterfaceAction();
+        addEnumAction = new AddEnumAction();
         deleteStateAction = new DeleteStateAction();
         addConnectionAction = new AddConnectionAction();
         editActionS = new EditActionS();
@@ -38,6 +43,7 @@ public class ActionManager {
         selectAction = new SelectAction();
         zoomAction = new ZoomAction();
 
+        addInterClassAction = new AddInterClassAction();
         exitAction = new ExitAction();
         newProjectAction = new NewProjectAction();
         editAction = new EditAction();

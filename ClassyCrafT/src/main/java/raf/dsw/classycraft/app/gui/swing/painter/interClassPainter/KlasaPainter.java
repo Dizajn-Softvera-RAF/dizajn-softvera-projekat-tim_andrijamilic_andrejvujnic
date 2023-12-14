@@ -12,7 +12,6 @@ public class KlasaPainter extends InterClassPainter{
 
     public KlasaPainter(DiagramElement element) {
         super(element);
-        //System.out.println("KlasaPainter");
     }
 
     @Override
@@ -22,7 +21,7 @@ public class KlasaPainter extends InterClassPainter{
         Klasa k = ((Klasa) getDiagramElement());
         String name = k.getName();
         setShape(new Rectangle2D.Double(k.getPosition().getX(), k.getPosition().getY(), 50, 50));
-        g.setPaint(Color.WHITE);
+        g.setPaint(Color.RED);
 
         g.fill(getShape());
 

@@ -29,7 +29,6 @@ public class PackageView extends JPanel implements ISubscriber {
     public PackageView(Package model)
     {
         this.model = model;
-        //stateManager = new StateManager();
         model.addSubscriber(this);
         initialise();
     }
@@ -44,8 +43,6 @@ public class PackageView extends JPanel implements ISubscriber {
     }
 
     private void initialiseGui(){
-
-        //JPanel panel = new JPanel(new BorderLayout());
         ClassyNode parent = model.getParent();
 
         while(!(parent instanceof Project)){
@@ -87,6 +84,14 @@ public class PackageView extends JPanel implements ISubscriber {
     public void startAddClassState(){
         this.stateManager.setAddClassState();
 
+    }
+    public void startAddInterfaceState()
+    {
+        this.stateManager.setAddInterfaceState();
+    }
+    public void startAddEnumState()
+    {
+        this.stateManager.setAddEnumState();
     }
     public void startDeleteState()
     {

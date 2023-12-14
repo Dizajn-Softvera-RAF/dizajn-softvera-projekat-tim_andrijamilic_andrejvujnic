@@ -37,8 +37,7 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
 
     @Override
     public void notifySubscriber(Object notification) {
-        //updade
-        System.out.println(subs.size() + " subs");
+        //update
         for(ISubscriber subscriber : subs){
             subscriber.update(notification);
         }

@@ -24,12 +24,7 @@ public class AddClassState implements State{
     }
     @Override
     public void misKliknut(int x, int y, DiagramView dw) {
-        /*if(dw == null){
-            System.out.println("null pointer");
-            return;
-        }*/
         System.out.println("add");
-        System.out.println("painters" + dw.getPainters().size());
         Klasa k = new Klasa("Klasa", dw.getDiagram(), new Point(x, y));
         KlasaPainter kp = new KlasaPainter(k);
         dw.getDiagram().addChild(k);
