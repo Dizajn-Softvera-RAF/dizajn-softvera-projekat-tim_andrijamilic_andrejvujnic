@@ -10,6 +10,8 @@ public class StateManager {
     private State currentState;
     private AddConnectionState addConnectionState;
     private DeleteState deleteState;
+    private AddInterfaceState addInterfaceState;
+    private AddEnumState addEnumState;
     private AddClassState addClassState;
     private EditState editState;
     private MoveState moveState;
@@ -21,18 +23,29 @@ public class StateManager {
     }
     private void initState(){
         addClassState = new AddClassState();
+        addInterfaceState = new AddInterfaceState();
+        addEnumState = new AddEnumState();
         deleteState = new DeleteState();
         addConnectionState = new AddConnectionState();
         editState = new EditState();
         moveState = new MoveState();
         selectState = new SelectState();
         zoomState = new ZoomState();
-        currentState = moveState;
+        currentState = addClassState;
     }
 
     public State getCurrentState(){ return currentState; }
 
     public void setAddClassState(){currentState = addClassState;
+    }
+
+    public void setAddInterfaceState()
+    {
+        currentState = addInterfaceState;
+    }
+    public void setAddEnumState()
+    {
+        currentState = addEnumState;
     }
 
     public void setDeleteState() {

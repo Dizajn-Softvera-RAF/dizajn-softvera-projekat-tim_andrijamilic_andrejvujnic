@@ -16,15 +16,12 @@ import java.awt.event.MouseMotionListener;
 public class StateMouseListener extends MouseAdapter {
 
     private DiagramView dw;
-    private static int cout = 1;
-
     //menjano
     public StateMouseListener(){
 
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println(cout++);
         MainFrame.getInstance().getPackageView().misKliknut(e.getX(), e.getY(), (DiagramView) e.getComponent());
 
     }

@@ -28,14 +28,11 @@ public class DiagramView extends JPanel implements ISubscriber {
 
     private List<raf.dsw.classycraft.app.gui.swing.painter.Painter> painters = new ArrayList<>();
     private Diagram diagram;
-    //private JPanel framework;
     private State currentState;
 
     public DiagramView(Diagram model)
     {
         currentState = getCurrentState();
-        //framework = new Framework();
-        //add(framework);
         this.diagram = model;
         model.addSubscriber(this);
         addMouseListener(new StateMouseListener());
@@ -59,8 +56,6 @@ public class DiagramView extends JPanel implements ISubscriber {
 
     }
 
-
-
     public void setDiagram(Diagram diagram) {
         this.diagram = diagram;
         this.setName(diagram.getName());
@@ -70,21 +65,8 @@ public class DiagramView extends JPanel implements ISubscriber {
         return this.diagram;
     }
 
-    /*@Override
-    public void paintComponents(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D)g;
-        g2.setComposite(AlphaComposite.getInstance(3, 0.8F));
-        for(Painter p : painters){
-            p.paint(g2);
-        }
-
-        System.out.println("Izvršena paintComponent metoda view-a");
-    }*/
-
     @Override
     public void update(Object notification) {
-        System.out.println("update");
         this.repaint();
 
     }
@@ -94,27 +76,11 @@ public class DiagramView extends JPanel implements ISubscriber {
         Graphics2D g2 = (Graphics2D) g;
         int i = 0;
         g2.setComposite(AlphaComposite.getInstance(3, 0.8F));
-        System.out.println(painters.size());
         for (Painter p : painters) {
             p.paint(g2);
         }
         System.out.println("Izvršena paintComponent metoda view-a");
     }
-    /*private class Framework extends JPanel{
-
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            Graphics2D g2 = (Graphics2D)g;
-            int i = 0;
-            g2.setComposite(AlphaComposite.getInstance(3, 0.8F));
-            System.out.println(painters.size());
-            for(Painter p : painters){
-                p.paint(g2);
-            }
-            System.out.println("Izvršena paintComponent metoda view-a");
-        }
-
-    }*/
 }
 
 

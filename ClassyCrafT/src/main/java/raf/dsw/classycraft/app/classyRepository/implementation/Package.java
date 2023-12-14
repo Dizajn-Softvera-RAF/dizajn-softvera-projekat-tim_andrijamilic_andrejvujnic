@@ -43,7 +43,6 @@ public class Package extends ClassyNodeComposite implements IPublisher {
 
     @Override
     public void notifySubscriber(Object notification) {
-        System.out.println("subs " + subs.size());
         for(ISubscriber subscriber : subs){
             subscriber.update(notification);
         }

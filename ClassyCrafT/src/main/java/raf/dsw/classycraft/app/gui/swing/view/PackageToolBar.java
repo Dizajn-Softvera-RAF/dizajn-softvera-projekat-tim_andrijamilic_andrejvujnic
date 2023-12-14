@@ -7,7 +7,7 @@ public class PackageToolBar extends JToolBar {
         super(HORIZONTAL);
         setFloatable(false);
         //add((PackageView)MainFrame.getInstance().getSplit().getRightComponent()).getStateManager().getAddClassState());
-        add(MainFrame.getInstance().getActionManager().getAddClassAction());
+        add(MainFrame.getInstance().getActionManager().getAddInterClassAction());
         add(MainFrame.getInstance().getActionManager().getDeleteStateAction());
         add(MainFrame.getInstance().getActionManager().getAddConnectionAction());
         add(MainFrame.getInstance().getActionManager().getEditActionS());
