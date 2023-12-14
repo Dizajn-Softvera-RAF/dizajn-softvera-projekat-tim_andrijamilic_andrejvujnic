@@ -14,6 +14,7 @@ public class Interface extends InterClass {
 
     private Point position;
     private Dimension size;
+    private Color boja;
 
     //menjao
     private String name;

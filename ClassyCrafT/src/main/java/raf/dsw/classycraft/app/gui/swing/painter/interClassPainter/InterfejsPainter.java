@@ -25,6 +25,8 @@ public class InterfejsPainter extends InterClassPainter{
         g.fill(getShape());
 
         g.draw(getShape());
+        if (isSelected()) g.setPaint(Color.YELLOW);
+        else g.setPaint(i.getBoja());
     }
 
     @Override

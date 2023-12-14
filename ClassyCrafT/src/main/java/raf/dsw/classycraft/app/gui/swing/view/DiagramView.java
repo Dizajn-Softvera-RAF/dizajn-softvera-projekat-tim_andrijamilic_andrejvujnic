@@ -17,7 +17,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.geom.GeneralPath;
+import java.awt.geom.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,8 +27,11 @@ import java.util.List;
 public class DiagramView extends JPanel implements ISubscriber {
 
     private List<raf.dsw.classycraft.app.gui.swing.painter.Painter> painters = new ArrayList<>();
+    private List<Painter> selectedPainters = new ArrayList<>();
+    private Rectangle2D selekcijaRect = new Rectangle2D.Double();
     private Diagram diagram;
     private State currentState;
+    private AffineTransform transform = new AffineTransform();
 
     public DiagramView(Diagram model)
     {
@@ -36,6 +39,8 @@ public class DiagramView extends JPanel implements ISubscriber {
         this.diagram = model;
         model.addSubscriber(this);
         addMouseListener(new StateMouseListener());
+        this.painters = new ArrayList<>();
+        this.selectedPainters = new ArrayList<>();
         initialise();
     }
     private void initialise()
@@ -79,8 +84,54 @@ public class DiagramView extends JPanel implements ISubscriber {
         for (Painter p : painters) {
             p.paint(g2);
         }
+        g2.setColor(Color.BLACK);
+        g2.setStroke(new BasicStroke(1));
+        g2.draw(selekcijaRect);
+        g2.dispose();
         System.out.println("Izvršena paintComponent metoda view-a");
     }
+
+    public void addSelectedPainter(Painter painter) {
+        if (painter == null || selectedPainters.contains(painter)) return;
+        painter.setSelected(true);
+        selectedPainters.add(painter);
+    }
+
+    public void deletePainterFromModel(DiagramElement model) {
+        for (Painter painter : painters) {
+            if (painter.getDiagramElement().equals(model)) {
+                selectedPainters.remove(painter);
+                painters.remove(painter);
+                return;
+            }
+
+        }
+    }
+
+    public void deselectAll() {
+        for (Painter painter : selectedPainters) {
+            painter.setSelected(false);
+        }
+        selectedPainters.clear();
+    }
+
+    public Point2D getMousePoint(int x, int y) {
+        Point2D oldPoint = new Point(x, y);
+        Point2D point = null;
+        try {
+            point = transform.inverseTransform(oldPoint, oldPoint);
+        } catch (NoninvertibleTransformException ex) {
+            throw new RuntimeException(ex);
+        }
+
+        return point;
+    }
+
+    public void setSelekcijaRect(Rectangle2D selekcijaRect) {
+        this.selekcijaRect = selekcijaRect;
+        this.repaint();
+    }
+
 }
 
 
