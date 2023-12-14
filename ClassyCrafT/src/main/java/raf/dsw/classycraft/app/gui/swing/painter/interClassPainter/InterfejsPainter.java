@@ -24,13 +24,20 @@ public class InterfejsPainter extends InterClassPainter{
 
         g.fill(getShape());
 
+        g.setStroke(new BasicStroke(2));
+
+        if (isSelected())
+            g.setPaint(Color.BLACK);
+        else
+            g.setPaint(i.getBoja());
+
         g.draw(getShape());
-        if (isSelected()) g.setPaint(Color.YELLOW);
-        else g.setPaint(i.getBoja());
+
+
     }
 
     @Override
-    public boolean elementAt(DiagramElement element, Point pos) {
+    public boolean elementAt(Point pos) {
         return false;
     }
 }

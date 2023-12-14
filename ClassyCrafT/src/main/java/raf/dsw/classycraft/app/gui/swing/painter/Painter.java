@@ -24,7 +24,7 @@ public abstract class Painter {
     }
     public abstract void paint(Graphics2D g);
 
-    public abstract boolean elementAt(DiagramElement element, Point pos);
+    public abstract boolean elementAt(Point pos);
 
 
 }

@@ -22,7 +22,7 @@ public abstract class AbstractClassyAction extends AbstractAction {
         }
         return icon;
     }
-    public void setActive(AbstractClassyAction action) {
+    /*public void setActive(AbstractClassyAction action) {
         MainFrame.getInstance().getActionManager().getDeleteAction().setEnabled(true);
         MainFrame.getInstance().getActionManager().getAddClassAction().setEnabled(true);
         MainFrame.getInstance().getActionManager().getAddInterfaceAction().setEnabled(true);
@@ -35,5 +35,5 @@ public abstract class AbstractClassyAction extends AbstractAction {
 
         if (action == null) return;
         action.setEnabled(false);
-    }
+    }*/
 }

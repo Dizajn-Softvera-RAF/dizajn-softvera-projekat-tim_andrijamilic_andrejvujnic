@@ -17,7 +17,7 @@ public class ZavisnostPainter extends ConnectionPainter {
     }
 
     @Override
-    public boolean elementAt(DiagramElement element, Point pos) {
+    public boolean elementAt(Point pos) {
         return false;
     }
 }
