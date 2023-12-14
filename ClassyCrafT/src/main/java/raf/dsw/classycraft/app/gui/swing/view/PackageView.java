@@ -16,12 +16,14 @@ import raf.dsw.classycraft.app.state.StateManager;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
+
 @Getter
 @Setter
 public class PackageView extends JPanel implements ISubscriber {
 
     private Package model;
-
+    private Rectangle2D selekcijaRect = new Rectangle2D.Double();
     private StateManager stateManager = new StateManager();
     private PackageToolBar ptb = new PackageToolBar();
     private JTabbedPane tp = new JTabbedPane();
@@ -70,15 +72,14 @@ public class PackageView extends JPanel implements ISubscriber {
     }
 
     public void misKliknut(int x, int y, DiagramView dw){
-        //dw = this.dw;
         this.stateManager.getCurrentState().misKliknut(x, y, dw);
 
     };
     public void misOtpusten(int x, int y, DiagramView dw){
-
+        this.stateManager.getCurrentState().misOtpusten(x, y, dw);
     };
     public void misPovucen(int x, int y, DiagramView dw){
-
+        this.stateManager.getCurrentState().misPovucen(x, y, dw);
     };
 
     public void startAddClassState(){

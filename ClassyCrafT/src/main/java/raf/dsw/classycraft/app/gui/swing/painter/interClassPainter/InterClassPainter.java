@@ -11,7 +11,6 @@ import java.awt.*;
 @Getter
 @Setter
 public abstract class InterClassPainter extends Painter {
-
     public InterClassPainter(DiagramElement element) {
         super(element);
     }

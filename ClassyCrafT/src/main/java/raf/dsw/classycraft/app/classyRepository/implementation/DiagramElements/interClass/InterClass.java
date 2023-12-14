@@ -11,6 +11,7 @@ import java.awt.*;
 public abstract class InterClass extends DiagramElement {
     private boolean vidljivost;
     private String naziv;
+    private Color boja;
 
     public InterClass(String name, ClassyNode parent) {
         super(name, parent);

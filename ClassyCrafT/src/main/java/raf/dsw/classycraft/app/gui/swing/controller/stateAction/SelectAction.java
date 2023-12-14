@@ -20,5 +20,6 @@ public class SelectAction extends AbstractClassyAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         MainFrame.getInstance().getPackageView().startSelectState();
+        setActive(this);
     }
 }

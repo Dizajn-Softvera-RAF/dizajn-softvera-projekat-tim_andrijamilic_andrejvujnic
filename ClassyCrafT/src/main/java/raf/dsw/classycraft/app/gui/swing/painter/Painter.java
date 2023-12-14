@@ -11,8 +11,16 @@ import java.awt.*;
 public abstract class Painter {
     private Shape shape;
     private DiagramElement diagramElement;
-    public Painter(DiagramElement element) {
-        this.diagramElement = element;
+    private boolean selected;
+
+    public Painter(DiagramElement diagramElement) {
+        this.diagramElement = diagramElement;
+    }
+
+    public Painter(DiagramElement diagramElement, Shape shape) {
+        this.diagramElement = diagramElement;
+        this.shape = shape;
+        this.selected = false;
     }
     public abstract void paint(Graphics2D g);
 
