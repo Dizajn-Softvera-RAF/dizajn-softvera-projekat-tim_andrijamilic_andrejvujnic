@@ -12,7 +12,6 @@ import java.util.List;
 @Setter
 public class Interface extends InterClass {
 
-    private Point position;
     private Dimension size;
     private Color boja;
 
@@ -20,8 +19,7 @@ public class Interface extends InterClass {
     private String name;
     private List<ClassContent> kontent = new ArrayList<>();
     public Interface(String name, ClassyNode parent, Point position) {
-        super(name, parent);
-        this.position = position;
+        super(name, parent, position);
 
     }
 }

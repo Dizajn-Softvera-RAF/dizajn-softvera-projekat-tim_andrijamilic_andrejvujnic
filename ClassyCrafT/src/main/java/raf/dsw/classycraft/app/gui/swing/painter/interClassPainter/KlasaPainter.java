@@ -20,6 +20,8 @@ public class KlasaPainter extends InterClassPainter{
         g.setStroke(new BasicStroke(this.getDiagramElement().getStroke()));
         Klasa k = ((Klasa) getDiagramElement());
         String name = k.getName();
+
+
         setShape(new Rectangle2D.Double(k.getPosition().getX(), k.getPosition().getY(), 50, 50));
         g.setPaint(Color.RED);
 

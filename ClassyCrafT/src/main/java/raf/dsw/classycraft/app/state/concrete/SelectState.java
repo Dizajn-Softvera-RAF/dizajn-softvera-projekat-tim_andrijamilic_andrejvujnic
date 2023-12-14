@@ -5,6 +5,7 @@ import raf.dsw.classycraft.app.gui.swing.view.DiagramView;
 import raf.dsw.classycraft.app.state.State;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public class SelectState implements State {
     private int startX;
     private int startY;
     @Override
-    public void misKliknut(int x, int y, DiagramView dw) {
+    public void misKliknut(int x, int y, DiagramView dw, MouseEvent event) {
 
 
     }
@@ -27,6 +28,11 @@ public class SelectState implements State {
         startX = x;
         startY = y;
         checkSelection(dw);
+    }
+
+    @Override
+    public void desniKlik(int x, int y, DiagramView dw) {
+
     }
 
 

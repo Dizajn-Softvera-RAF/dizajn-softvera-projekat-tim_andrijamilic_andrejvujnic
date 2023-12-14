@@ -14,12 +14,10 @@ import java.util.List;
 public class Enum extends InterClass {
 
     private List<ClassContent> kontent = new ArrayList<>();
-    private Point position;
     private Color boja;
     private Dimension size;
 
     public Enum(String name, ClassyNode parent, Point position) {
-        super(name, parent);
-        this.position = position;
+        super(name, parent, position);
     }
 }

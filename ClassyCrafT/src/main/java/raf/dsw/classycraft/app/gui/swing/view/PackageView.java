@@ -16,6 +16,7 @@ import raf.dsw.classycraft.app.state.StateManager;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
 @Getter
@@ -71,13 +72,17 @@ public class PackageView extends JPanel implements ISubscriber {
 
     }
 
-    public void misKliknut(int x, int y, DiagramView dw){
-        this.stateManager.getCurrentState().misKliknut(x, y, dw);
+    public void misKliknut(int x, int y, DiagramView dw, MouseEvent event){
+        this.stateManager.getCurrentState().misKliknut(x, y, dw, event);
 
     };
     public void misPritisnut(int x, int y, DiagramView dw){
         this.stateManager.getCurrentState().misPritisnut(x, y, dw);
     };
+    public void desniKlik(int x, int y, DiagramView dw)
+    {
+        this.stateManager.getCurrentState().desniKlik(x, y, dw);
+    }
     public void misOtpusten(int x, int y, DiagramView dw){
         this.stateManager.getCurrentState().misOtpusten(x, y, dw);
     };
