@@ -13,6 +13,7 @@ public abstract class InterClass extends DiagramElement {
     private String naziv;
     private Color boja;
     private Point position;
+
     public InterClass(String name, ClassyNode parent, Point position) {
 
         super(name, parent);

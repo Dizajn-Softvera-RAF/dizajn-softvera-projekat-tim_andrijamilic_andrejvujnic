@@ -30,10 +30,7 @@ public class SelectState implements State {
         checkSelection(dw);
     }
 
-    @Override
-    public void desniKlik(int x, int y, DiagramView dw) {
 
-    }
 
 
     @Override

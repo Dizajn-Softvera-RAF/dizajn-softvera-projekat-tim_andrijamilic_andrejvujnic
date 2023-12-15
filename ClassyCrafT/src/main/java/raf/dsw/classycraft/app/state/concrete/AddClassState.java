@@ -41,10 +41,6 @@ public class AddClassState implements State{
 
     }
 
-    @Override
-    public void desniKlik(int x, int y, DiagramView dw) {
-
-    }
 
     @Override
     public void misOtpusten(int x, int y, DiagramView dw) {

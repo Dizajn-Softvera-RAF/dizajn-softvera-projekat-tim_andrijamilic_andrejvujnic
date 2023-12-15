@@ -24,8 +24,7 @@ public class GeneralizacijaPainter extends ConnectionPainter{
         bounds = ge.getDoo().getPainter().getShape().getBounds();
         Point toPos = new Point((int) (bounds.getX() + bounds.getWidth() / 2), (int) (bounds.getY() + bounds.getHeight() / 2));
         setShape(new Line2D.Double(fromPos.x, fromPos.y, toPos.x, toPos.y));
-        g.setPaint(Color.YELLOW);
-
+        g.setPaint(Color.BLUE);
         g.setStroke(new BasicStroke(2));
 
         if (isSelected())
