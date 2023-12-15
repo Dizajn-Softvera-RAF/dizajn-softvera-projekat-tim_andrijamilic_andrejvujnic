@@ -23,7 +23,7 @@ public class KlasaPainter extends InterClassPainter{
 
 
         setShape(new Rectangle2D.Double(k.getPosition().getX(), k.getPosition().getY(), 50, 50));
-        g.setPaint(Color.RED);
+        g.setPaint(Color.LIGHT_GRAY);
 
 
         g.fill(getShape());

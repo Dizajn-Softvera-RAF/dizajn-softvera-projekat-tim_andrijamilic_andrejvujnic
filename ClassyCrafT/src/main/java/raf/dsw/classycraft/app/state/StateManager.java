@@ -1,14 +1,14 @@
 package raf.dsw.classycraft.app.state;
 
-import lombok.Getter;
-import lombok.Setter;
-import raf.dsw.classycraft.app.gui.swing.view.PackageView;
 import raf.dsw.classycraft.app.state.concrete.*;
 
 public class StateManager {
 
     private State currentState;
-    private AddConnectionState addConnectionState;
+    private AddAgregacijaState addAgregacijaState;
+    private AddKompozicijaState addKompozicijaState;
+    private AddGeneralizacijeState addGeneralizacijeState;
+    private AddZavisnostState addZavisnostState;
     private DeleteState deleteState;
     private AddInterfaceState addInterfaceState;
     private AddEnumState addEnumState;
@@ -18,6 +18,8 @@ public class StateManager {
     private SelectState selectState;
     private ZoomState zoomState;
 
+    private DuplicateState duplicateState;
+
     public StateManager(){
         initState();
     }
@@ -26,11 +28,15 @@ public class StateManager {
         addInterfaceState = new AddInterfaceState();
         addEnumState = new AddEnumState();
         deleteState = new DeleteState();
-        addConnectionState = new AddConnectionState();
+        addAgregacijaState = new AddAgregacijaState();
+        addGeneralizacijeState = new AddGeneralizacijeState();
+        addKompozicijaState = new AddKompozicijaState();
+        addZavisnostState = new AddZavisnostState();
         editState = new EditState();
         moveState = new MoveState();
         selectState = new SelectState();
         zoomState = new ZoomState();
+        duplicateState = new DuplicateState();
         currentState = addClassState;
     }
 
@@ -39,6 +45,10 @@ public class StateManager {
     public void setAddClassState(){currentState = addClassState;
     }
 
+    public void setDuplicateState()
+    {
+        currentState = duplicateState;
+    }
     public void setAddInterfaceState()
     {
         currentState = addInterfaceState;
@@ -52,8 +62,17 @@ public class StateManager {
         currentState = deleteState;
     }
 
-    public void setAddConnectionState(){
-        currentState = addConnectionState;
+    public void setAddAgregacijaState(){
+        currentState = addAgregacijaState;
+    }
+    public void setAddGeneralizacijeState(){
+        currentState = addGeneralizacijeState;
+    }
+    public void setAddKompozicijaState(){
+        currentState = addKompozicijaState;
+    }
+    public void setAddZavisnostState(){
+        currentState = addZavisnostState;
     }
     public void setEditState(){ currentState = editState; }
     public void setMoveState(){ currentState = moveState; }

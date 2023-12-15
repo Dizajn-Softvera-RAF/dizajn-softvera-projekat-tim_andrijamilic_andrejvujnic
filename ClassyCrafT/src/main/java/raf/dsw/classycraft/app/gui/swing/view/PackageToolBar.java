@@ -10,6 +10,7 @@ public class PackageToolBar extends JToolBar {
         add(MainFrame.getInstance().getActionManager().getAddInterClassAction());
         add(MainFrame.getInstance().getActionManager().getDeleteStateAction());
         add(MainFrame.getInstance().getActionManager().getAddConnectionAction());
+        add(MainFrame.getInstance().getActionManager().getDuplicateAction());
         add(MainFrame.getInstance().getActionManager().getEditActionS());
         add(MainFrame.getInstance().getActionManager().getMoveAction());
         add(MainFrame.getInstance().getActionManager().getSelectAction());

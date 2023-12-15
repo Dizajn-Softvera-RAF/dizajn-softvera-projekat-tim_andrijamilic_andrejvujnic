@@ -79,10 +79,7 @@ public class PackageView extends JPanel implements ISubscriber {
     public void misPritisnut(int x, int y, DiagramView dw){
         this.stateManager.getCurrentState().misPritisnut(x, y, dw);
     };
-    public void desniKlik(int x, int y, DiagramView dw)
-    {
-        this.stateManager.getCurrentState().desniKlik(x, y, dw);
-    }
+
     public void misOtpusten(int x, int y, DiagramView dw){
         this.stateManager.getCurrentState().misOtpusten(x, y, dw);
     };
@@ -107,8 +104,17 @@ public class PackageView extends JPanel implements ISubscriber {
     {
         this.stateManager.setDeleteState();
     }
-    public void startAddConnectionState(){
-        this.stateManager.setAddConnectionState();
+    public void startAgregacijaState(){
+        this.stateManager.setAddAgregacijaState();
+    }
+    public void startGeneralizacijaState(){
+        this.stateManager.setAddGeneralizacijeState();
+    }
+    public void startZavisnostState(){
+        this.stateManager.setAddZavisnostState();
+    }
+    public void startKompozicijaState(){
+        this.stateManager.setAddKompozicijaState();
     }
     public void startEditState(){
         this.stateManager.setEditState();
@@ -121,6 +127,9 @@ public class PackageView extends JPanel implements ISubscriber {
     }
     public void startZoomState(){
         this.stateManager.setZoomState();
+    }
+    public void startDuplicateState(){
+        this.stateManager.setDuplicateState();
     }
 
     @Override

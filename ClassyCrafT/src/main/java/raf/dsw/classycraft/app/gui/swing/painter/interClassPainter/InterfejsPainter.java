@@ -20,7 +20,7 @@ public class InterfejsPainter extends InterClassPainter{
         Interface i = ((Interface) getDiagramElement());
         String name = i.getName();
         setShape(new Rectangle2D.Double(i.getPosition().getX(), i.getPosition().getY(), 50, 50));
-        g.setPaint(Color.GREEN);
+        g.setPaint(Color.PINK);
 
         g.fill(getShape());
 

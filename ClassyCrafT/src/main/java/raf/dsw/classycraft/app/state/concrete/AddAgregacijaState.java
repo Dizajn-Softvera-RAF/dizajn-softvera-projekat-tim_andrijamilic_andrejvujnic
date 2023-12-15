@@ -1,8 +1,10 @@
 package raf.dsw.classycraft.app.state.concrete;
 
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.InterClass;
+import raf.dsw.classycraft.app.classyRepository.implementation.connection.Agregacija;
 import raf.dsw.classycraft.app.classyRepository.implementation.connection.Generalizacija;
 import raf.dsw.classycraft.app.gui.swing.painter.Painter;
+import raf.dsw.classycraft.app.gui.swing.painter.connectionPainter.AgregacijaPainter;
 import raf.dsw.classycraft.app.gui.swing.painter.connectionPainter.GeneralizacijaPainter;
 import raf.dsw.classycraft.app.gui.swing.view.DiagramView;
 import raf.dsw.classycraft.app.state.State;
@@ -10,7 +12,7 @@ import raf.dsw.classycraft.app.state.State;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
-public class AddConnectionState implements State {
+public class AddAgregacijaState implements State {
     private Painter from;
     private Painter to;
     @Override
@@ -36,9 +38,9 @@ public class AddConnectionState implements State {
                 {
                     if (selectForConnection.intersects(painter.getShape().getBounds())) {
                         to = painter;
-                        Generalizacija con = new Generalizacija("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
+                        Agregacija con = new Agregacija("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
                         dw.getDiagram().addChild(con);
-                        dw.getPainters().add(new GeneralizacijaPainter(con));
+                        dw.getPainters().add(new AgregacijaPainter(con));
                         from = null;
                         to = null;
                         dw.repaint();
@@ -62,10 +64,7 @@ public class AddConnectionState implements State {
 
     }
 
-    @Override
-    public void desniKlik(int x, int y, DiagramView dw) {
 
-    }
 
     @Override
     public void misOtpusten(int x, int y, DiagramView dw) {

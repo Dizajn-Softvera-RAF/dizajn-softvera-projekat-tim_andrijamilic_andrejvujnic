@@ -17,6 +17,7 @@ public class ActionManager {
     private AddInterClassAction addInterClassAction;
 // sve nove akcije
     private AddClassAction addClassAction;
+    private DuplicateAction duplicateAction;
     private AddInterfaceAction addInterfaceAction;
     private AddEnumAction addEnumAction;
     private DeleteStateAction deleteStateAction;
@@ -49,5 +50,6 @@ public class ActionManager {
         editAction = new EditAction();
         aboutUs = new AboutUs();
         deleteAction = new DeleteAction();
+        duplicateAction = new DuplicateAction();
     }
 }

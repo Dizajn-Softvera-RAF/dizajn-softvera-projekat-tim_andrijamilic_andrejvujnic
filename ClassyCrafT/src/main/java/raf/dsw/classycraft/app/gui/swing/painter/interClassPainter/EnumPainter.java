@@ -19,7 +19,7 @@ public class EnumPainter extends InterClassPainter{
         Enum e = ((Enum) getDiagramElement());
         String name = e.getName();
         setShape(new Rectangle2D.Double(e.getPosition().getX(), e.getPosition().getY(), 50, 50));
-        g.setPaint(Color.BLUE);
+        g.setPaint(Color.CYAN);
 
         g.fill(getShape());
 
