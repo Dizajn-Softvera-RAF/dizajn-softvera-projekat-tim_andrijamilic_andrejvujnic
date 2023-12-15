@@ -26,6 +26,7 @@ public class KlasaPainter extends InterClassPainter{
         g.setPaint(Color.LIGHT_GRAY);
 
 
+
         g.fill(getShape());
 
         g.setStroke(new BasicStroke(2));

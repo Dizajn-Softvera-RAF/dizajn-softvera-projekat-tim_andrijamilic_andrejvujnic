@@ -15,7 +15,7 @@ public class ActionManager {
     private AboutUs aboutUs;
     private DeleteAction deleteAction;
     private AddInterClassAction addInterClassAction;
-// sve nove akcije
+
     private AddClassAction addClassAction;
     private DuplicateAction duplicateAction;
     private AddInterfaceAction addInterfaceAction;

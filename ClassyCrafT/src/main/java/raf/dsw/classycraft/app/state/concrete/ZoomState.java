@@ -18,7 +18,6 @@ public class ZoomState implements State {
     @Override
     public void misKliknut(int x, int y, DiagramView dw, MouseEvent event) {
         System.out.println("zoom");
-        System.out.println(event.getButton());
         AffineTransform transf = dw.getTransform();
 
         if(event.getButton() == 1)

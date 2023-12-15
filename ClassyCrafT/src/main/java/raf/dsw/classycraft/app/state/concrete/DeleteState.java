@@ -15,7 +15,6 @@ public class DeleteState implements State {
     @Override
     public void misKliknut(int x, int y, DiagramView dw, MouseEvent event) {
         System.out.println("delete");
-        //Painter selected = getPainterAtClickedLocation(dw, new Point(x, y));
 
         ArrayList<DiagramElement> l = getSelectedModels((ArrayList<Painter>) dw.getSelectedPainters());
         ArrayList<Painter> selected = (ArrayList<Painter>) dw.getSelectedPainters();
@@ -47,21 +46,7 @@ public class DeleteState implements State {
     public void misPovucen(int x, int y, DiagramView dw) {
 
     }
-    public Painter getPainterAtClickedLocation(DiagramView dw, Point point) {
-        for (Painter painter : dw.getPainters()) {
-            if (painter.elementAt(point)) return painter;
-        }
 
-        return null;
-    }
-
-    public Painter getPojamPainterAtClickedLocation(DiagramView dw, Point point) {
-        for (Painter painter : dw.getPainters()) {
-            if (painter instanceof InterClassPainter && painter.elementAt(point)) return (InterClassPainter) painter;
-        }
-
-        return null;
-    }
     public ArrayList<DiagramElement> getSelectedModels(ArrayList<Painter> selectedPainters) {
 
         ArrayList<DiagramElement> models = new ArrayList<>();

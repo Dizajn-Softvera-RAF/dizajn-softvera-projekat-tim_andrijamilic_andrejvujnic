@@ -16,6 +16,7 @@ public class DuplicateState implements State {
     int copyCounter = 1;
     @Override
     public void misKliknut(int x, int y, DiagramView dw, MouseEvent event) {
+        System.out.println("duplicate");
         List<Painter> selected = dw.getSelectedPainters();
         for(Painter p : selected){
             DiagramElement diagElem = p.getDiagramElement();

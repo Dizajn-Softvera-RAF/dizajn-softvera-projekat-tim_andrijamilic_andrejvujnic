@@ -17,12 +17,4 @@ public abstract class ClassyNode {
         this.parent = parent;
     }
 
-    /*@Override
-    public boolean equals(Object obj) {
-        if (obj != null && obj instanceof ClassyNode) {
-            ClassyNode otherObj = (ClassyNode) obj;
-            return this.getName().equals(otherObj.getName());
-        }
-        return false;
-    }*/
 }
