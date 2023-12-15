@@ -24,7 +24,6 @@ public class ApplicationFramework {
     private Logger fileLogger;
     private static ApplicationFramework instance;
 
-    //buduca polja za model celog projekta
 
     public void run()
     {

@@ -14,8 +14,6 @@ public class Interface extends InterClass {
 
     private Dimension size;
     private Color boja;
-
-    //menjao
     private String name;
     private List<ClassContent> kontent = new ArrayList<>();
     public Interface(String name, ClassyNode parent, Point position) {

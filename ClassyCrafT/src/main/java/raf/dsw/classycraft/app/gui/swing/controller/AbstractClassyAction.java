@@ -22,18 +22,5 @@ public abstract class AbstractClassyAction extends AbstractAction {
         }
         return icon;
     }
-    /*public void setActive(AbstractClassyAction action) {
-        MainFrame.getInstance().getActionManager().getDeleteAction().setEnabled(true);
-        MainFrame.getInstance().getActionManager().getAddClassAction().setEnabled(true);
-        MainFrame.getInstance().getActionManager().getAddInterfaceAction().setEnabled(true);
-        MainFrame.getInstance().getActionManager().getAddEnumAction().setEnabled(true);
-        MainFrame.getInstance().getActionManager().getAddConnectionAction().setEnabled(true);
-        MainFrame.getInstance().getActionManager().getMoveAction().setEnabled(true);
-        MainFrame.getInstance().getActionManager().getSelectAction().setEnabled(true);
-        MainFrame.getInstance().getActionManager().getZoomAction().setEnabled(true);
-        MainFrame.getInstance().getActionManager().getEditAction().setEnabled(true);
 
-        if (action == null) return;
-        action.setEnabled(false);
-    }*/
 }

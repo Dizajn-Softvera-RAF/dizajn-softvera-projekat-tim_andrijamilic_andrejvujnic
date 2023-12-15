@@ -26,7 +26,6 @@ public class AddKompozicijaState implements State {
         System.out.println("veza");
         if(from != null)
         {
-            // one painter already found - find next
             for (Painter painter : dw.getPainters()) {
                 if(!(painter.getDiagramElement() instanceof InterClass)) continue;
 
@@ -54,8 +53,6 @@ public class AddKompozicijaState implements State {
         for (Painter painter : dw.getPainters()) {
             if(!(painter.getDiagramElement() instanceof InterClass)) continue;
 
-
-            // find first painter
             if (selectForConnection.intersects(painter.getShape().getBounds())) {
                 from = painter;
                 break;

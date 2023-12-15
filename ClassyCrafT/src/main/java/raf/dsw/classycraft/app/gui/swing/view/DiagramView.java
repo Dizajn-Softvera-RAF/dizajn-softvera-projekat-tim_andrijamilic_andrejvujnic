@@ -62,10 +62,6 @@ public class DiagramView extends JPanel implements ISubscriber {
 
     }
 
-    public void setDiagram(Diagram diagram) {
-        this.diagram = diagram;
-        this.setName(diagram.getName());
-    }
 
     public Diagram getDiagram() {
         return this.diagram;
@@ -99,16 +95,6 @@ public class DiagramView extends JPanel implements ISubscriber {
         selectedPainters.add(painter);
     }
 
-    public void deletePainterFromModel(DiagramElement model) {
-        for (Painter painter : painters) {
-            if (painter.getDiagramElement().equals(model)) {
-                selectedPainters.remove(painter);
-                painters.remove(painter);
-                return;
-            }
-
-        }
-    }
 
     public void deselectAll() {
         for (Painter painter : selectedPainters) {

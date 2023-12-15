@@ -19,7 +19,6 @@ public class KompozicijaPainter extends ConnectionPainter {
     public void paint(Graphics2D g) {
         g.setStroke(new BasicStroke(this.getDiagramElement().getStroke()));
         Kompozicija ge = ((Kompozicija) getDiagramElement());
-        System.out.println(getDiagramElement());
         Rectangle2D bounds= ge.getOd().getPainter().getShape().getBounds();
         Point fromPos = new Point((int) (bounds.getX() + bounds.getWidth() / 2), (int) (bounds.getY() + bounds.getHeight() / 2));
         bounds = ge.getDoo().getPainter().getShape().getBounds();

@@ -15,7 +15,6 @@ public class AddClassAction extends AbstractClassyAction {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        //((PackageView) MainFrame.getInstance().getSplit().getRightComponent()).startAddClassState();
         MainFrame.getInstance().getPackageView().startAddClassState();
     }
 }

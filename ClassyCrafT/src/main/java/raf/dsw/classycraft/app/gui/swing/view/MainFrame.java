@@ -29,8 +29,6 @@ public class MainFrame extends JFrame implements ISubscriber {
 
 
 
-    //buduca polja za sve komponente view-a na glavnom prozoru
-
 
     private void initialise()
     {

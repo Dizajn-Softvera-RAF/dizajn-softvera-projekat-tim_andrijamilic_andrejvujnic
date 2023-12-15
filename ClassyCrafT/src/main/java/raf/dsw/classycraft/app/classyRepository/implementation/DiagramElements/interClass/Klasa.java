@@ -15,8 +15,6 @@ public class Klasa extends InterClass {
     private List<ClassContent> kontent = new ArrayList<>();
     private Color boja;
     private Dimension size;
-
-    //menjao
     private String name;
     public Klasa(String name, ClassyNode parent, Point position) {
         super(name, parent, position);

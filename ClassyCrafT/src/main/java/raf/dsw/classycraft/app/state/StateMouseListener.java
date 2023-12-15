@@ -25,24 +25,17 @@ public class StateMouseListener extends MouseAdapter {
     @Override
     public void mouseClicked(MouseEvent e) {
         MainFrame.getInstance().getPackageView().misKliknut(e.getX(), e.getY(), (DiagramView) e.getComponent(),e);
-        //Point2D point = dw.getMousePoint(e.getX(), e.getY());
-        //MainFrame.getInstance().getPackageView().misKliknut((int) point.getX(), (int) point.getY(), ((DiagramView) e.getSource()));
-
     }
 
 
     @Override
     public void mousePressed(MouseEvent e) {
         MainFrame.getInstance().getPackageView().misPritisnut(e.getX(), e.getY(), (DiagramView) e.getComponent());
-        //Point2D point = dw.getMousePoint(e.getX(), e.getY());
-        //MainFrame.getInstance().getPackageView().misKliknut((int) point.getX(), (int) point.getY(), ((DiagramView) e.getSource()));
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         MainFrame.getInstance().getPackageView().misOtpusten(e.getX(), e.getY(), (DiagramView) e.getComponent());
-        //Point2D point = dw.getMousePoint(e.getX(), e.getY());
-        //MainFrame.getInstance().getPackageView().misOtpusten((int) point.getX(), (int) point.getY(), ((DiagramView) e.getSource()));
     }
 
 
@@ -60,8 +53,6 @@ public class StateMouseListener extends MouseAdapter {
     @Override
     public void mouseDragged(MouseEvent e) {
         MainFrame.getInstance().getPackageView().misPovucen(e.getX(), e.getY(), (DiagramView) e.getComponent());
-        //Point2D point = dw.getMousePoint(e.getX(), e.getY());
-        //MainFrame.getInstance().getPackageView().misPovucen((int) point.getX(), (int) point.getY(), ((DiagramView) e.getSource()));
     }
 
     @Override

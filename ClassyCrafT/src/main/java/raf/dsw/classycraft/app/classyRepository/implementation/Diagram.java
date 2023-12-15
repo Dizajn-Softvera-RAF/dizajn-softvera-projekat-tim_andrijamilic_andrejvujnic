@@ -14,7 +14,6 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
 
     public Diagram(String name, ClassyNode parent) {
         super(name, parent);
-        //System.out.println("Diagram");
     }
 
 
@@ -37,7 +36,6 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
 
     @Override
     public void notifySubscriber(Object notification) {
-        //update
         for(ISubscriber subscriber : subs){
             subscriber.update(notification);
         }

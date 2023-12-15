@@ -14,7 +14,6 @@ public class MyMouseListener implements MouseListener {
         ClassyTreeItem selected = (ClassyTreeItem) MainFrame.getInstance().getClassyTree().getSelectedNode();
         if(selected.getClassyNode() instanceof Package) {
             if (e.getClickCount() == 2) {
-                //MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
                 MainFrame.getInstance().getSplit().setRightComponent(new PackageView((Package) selected.getClassyNode()));
             }
         }

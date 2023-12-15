@@ -1,5 +1,7 @@
 package raf.dsw.classycraft.app.gui.swing.tree;
 
+import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.InterClass;
+import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.Klasa;
 import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeItem;
 import raf.dsw.classycraft.app.gui.swing.tree.model.ClassyTreeModel;
 import raf.dsw.classycraft.app.gui.swing.tree.view.ClassyTreeView;
@@ -38,9 +40,6 @@ public class ClassyTreeImpl implements ClassyTree{
         ((ClassyNodeComposite) parent.getClassyNode()).addChild(child);
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
-       /* ClassyTreeItem child = new ClassyTreeItem(createChild(parent.getClassyNode()));
-        treeView.expandPath(treeView.getSelectionPath());
-        SwingUtilities.updateComponentTreeUI(treeView);*/
     }
 
     @Override
@@ -90,6 +89,8 @@ public class ClassyTreeImpl implements ClassyTree{
             return  new Package("Package" + (cout1++), parent);
         }else if(parent instanceof Package && a == 0){
             return  new Diagram("Diagram" +(cout2++), parent);
+        }else if(parent instanceof Diagram){
+            return  new Klasa("Klasa" + (cout2++), parent, null);
         }
         return null;
     }
