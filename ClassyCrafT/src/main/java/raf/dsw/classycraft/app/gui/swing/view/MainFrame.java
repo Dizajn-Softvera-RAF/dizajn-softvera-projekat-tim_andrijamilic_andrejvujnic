@@ -28,8 +28,6 @@ public class MainFrame extends JFrame implements ISubscriber {
     private JSplitPane split;
 
 
-
-
     private void initialise()
     {
         actionManager = new ActionManager();

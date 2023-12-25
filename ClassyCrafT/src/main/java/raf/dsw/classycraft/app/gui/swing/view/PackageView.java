@@ -24,6 +24,7 @@ import java.awt.geom.Rectangle2D;
 public class PackageView extends JPanel implements ISubscriber {
 
     private Package model;
+    private DiagramView diagramView;
     private Rectangle2D selekcijaRect = new Rectangle2D.Double();
     private StateManager stateManager = new StateManager();
     private PackageToolBar ptb = new PackageToolBar();
