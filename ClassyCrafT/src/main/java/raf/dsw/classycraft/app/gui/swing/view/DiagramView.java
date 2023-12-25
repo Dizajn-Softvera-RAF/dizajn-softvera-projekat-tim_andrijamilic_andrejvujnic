@@ -62,11 +62,6 @@ public class DiagramView extends JPanel implements ISubscriber {
 
     }
 
-
-    public Diagram getDiagram() {
-        return this.diagram;
-    }
-
     @Override
     public void update(Object notification) {
         this.repaint();

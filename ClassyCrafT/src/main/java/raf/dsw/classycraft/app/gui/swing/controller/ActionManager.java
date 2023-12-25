@@ -14,8 +14,12 @@ public class ActionManager {
     private EditAction editAction;
     private AboutUs aboutUs;
     private DeleteAction deleteAction;
-    private AddInterClassAction addInterClassAction;
+    private UndoAction undoAction;
+    private RedoAction redoAction;
+    private SaveAction saveAction;
+    private LoadAction loadAction;
 
+    private AddInterClassAction addInterClassAction;
     private AddClassAction addClassAction;
     private DuplicateAction duplicateAction;
     private AddInterfaceAction addInterfaceAction;
@@ -43,6 +47,7 @@ public class ActionManager {
         moveAction = new MoveAction();
         selectAction = new SelectAction();
         zoomAction = new ZoomAction();
+        duplicateAction = new DuplicateAction();
 
         addInterClassAction = new AddInterClassAction();
         exitAction = new ExitAction();
@@ -50,6 +55,9 @@ public class ActionManager {
         editAction = new EditAction();
         aboutUs = new AboutUs();
         deleteAction = new DeleteAction();
-        duplicateAction = new DuplicateAction();
+        undoAction = new UndoAction();
+        redoAction = new RedoAction();
+        saveAction = new SaveAction();
+        loadAction = new LoadAction();
     }
 }
