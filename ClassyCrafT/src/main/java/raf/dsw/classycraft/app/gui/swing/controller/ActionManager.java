@@ -17,7 +17,9 @@ public class ActionManager {
     private UndoAction undoAction;
     private RedoAction redoAction;
     private SaveAction saveAction;
+    private SaveAsAction saveAsAction;
     private LoadAction loadAction;
+    private OpenAction openAction;
 
     private AddInterClassAction addInterClassAction;
     private AddClassAction addClassAction;
@@ -58,6 +60,8 @@ public class ActionManager {
         undoAction = new UndoAction();
         redoAction = new RedoAction();
         saveAction = new SaveAction();
+        saveAsAction = new SaveAsAction();
         loadAction = new LoadAction();
+        openAction = new OpenAction();
     }
 }

@@ -22,6 +22,7 @@ public class ApplicationFramework {
     private MessageGenerator messageGenerator;
     private Logger consoleLogger;
     private Logger fileLogger;
+    private Serializer serializer;
     private static ApplicationFramework instance;
 
 
@@ -29,10 +30,11 @@ public class ApplicationFramework {
     {
         this.gui.start();
     }
-    public void initialize(Gui gui, ClassyRepository classyRepository, MessageGenerator messageGenerator){
+    public void initialize(Gui gui, ClassyRepository classyRepository, MessageGenerator messageGenerator, Serializer serializer){
         this.gui=gui;
         this.classyRepository = classyRepository;
         this.messageGenerator = messageGenerator;
+        this.serializer = serializer;
         messageGenerator.addSubscriber(consoleLogger);
         messageGenerator.addSubscriber(fileLogger);
         messageGenerator.addSubscriber(MainFrame.getInstance());

@@ -1,11 +1,9 @@
 package raf.dsw.classycraft.app;
 
-import raf.dsw.classycraft.app.core.ApplicationFramework;
-import raf.dsw.classycraft.app.core.ClassyRepository;
-import raf.dsw.classycraft.app.core.ClassyRepositoryImpl;
-import raf.dsw.classycraft.app.core.Gui;
+import raf.dsw.classycraft.app.core.*;
 import raf.dsw.classycraft.app.gui.swing.SwingGui;
 import raf.dsw.classycraft.app.messanger.MessageGenerator;
+import raf.dsw.classycraft.app.serializer.GsonSerializer;
 
 public class AppCore {
     private static AppCore instance;
@@ -15,7 +13,8 @@ public class AppCore {
         Gui gui=new SwingGui();
         ClassyRepository classyRepository = new ClassyRepositoryImpl();
         MessageGenerator messageGenerator = new MessageGenerator();
-        appCore.initialize(gui, classyRepository, messageGenerator);
+        Serializer serializer = new GsonSerializer();
+        appCore.initialize(gui, classyRepository, messageGenerator, serializer);
         appCore.run();
     }
 }
