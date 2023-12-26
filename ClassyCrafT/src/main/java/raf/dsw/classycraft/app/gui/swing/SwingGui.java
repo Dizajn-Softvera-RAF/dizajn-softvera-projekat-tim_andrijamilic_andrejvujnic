@@ -1,12 +1,16 @@
 package raf.dsw.classycraft.app.gui.swing;
 
 import raf.dsw.classycraft.app.classyRepository.command.CommandManager;
+import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
 import raf.dsw.classycraft.app.core.Gui;
 import raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+
+import java.util.HashMap;
 
 public class SwingGui implements Gui {
 
     private MainFrame instance;
+    //private HashMap<Diagram, CommandManager> commandManager;
     private CommandManager commandManager;
 
     public SwingGui(){

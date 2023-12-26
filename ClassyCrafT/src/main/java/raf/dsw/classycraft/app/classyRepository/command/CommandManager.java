@@ -39,6 +39,7 @@ public class CommandManager {
     }
 
     public void undoCommand(){
+        System.out.println("Command " + currentCommand);
         if(currentCommand > 0){
             komande.get(--currentCommand).undoCommand();
             ApplicationFramework.getInstance().getGui().enableRedoAction();

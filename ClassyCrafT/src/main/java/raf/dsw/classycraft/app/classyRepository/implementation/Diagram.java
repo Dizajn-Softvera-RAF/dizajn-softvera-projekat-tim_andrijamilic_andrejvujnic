@@ -20,7 +20,7 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
 
     private List<ISubscriber> subs = new ArrayList<>();
     private ArrayList<DiagramElement> models = new ArrayList<>();
-    private transient CommandManager commandManager = new CommandManager();
+
     public Diagram(String name, ClassyNode parent) {
         super(name, parent);
     }
