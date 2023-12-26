@@ -1,5 +1,6 @@
 package raf.dsw.classycraft.app.state.concrete;
 
+import raf.dsw.classycraft.app.classyRepository.command.implementation.AddClassCommand;
 import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
 import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
@@ -27,13 +28,17 @@ public class AddClassState implements State{
     }
     @Override
     public void misKliknut(int x, int y, DiagramView dw, MouseEvent event) {
-        System.out.println("add");
+       /* System.out.println("add");
         Klasa k = new Klasa("Klasa", dw.getDiagram(), new Point(x, y));
 
         KlasaPainter kp = new KlasaPainter(k);
         dw.getDiagram().addChild(k);
         dw.getPainters().add(kp);
-        k.setPainter(kp);
+        k.setPainter(kp);*/
+
+        AddClassCommand addClassCommand = new AddClassCommand(dw, new Point(x, y));
+        dw.getCommandManager().addCommand(addClassCommand);
+
     }
 
 
