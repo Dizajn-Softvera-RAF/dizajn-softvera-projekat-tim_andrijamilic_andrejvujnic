@@ -37,6 +37,11 @@ public class PackageView extends JPanel implements ISubscriber {
         initialise();
     }
 
+    public DiagramView getDW(){
+        System.out.println(tp.getSelectedComponent());
+        return (DiagramView) tp.getSelectedComponent();
+    }
+
     public PackageView() {
 
     }

@@ -1,5 +1,7 @@
 package raf.dsw.classycraft.app.state.concrete;
 
+import raf.dsw.classycraft.app.classyRepository.command.AbstractCommand;
+import raf.dsw.classycraft.app.classyRepository.command.implementation.DeleteCommand;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
 import raf.dsw.classycraft.app.gui.swing.painter.Painter;
 import raf.dsw.classycraft.app.gui.swing.painter.interClassPainter.InterClassPainter;
@@ -14,7 +16,7 @@ import java.util.ArrayList;
 public class DeleteState implements State {
     @Override
     public void misKliknut(int x, int y, DiagramView dw, MouseEvent event) {
-        System.out.println("delete");
+        /*System.out.println("delete");
 
         ArrayList<DiagramElement> l = getSelectedModels((ArrayList<Painter>) dw.getSelectedPainters());
         ArrayList<Painter> selected = (ArrayList<Painter>) dw.getSelectedPainters();
@@ -27,7 +29,10 @@ public class DeleteState implements State {
         {
             dw.getDiagram().removeChild(d);
         }
-        dw.repaint();
+        dw.repaint();*/
+        ArrayList<DiagramElement> l = getSelectedModels((ArrayList<Painter>) dw.getSelectedPainters());
+        DeleteCommand deleteCommand = new DeleteCommand(dw, l);
+        dw.getCommandManager().addCommand(deleteCommand);
     }
 
     @Override

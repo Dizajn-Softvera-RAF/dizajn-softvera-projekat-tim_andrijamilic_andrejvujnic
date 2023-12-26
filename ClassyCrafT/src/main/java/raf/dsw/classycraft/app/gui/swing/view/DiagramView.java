@@ -2,6 +2,7 @@ package raf.dsw.classycraft.app.gui.swing.view;
 
 import lombok.Getter;
 import lombok.Setter;
+import raf.dsw.classycraft.app.classyRepository.command.CommandManager;
 import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.Klasa;
@@ -27,6 +28,7 @@ import java.util.List;
 public class DiagramView extends JPanel implements ISubscriber {
 
     private List<Painter> painters = new ArrayList<>();
+    private CommandManager commandManager = new CommandManager();
     private List<Painter> selectedPainters = new ArrayList<>();
     private Rectangle2D selekcijaRect = new Rectangle2D.Double();
     private Diagram diagram;

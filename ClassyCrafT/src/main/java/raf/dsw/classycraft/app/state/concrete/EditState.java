@@ -17,6 +17,7 @@ public class EditState implements State {
         for(Painter p : selected){
             ed.setVisible(true);
         }
+        //event.drawString
 
     }
 
