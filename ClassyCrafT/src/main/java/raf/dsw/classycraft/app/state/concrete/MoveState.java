@@ -1,5 +1,6 @@
 package raf.dsw.classycraft.app.state.concrete;
 
+import raf.dsw.classycraft.app.classyRepository.command.implementation.MoveCommand;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.InterClass;
 import raf.dsw.classycraft.app.gui.swing.painter.Painter;
@@ -41,7 +42,7 @@ public class MoveState implements State {
     @Override
     public void misPovucen(int x, int y, DiagramView dw) {
 
-        ArrayList<Painter> selected = (ArrayList<Painter>) dw.getSelectedPainters();
+       /* ArrayList<Painter> selected = (ArrayList<Painter>) dw.getSelectedPainters();
         if(!selected.isEmpty()){
             for (Painter p: selected) {
                 DiagramElement diagElem = p.getDiagramElement();
@@ -63,7 +64,15 @@ public class MoveState implements State {
         startX = x;
         startY = y;
 
-        dw.repaint();
+        dw.repaint();*/
+        ArrayList<DiagramElement> de = new ArrayList<>();
+        ArrayList<Painter> s = (ArrayList<Painter>) dw.getSelectedPainters();
+        for (Painter p : s)
+        {
+           de.add(p.getDiagramElement());
+        }
+        MoveCommand moveCommand = new MoveCommand(dw, startX, startY, x, y, de);
+        dw.getCommandManager().addCommand(moveCommand);
 
     }
     public void updateSelectedPainters(ArrayList<Painter> painters, int adjustedX, int adjustedY) {

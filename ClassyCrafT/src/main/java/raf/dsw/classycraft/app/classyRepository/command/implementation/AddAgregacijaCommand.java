@@ -1,30 +1,31 @@
-package raf.dsw.classycraft.app.state.concrete;
+package raf.dsw.classycraft.app.classyRepository.command.implementation;
 
-import raf.dsw.classycraft.app.classyRepository.command.implementation.AddAgregacijaCommand;
+import raf.dsw.classycraft.app.classyRepository.command.AbstractCommand;
+import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.InterClass;
 import raf.dsw.classycraft.app.classyRepository.implementation.connection.Agregacija;
-import raf.dsw.classycraft.app.classyRepository.implementation.connection.Generalizacija;
 import raf.dsw.classycraft.app.gui.swing.painter.Painter;
 import raf.dsw.classycraft.app.gui.swing.painter.connectionPainter.AgregacijaPainter;
-import raf.dsw.classycraft.app.gui.swing.painter.connectionPainter.GeneralizacijaPainter;
 import raf.dsw.classycraft.app.gui.swing.view.DiagramView;
-import raf.dsw.classycraft.app.state.State;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
+public class AddAgregacijaCommand extends AbstractCommand {
 
-public class AddAgregacijaState implements State {
+    private DiagramView dw;
+    private Point point;
     private Painter from;
     private Painter to;
-    @Override
-    public void misKliknut(int x, int y, DiagramView dw, MouseEvent event)
-    {
 
+    public AddAgregacijaCommand(DiagramView diagramView, Point point, Painter from, Painter to) {
+        this.dw = diagramView;
+        this.point = point;
+        this.from = from;
+        this.to = to;
     }
     @Override
-    public void misPritisnut(int x, int y, DiagramView dw) {
-        /*Rectangle2D selectForConnection = new Rectangle2D.Double(x, y, 1, 1);;
+    public void doCommand() {
+        Rectangle2D selectForConnection = new Rectangle2D.Double(point.x , point.y, 1, 1);;
         System.out.println("veza");
         if(from != null)
         {
@@ -52,28 +53,19 @@ public class AddAgregacijaState implements State {
             }
 
         }
-            for (Painter painter : dw.getPainters()) {
-                if(!(painter.getDiagramElement() instanceof InterClass)) continue;
+        for (Painter painter : dw.getPainters()) {
+            if(!(painter.getDiagramElement() instanceof InterClass)) continue;
 
-                if (selectForConnection.intersects(painter.getShape().getBounds())) {
-                    from = painter;
-                    break;
-                }
-            }*/
-        AddAgregacijaCommand addAgregacijaCommand = new AddAgregacijaCommand(dw, new Point(x, y),from, to);
-        dw.getCommandManager().addCommand(addAgregacijaCommand);
-
-    }
-
-
-
-    @Override
-    public void misOtpusten(int x, int y, DiagramView dw) {
+            if (selectForConnection.intersects(painter.getShape().getBounds())) {
+                from = painter;
+                break;
+            }
+        }
 
     }
 
     @Override
-    public void misPovucen(int x, int y, DiagramView dw) {
+    public void undoCommand() {
 
     }
 }
