@@ -12,9 +12,9 @@ public class MyToolBar extends JToolBar {
         add(MainFrame.getInstance().getActionManager().getEditAction());
         add(MainFrame.getInstance().getActionManager().getDeleteAction());
         add(MainFrame.getInstance().getActionManager().getLoadAction());
-        add(MainFrame.getInstance().getActionManager().getOpenAction());
         add(MainFrame.getInstance().getActionManager().getSaveAction());
         add(MainFrame.getInstance().getActionManager().getSaveAsAction());
+        add(MainFrame.getInstance().getActionManager().getSavePictureAction());
         add(MainFrame.getInstance().getActionManager().getUndoAction());
         add(MainFrame.getInstance().getActionManager().getRedoAction());
 

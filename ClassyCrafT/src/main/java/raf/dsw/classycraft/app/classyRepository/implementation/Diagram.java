@@ -18,6 +18,8 @@ import java.util.List;
 
 public class Diagram extends ClassyNodeComposite implements IPublisher {
 
+    private boolean template;
+    private static int counter = 0;
     private List<ISubscriber> subs = new ArrayList<>();
     private ArrayList<DiagramElement> models = new ArrayList<>();
 
@@ -48,6 +50,11 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
         for(ISubscriber subscriber : subs){
             subscriber.update(notification);
         }
+    }
+
+    public Diagram() {
+        super("Diagram " + counter, null);
+        counter++;
     }
 
     public void addModel(DiagramElement model) {

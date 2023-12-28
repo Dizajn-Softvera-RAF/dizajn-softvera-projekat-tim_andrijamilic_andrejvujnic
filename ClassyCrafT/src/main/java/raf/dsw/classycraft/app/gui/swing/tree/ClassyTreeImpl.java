@@ -64,18 +64,37 @@ public class ClassyTreeImpl implements ClassyTree{
     }
 
     @Override
+    public ClassyTreeItem getOpenedNode() {
+        return getSelectedNode();
+    }
+
+    @Override
     public ClassyTreeView getTreeView() {
         return treeView;
     }
 
     @Override
     public void loadProject(Project node) {
-        ClassyTreeItem loadedProject = new ClassyTreeItem(node);
+       /* ClassyTreeItem loadedProject = new ClassyTreeItem(node);
         treeModel.getRoot().add(loadedProject);
 
         ClassyNodeComposite classyNode = (ClassyNodeComposite) treeModel.getRoot().getClassyNode();
         classyNode.addChild(node);
 
+        treeView.expandPath(treeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(treeView);*/
+        node.setParent(((ClassyTreeItem) treeModel.getRoot()).getClassyNode());
+        ClassyTreeItem loadedProject = new ClassyTreeItem(node);
+        ((ClassyTreeItem) treeModel.getRoot()).add(loadedProject);
+
+        ClassyNodeComposite classyNode = (ClassyNodeComposite) ((ClassyTreeItem) treeModel.getRoot()).getClassyNode();
+        classyNode.addChild(node);
+
+        for (ClassyNode map : node.getChildren()) {
+            map.setParent(node);
+            ClassyTreeItem mapTreeItem = new ClassyTreeItem(map);
+            loadedProject.add(mapTreeItem);
+        }
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
     }

@@ -13,7 +13,7 @@ public class AppCore {
         Gui gui=new SwingGui();
         ClassyRepository classyRepository = new ClassyRepositoryImpl();
         MessageGenerator messageGenerator = new MessageGenerator();
-        Serializer serializer = new GsonSerializer();
+        GsonSerializer serializer = new GsonSerializer();
         appCore.initialize(gui, classyRepository, messageGenerator, serializer);
         appCore.run();
     }

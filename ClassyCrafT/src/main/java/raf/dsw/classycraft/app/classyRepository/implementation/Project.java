@@ -11,6 +11,7 @@ import raf.dsw.classycraft.app.classyRepository.composite.ClassyNodeComposite;
 @Setter
 public class Project extends ClassyNodeComposite {
 
+    private static int counter = 0;
     protected boolean changed = true;
     protected String filePath;
 
@@ -32,5 +33,15 @@ public class Project extends ClassyNodeComposite {
     public void setName(String name) {
         super.setName(name);
         changed = true;
+    }
+
+    public Project(String name, ClassyNode parent, String filePath) {
+        super(name, parent);
+        this.filePath = filePath;
+    }
+
+    public Project() {
+        super("Project " + counter, null);
+        counter++;
     }
 }
