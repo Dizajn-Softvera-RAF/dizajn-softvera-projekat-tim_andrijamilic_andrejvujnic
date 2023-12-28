@@ -10,6 +10,7 @@ public interface ClassyTree {
     void addChild(ClassyTreeItem parent, int a);
     void removeChild(ClassyTreeItem node);
     ClassyTreeItem getSelectedNode();
+    ClassyTreeItem getOpenedNode();
     ClassyTreeView getTreeView();
     void loadProject(Project node);
 }

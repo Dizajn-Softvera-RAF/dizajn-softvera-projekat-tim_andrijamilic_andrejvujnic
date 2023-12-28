@@ -1,0 +1,48 @@
+package raf.dsw.classycraft.app.serializer;
+
+import com.google.gson.*;
+import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
+import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
+import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.InterClass;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+public class DiagramSerializer implements JsonSerializer<Diagram>, JsonDeserializer<Diagram> {
+    @Override
+    public JsonElement serialize(Diagram diagram, Type type, JsonSerializationContext jsonSerializationContext) {
+        JsonObject result = new JsonObject();
+        result.add("class", new JsonPrimitive(diagram.getClass().getSimpleName()));
+        result.add("name", new JsonPrimitive(diagram.getName()));
+
+        JsonArray models = new JsonArray();
+        for (DiagramElement model : diagram.getModels()) {
+            models.add(jsonSerializationContext.serialize(model));
+        }
+
+        result.add("models", models);
+        result.add("template", new JsonPrimitive(diagram.isTemplate()));
+        return result;
+    }
+
+    @Override
+    public Diagram deserialize(JsonElement json, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        JsonObject jsonObject = json.getAsJsonObject();
+
+        String name = jsonObject.get("name").getAsString();
+        boolean template = jsonObject.get("template").getAsBoolean();
+
+        ArrayList<DiagramElement> models = new ArrayList<>();
+
+        for (JsonElement element : jsonObject.getAsJsonArray("models")) {
+            models.add(jsonDeserializationContext.deserialize(element, DiagramElement.class));
+        }
+
+        Diagram diagram = new Diagram();
+        diagram.setName(name);
+        diagram.setTemplate(template);
+        diagram.setModels(models);
+
+        return diagram;
+    }
+}

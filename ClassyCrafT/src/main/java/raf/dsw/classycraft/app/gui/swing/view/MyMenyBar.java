@@ -13,6 +13,11 @@ public class MyMenyBar extends JMenuBar {
         fileMenu.add((MainFrame.getInstance().getActionManager().getNewProjectAction()));
         fileMenu.add(MainFrame.getInstance().getActionManager().getEditAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getDeleteAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getSaveAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getSaveAsAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getSaveAsTemplateAction());
+        fileMenu.add(MainFrame.getInstance().getActionManager().getLoadTemplateAction());
+
 
         JMenu help=new JMenu("Help");
         help.setMnemonic(KeyEvent.VK_H);

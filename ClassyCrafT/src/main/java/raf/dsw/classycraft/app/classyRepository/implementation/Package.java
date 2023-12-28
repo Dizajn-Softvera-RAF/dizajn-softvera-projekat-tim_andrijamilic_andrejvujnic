@@ -2,6 +2,8 @@ package raf.dsw.classycraft.app.classyRepository.implementation;
 
 import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
 import raf.dsw.classycraft.app.classyRepository.composite.ClassyNodeComposite;
+import raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+import raf.dsw.classycraft.app.gui.swing.view.PackageView;
 import raf.dsw.classycraft.app.observer.IPublisher;
 import raf.dsw.classycraft.app.observer.ISubscriber;
 
@@ -9,9 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Package extends ClassyNodeComposite implements IPublisher {
+    private static int counter = 0;
     private List<ISubscriber> subs = new ArrayList<>();
     public Package(String name, ClassyNode parent) {
         super(name, parent);
+    }
+
+    public Package() {
+        super("Package " + counter, null);
+        counter++;
     }
 
     @Override

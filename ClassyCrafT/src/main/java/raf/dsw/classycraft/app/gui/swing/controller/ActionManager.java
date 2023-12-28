@@ -19,7 +19,9 @@ public class ActionManager {
     private SaveAction saveAction;
     private SaveAsAction saveAsAction;
     private LoadAction loadAction;
-    private OpenAction openAction;
+    private SavePictureAction savePictureAction;
+    private SaveAsTemplateAction saveAsTemplateAction;
+    private LoadTemplateAction loadTemplateAction;
 
     private AddInterClassAction addInterClassAction;
     private AddClassAction addClassAction;
@@ -62,6 +64,8 @@ public class ActionManager {
         saveAction = new SaveAction();
         saveAsAction = new SaveAsAction();
         loadAction = new LoadAction();
-        openAction = new OpenAction();
+        savePictureAction = new SavePictureAction();
+        saveAsTemplateAction = new SaveAsTemplateAction();
+        loadTemplateAction = new LoadTemplateAction();
     }
 }
