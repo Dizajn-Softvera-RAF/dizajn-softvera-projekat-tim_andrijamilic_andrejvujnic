@@ -20,27 +20,34 @@ public class SaveAsAction extends AbstractClassyAction {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFileChooser fileChooser = new JFileChooser();
-        Project project = getProjectToSave();
 
-        if (project == null) {
+        JFileChooser jfc = new JFileChooser();
+
+        if (MainFrame.getInstance().getClassyTree().getSelectedNode() == null || !(MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode() instanceof Project))
+        {
             ApplicationFramework.getInstance().getMessageGenerator().generateMessage("Projekat koji zelite da sacuvate mora bili otvoren ili selektovan u Project Explorer-u", MessageType.ERROR);
             return;
         }
 
-        fileChooser.setSelectedFile(new File(project.getName() + ".json"));
+        Project project = (Project) MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
+        File projectFile = null;
 
-        if (fileChooser.showSaveDialog(MainFrame.getInstance()) != JFileChooser.APPROVE_OPTION) return;
-
-        File projectFile = fileChooser.getSelectedFile();
-        project.setFilePath(projectFile.getPath());
-
-        // ako projekat nije sacuvan u json formatu, automatski ga tako sacuvati
-        if (!project.getFilePath().endsWith(".json")) {
-            project.setFilePath(project.getFilePath() + ".json");
+        if (!project.isChanged()) {
+            return;
         }
 
-        ApplicationFramework.getInstance().getSerializer().saveProject(project);
+        jfc.setSelectedFile(new File(project.getName() + ".json"));
 
+        if (jfc.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
+            projectFile = jfc.getSelectedFile();
+            project.setFilePath(projectFile.getPath());
+            if(!projectFile.getPath().contains(".json"))
+                project.setFilePath(projectFile.getPath() + ".json");
+        } else
+            return;
+
+        ApplicationFramework.getInstance().getSerializer().saveProject(project);
+        project.setChanged(false);
     }
 }
+

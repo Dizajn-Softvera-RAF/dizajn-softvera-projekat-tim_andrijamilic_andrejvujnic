@@ -64,11 +64,6 @@ public class ClassyTreeImpl implements ClassyTree{
     }
 
     @Override
-    public ClassyTreeItem getOpenedNode() {
-        return getSelectedNode();
-    }
-
-    @Override
     public ClassyTreeView getTreeView() {
         return treeView;
     }
@@ -94,8 +89,8 @@ public class ClassyTreeImpl implements ClassyTree{
         for (ClassyNode cs : node.getChildren()) {
             //ovde
             cs.setParent(node);
-            ClassyTreeItem mapTreeItem = new ClassyTreeItem(cs);
-            loadedProject.add(mapTreeItem);
+            ClassyTreeItem classyTreeItem = new ClassyTreeItem(cs);
+            loadedProject.add(classyTreeItem);
         }//TODO ovo treba da se menja
 
         treeView.expandPath(treeView.getSelectionPath());

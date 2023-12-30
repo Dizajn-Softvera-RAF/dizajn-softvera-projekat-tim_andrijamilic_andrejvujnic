@@ -2,7 +2,6 @@ package raf.dsw.classycraft.app.gui.swing.controller.action;
 
 import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
 import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
-import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
 import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.gui.swing.controller.AbstractClassyAction;
 import raf.dsw.classycraft.app.gui.swing.view.MainFrame;

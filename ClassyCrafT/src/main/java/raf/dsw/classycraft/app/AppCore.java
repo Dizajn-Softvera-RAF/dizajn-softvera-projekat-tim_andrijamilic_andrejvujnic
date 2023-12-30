@@ -6,8 +6,6 @@ import raf.dsw.classycraft.app.messanger.MessageGenerator;
 import raf.dsw.classycraft.app.serializer.GsonSerializer;
 
 public class AppCore {
-    private static AppCore instance;
-
     public static void main(String[] args) {
         ApplicationFramework appCore = ApplicationFramework.getInstance();
         Gui gui=new SwingGui();

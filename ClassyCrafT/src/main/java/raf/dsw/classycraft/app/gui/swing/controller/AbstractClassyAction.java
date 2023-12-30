@@ -29,22 +29,6 @@ public abstract class AbstractClassyAction extends AbstractAction {
         return icon;
     }
 
-    public Project getProjectToSave() {
-        ClassyTreeItem openedNode = ((ClassyTree) MainFrame.getInstance().getClassyTree()).getOpenedNode();
-        ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
-
-        Project project = null;
-        // postavljamo za projekat prvo otvoreni projekat, ukoliko projekat nije otvoren, onda postavljamo selektovani projekat
-        // ukoliko ni projekat nije selektovan onda obavestavamo korisnika da uradi jedno ili drugo
-        if (openedNode != null) {
-            project = (Project) openedNode.getClassyNode();
-        } else if (selectedNode != null && selectedNode.getClassyNode() instanceof Project) {
-            project = (Project) selectedNode.getClassyNode();
-        }
-
-        return project;
-    }
-
     public Diagram getDiagramToSave() {
         DiagramView currentDiagramView = ((PackageView)(MainFrame.getInstance().getSplit().getRightComponent())).getDW();
         ClassyTreeItem selectedNode = MainFrame.getInstance().getClassyTree().getSelectedNode();
