@@ -1,6 +1,7 @@
 package raf.dsw.classycraft.app.serializer;
 
 import com.google.gson.*;
+import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
 import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.InterClass;
@@ -16,10 +17,10 @@ public class DiagramSerializer implements JsonSerializer<Diagram>, JsonDeseriali
         result.add("name", new JsonPrimitive(diagram.getName()));
 
         JsonArray models = new JsonArray();
-        for (DiagramElement model : diagram.getModels()) {
+        for (ClassyNode model : diagram.getChildren()) {
             models.add(jsonSerializationContext.serialize(model));
         }
-
+        // stavimo user
         result.add("models", models);
         result.add("template", new JsonPrimitive(diagram.isTemplate()));
         return result;
@@ -32,7 +33,7 @@ public class DiagramSerializer implements JsonSerializer<Diagram>, JsonDeseriali
         String name = jsonObject.get("name").getAsString();
         boolean template = jsonObject.get("template").getAsBoolean();
 
-        ArrayList<DiagramElement> models = new ArrayList<>();
+        ArrayList<ClassyNode> models = new ArrayList<>();
 
         for (JsonElement element : jsonObject.getAsJsonArray("models")) {
             models.add(jsonDeserializationContext.deserialize(element, DiagramElement.class));
@@ -41,7 +42,7 @@ public class DiagramSerializer implements JsonSerializer<Diagram>, JsonDeseriali
         Diagram diagram = new Diagram();
         diagram.setName(name);
         diagram.setTemplate(template);
-        diagram.setModels(models);
+        diagram.setChildren(models);
 
         return diagram;
     }

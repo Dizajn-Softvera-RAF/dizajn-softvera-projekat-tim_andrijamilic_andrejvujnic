@@ -6,9 +6,8 @@ import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.i
 
 import java.awt.*;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 
-public class ElementModelSerializer implements JsonSerializer<DiagramElement>, JsonDeserializer<DiagramElement> {
+public class DiagramElementSerializer implements JsonSerializer<DiagramElement>, JsonDeserializer<DiagramElement> {
 
     @Override
     public JsonElement serialize(DiagramElement diagramElement, Type type, JsonSerializationContext jsonSerializationContext) {
@@ -20,7 +19,6 @@ public class ElementModelSerializer implements JsonSerializer<DiagramElement>, J
             InterClass interClass = (InterClass) diagramElement;
             jsonObject.add("name", new JsonPrimitive(interClass.getName()));
             jsonObject.add("coordinates", jsonSerializationContext.serialize(interClass.getPosition()));
-
         }
         return jsonObject;
     }
@@ -34,7 +32,7 @@ public class ElementModelSerializer implements JsonSerializer<DiagramElement>, J
         int stroke = jsonObject.get("stroke").getAsInt();
 
         String className = jsonObject.get("class").getAsString();
-        if (className.equals("PojamModel")) {
+        if (className.equals("InterClass")) {
             String name = jsonObject.get("name").getAsString();
             Point coords = jsonDeserializationContext.deserialize(jsonObject.get("coordinates"), Point.class);
             Dimension dimension = jsonDeserializationContext.deserialize(jsonObject.get("size"), Dimension.class);

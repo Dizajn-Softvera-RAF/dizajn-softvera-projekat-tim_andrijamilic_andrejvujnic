@@ -1,5 +1,6 @@
 package raf.dsw.classycraft.app.gui.swing.controller.action;
 
+import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
 import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
 import raf.dsw.classycraft.app.core.ApplicationFramework;
@@ -25,8 +26,8 @@ public class LoadTemplateAction extends AbstractClassyAction {
 
         Diagram diagram = getDiagramToSave();
 
-        if (diagram == null) {
-            ApplicationFramework.getInstance().getMessageGenerator().generateMessage("Morate otvoriti tab mape u koju zelite da dodate sablon, ili da izaberete tu mapu iz Project Explorer-a", MessageType.ERROR);
+       if (diagram == null) {
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage("Morate otvoriti tab u koju zelite da dodate sablon, ili da izaberete taj projekat iz Project Explorer-a", MessageType.ERROR);//menjanoA
             return;
         }
 
@@ -41,9 +42,11 @@ public class LoadTemplateAction extends AbstractClassyAction {
             ex.printStackTrace();
             return;
         }
-
-        for (DiagramElement model : templateDiagram.getModels()) {
-            diagram.addModel(model);
+        System.out.println("modeliiii");
+        for (ClassyNode model : templateDiagram.getChildren()) {
+            System.out.println("modeli " + model);
+            diagram.addChild(model);
+            //lista modela je null
         }
     }
 }

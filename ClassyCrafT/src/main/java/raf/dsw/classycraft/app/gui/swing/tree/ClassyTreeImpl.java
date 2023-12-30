@@ -83,6 +83,7 @@ public class ClassyTreeImpl implements ClassyTree{
 
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);*/
+
         node.setParent(((ClassyTreeItem) treeModel.getRoot()).getClassyNode());
         ClassyTreeItem loadedProject = new ClassyTreeItem(node);
         ((ClassyTreeItem) treeModel.getRoot()).add(loadedProject);
@@ -90,13 +91,16 @@ public class ClassyTreeImpl implements ClassyTree{
         ClassyNodeComposite classyNode = (ClassyNodeComposite) ((ClassyTreeItem) treeModel.getRoot()).getClassyNode();
         classyNode.addChild(node);
 
-        for (ClassyNode map : node.getChildren()) {
-            map.setParent(node);
-            ClassyTreeItem mapTreeItem = new ClassyTreeItem(map);
+        for (ClassyNode cs : node.getChildren()) {
+            //ovde
+            cs.setParent(node);
+            ClassyTreeItem mapTreeItem = new ClassyTreeItem(cs);
             loadedProject.add(mapTreeItem);
-        }
+        }//TODO ovo treba da se menja
+
         treeView.expandPath(treeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(treeView);
+        //ne prikazuje dijagrame u stablu a prikazuje u view
     }
 
     private ClassyNode createChild(ClassyNode parent, int a) {
