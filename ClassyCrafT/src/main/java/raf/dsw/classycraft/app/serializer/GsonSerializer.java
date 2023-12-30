@@ -2,21 +2,23 @@ package raf.dsw.classycraft.app.serializer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParseException;
+import org.w3c.dom.Node;
+import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
 import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.InterClass;
 import raf.dsw.classycraft.app.classyRepository.implementation.Package;
 import raf.dsw.classycraft.app.classyRepository.implementation.Project;
+import raf.dsw.classycraft.app.core.ApplicationFramework;
 import raf.dsw.classycraft.app.core.Serializer;
+import raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import raf.dsw.classycraft.app.serializer.adapters.ColorAdapter;
 import raf.dsw.classycraft.app.serializer.adapters.DimensionAdapter;
 import raf.dsw.classycraft.app.serializer.adapters.PointAdapter;
 
 import java.awt.*;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class GsonSerializer implements Serializer {
 
@@ -71,6 +73,7 @@ public class GsonSerializer implements Serializer {
             e.printStackTrace();
             return null;
         }
+
     }
 
 
