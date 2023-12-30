@@ -18,48 +18,43 @@ public class MoveCommand extends AbstractCommand {
     private DiagramView dw;
     private int startX;
     private int startY;
+    private int oldX;
+    private int oldY;
     private int x;
     private int y;
     private ArrayList<DiagramElement> selectedModels;
 
-    public MoveCommand(DiagramView dw, int startX, int startY, int x, int y, ArrayList<DiagramElement> selectedModels) {
+    public MoveCommand(DiagramView dw, int x, int y, int startX, int startY, int oldX, int oldY) {
         this.dw = dw;
         this.startX = startX;
         this.startY = startY;
         this.x = x;
         this.y = y;
-        this.selectedModels = selectedModels;
+        this.oldY = oldY;
+        this.oldX = oldX;
     }
     @Override
     public void doCommand() {
-        ArrayList<Painter> selected = (ArrayList<Painter>) dw.getSelectedPainters();
-        if(!selected.isEmpty()){
-            for (Painter p: selected) {
-                DiagramElement diagElem = p.getDiagramElement();
-                if(!(diagElem instanceof InterClass)) continue;
-
-                InterClass inter = (InterClass) diagElem;
-                Point pos = inter.getPosition();
-
-                int diff_x = x - startX;
-                int diff_y = y - startY;
-
-                inter.setPosition(new Point(pos.x + diff_x, pos.y + diff_y));
-            }
-
-        }else{
-            updateSelectedPainters((ArrayList<Painter>) dw.getPainters(), x - startX, y - startY);
-        }
-
-        startX = x;
-        startY = y;
-
+        updateSelectedPainters((ArrayList<Painter>) dw.getPainters(), x - startX, y - startY);
         dw.repaint();
     }
 
     @Override
     public void undoCommand() {
+        ArrayList<Painter> selected = (ArrayList<Painter>) dw.getSelectedPainters();
+        for(Painter p : selected){
+            if (p instanceof ConnectionPainter) {
+                continue;
+            }
+            InterClass o = (InterClass) p.getDiagramElement();
+            Point newPoint = new Point( oldX, oldY);
 
+            o.setPosition(newPoint);
+
+            Rectangle2D rect = (Rectangle2D) p.getShape();
+            rect.setFrame(newPoint, rect.getBounds().getSize());
+        }
+        dw.repaint();
     }
 
     public void updateSelectedPainters(ArrayList<Painter> painters, int adjustedX, int adjustedY) {

@@ -31,6 +31,7 @@ public class AddClassCommand extends AbstractCommand {
         KlasaPainter kp = new KlasaPainter(k);
         diagramElement = k;
         dw.getDiagram().addChild(k);
+        //System.out.println(dw.getDiagram().getChildren());
         dw.getPainters().add(kp);
         k.setPainter(kp);
     }

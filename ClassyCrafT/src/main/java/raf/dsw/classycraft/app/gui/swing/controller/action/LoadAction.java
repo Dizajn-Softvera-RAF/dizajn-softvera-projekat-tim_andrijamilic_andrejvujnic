@@ -37,6 +37,8 @@ public class LoadAction extends AbstractClassyAction {
 
             Project p = ApplicationFramework.getInstance().getSerializer().loadProject(file);
             MainFrame.getInstance().getClassyTree().loadProject(p);
+            //metoda load to do
+            //ne prikazuje dijagrame u stablu a prikazuje u view
 
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -74,7 +74,8 @@ public class DiagramView extends JPanel implements ISubscriber {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setComposite(AlphaComposite.getInstance(3, 0.8F));
-        g2.scale(transform.getScaleX(), transform.getScaleY());
+        //g2.scale(transform.getScaleX(), transform.getScaleY());
+        g2.transform(transform);
         for (Painter p : painters) {
             p.paint(g2);
         }

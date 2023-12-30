@@ -18,6 +18,8 @@ public class MoveState implements State {
 
     private int startX;
     private int startY;
+    private int prvi;
+    private int drugi;
     public MoveState(){
     }
     @Override
@@ -30,19 +32,24 @@ public class MoveState implements State {
         startX = x;
         startY = y;
 
+        prvi = x;
+        drugi = y;
+
     }
 
 
 
     @Override
     public void misOtpusten(int x, int y, DiagramView dw) {
-        updateSelectedPainters((ArrayList<Painter>) dw.getPainters(), x - startX, y - startY);
+        //updateSelectedPainters((ArrayList<Painter>) dw.getPainters(), x - startX, y - startY);
+        MoveCommand moveCommand = new MoveCommand(dw, x, y, startX, startY, prvi, drugi);
+        dw.getCommandManager().addCommand(moveCommand);
     }
 
     @Override
     public void misPovucen(int x, int y, DiagramView dw) {
 
-       /* ArrayList<Painter> selected = (ArrayList<Painter>) dw.getSelectedPainters();
+        ArrayList<Painter> selected = (ArrayList<Painter>) dw.getSelectedPainters();
         if(!selected.isEmpty()){
             for (Painter p: selected) {
                 DiagramElement diagElem = p.getDiagramElement();
@@ -64,15 +71,21 @@ public class MoveState implements State {
         startX = x;
         startY = y;
 
-        dw.repaint();*/
+        dw.repaint();
+        /*
         ArrayList<DiagramElement> de = new ArrayList<>();
         ArrayList<Painter> s = (ArrayList<Painter>) dw.getSelectedPainters();
         for (Painter p : s)
         {
            de.add(p.getDiagramElement());
         }
-        MoveCommand moveCommand = new MoveCommand(dw, startX, startY, x, y, de);
-        dw.getCommandManager().addCommand(moveCommand);
+        /*System.out.println("State");
+        System.out.println("x " + x);
+        System.out.println("StartX " + startX);
+        System.out.println("y " + x);
+        System.out.println("StartY" + startY);
+        MoveCommand moveCommand = new MoveCommand(dw, x, y, startX, startY);
+        dw.getCommandManager().addCommand(moveCommand);*/
 
     }
     public void updateSelectedPainters(ArrayList<Painter> painters, int adjustedX, int adjustedY) {

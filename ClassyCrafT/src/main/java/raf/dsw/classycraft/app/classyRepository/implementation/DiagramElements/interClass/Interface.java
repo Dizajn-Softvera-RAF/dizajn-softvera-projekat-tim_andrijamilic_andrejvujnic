@@ -13,11 +13,11 @@ import java.util.List;
 public class Interface extends InterClass {
 
     private Dimension size;
-    private Color boja;
-    private String name;
+//    private Color boja;
+//    private String name;
     private List<ClassContent> kontent = new ArrayList<>();
     public Interface(String name, ClassyNode parent, Point position) {
         super(name, parent, position);
-
+        size = new Dimension(50,50);
     }
 }

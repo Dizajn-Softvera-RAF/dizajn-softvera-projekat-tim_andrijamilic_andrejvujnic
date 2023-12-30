@@ -21,7 +21,7 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
     private boolean template;
     private static int counter = 0;
     private List<ISubscriber> subs = new ArrayList<>();
-    private ArrayList<DiagramElement> models = new ArrayList<>();
+//    private ArrayList<DiagramElement> models = new ArrayList<>();
 
     public Diagram(String name, ClassyNode parent) {
         super(name, parent);
@@ -57,11 +57,11 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
         counter++;
     }
 
-    public void addModel(DiagramElement model) {
-        if (model == null) return;
-        models.add(model);
-        if (model instanceof InterClass) notifySubscriber(model);
-        else if (model instanceof Connection)  notifySubscriber(model);
-    }
+//    public void addModel(DiagramElement model) {
+//        if (model == null) return;
+//        models.add(model);
+//        if (model instanceof InterClass) notifySubscriber(model);
+//        else if (model instanceof Connection)  notifySubscriber(model);
+//    }
 
 }
