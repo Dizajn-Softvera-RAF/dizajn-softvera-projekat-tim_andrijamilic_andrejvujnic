@@ -81,6 +81,9 @@ public class DiagramView extends JPanel implements ISubscriber {
         }
         g2.setColor(Color.BLACK);
         g2.setStroke(new BasicStroke(1));
+        Font font = new Font("Arial", 1, 20);
+        g2.setFont(font);
+        g2.setColor(Color.BLUE);
 
         g2.draw(selekcijaRect);
         g2.dispose();

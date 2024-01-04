@@ -9,7 +9,7 @@ import java.awt.*;
 @Getter
 @Setter
 public abstract class InterClass extends DiagramElement {
-    private boolean vidljivost;
+    private boolean vidljivost = true;
 //    private String naziv;
 //    private Color boja;
     private Point position;
