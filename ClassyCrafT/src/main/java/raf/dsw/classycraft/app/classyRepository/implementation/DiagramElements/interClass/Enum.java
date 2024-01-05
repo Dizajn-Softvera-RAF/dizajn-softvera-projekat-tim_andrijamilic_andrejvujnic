@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 public class Enum extends InterClass {
 
-    private List<ClassContent> kontent = new ArrayList<>();
+    private List<String> kontent = new ArrayList<>();
 //    private Color boja;
     private Dimension size;
 
