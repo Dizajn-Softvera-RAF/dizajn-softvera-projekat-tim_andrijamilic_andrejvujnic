@@ -57,11 +57,4 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
         counter++;
     }
 
-//    public void addModel(DiagramElement model) {
-//        if (model == null) return;
-//        models.add(model);
-//        if (model instanceof InterClass) notifySubscriber(model);
-//        else if (model instanceof Connection)  notifySubscriber(model);
-//    }
-
 }

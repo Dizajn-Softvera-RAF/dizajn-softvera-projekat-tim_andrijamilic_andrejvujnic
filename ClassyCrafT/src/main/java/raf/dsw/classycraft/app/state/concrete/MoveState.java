@@ -37,11 +37,9 @@ public class MoveState implements State {
 
     }
 
-
-
     @Override
     public void misOtpusten(int x, int y, DiagramView dw) {
-        //updateSelectedPainters((ArrayList<Painter>) dw.getPainters(), x - startX, y - startY);
+        updateSelectedPainters((ArrayList<Painter>) dw.getPainters(),   prvi - x,  drugi - y);
         MoveCommand moveCommand = new MoveCommand(dw, x, y, startX, startY, prvi, drugi);
         dw.getCommandManager().addCommand(moveCommand);
     }
