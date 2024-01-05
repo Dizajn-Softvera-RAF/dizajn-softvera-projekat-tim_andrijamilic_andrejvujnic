@@ -16,6 +16,7 @@ public class ProjectSerializer implements JsonSerializer<Project>, JsonDeseriali
 
         result.add("name", new JsonPrimitive(project.getName()));
         result.add("path", new JsonPrimitive(project.getFilePath()));
+
         //da li treba serijalizacija za autora
         JsonArray children = new JsonArray();
 
@@ -37,13 +38,17 @@ public class ProjectSerializer implements JsonSerializer<Project>, JsonDeseriali
 
         ArrayList<ClassyNode> children = new ArrayList<>();
 
+        Project project = new Project();
+        project.setName(name);
+        project.setFilePath(path);
+
+
+
         for (JsonElement element : jsonObject.getAsJsonArray("children")) {
             children.add(jsonDeserializationContext.deserialize(element, Package.class));
         }
 
-        Project project = new Project();
-        project.setName(name);
-        project.setFilePath(path);
+
         project.setChildren(children);
 
         return project;

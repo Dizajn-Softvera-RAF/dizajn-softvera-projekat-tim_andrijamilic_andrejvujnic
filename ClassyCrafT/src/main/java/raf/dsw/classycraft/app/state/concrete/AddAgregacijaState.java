@@ -24,7 +24,7 @@ public class AddAgregacijaState implements State {
     }
     @Override
     public void misPritisnut(int x, int y, DiagramView dw) {
-        /*Rectangle2D selectForConnection = new Rectangle2D.Double(x, y, 1, 1);;
+        Rectangle2D selectForConnection = new Rectangle2D.Double(x, y, 1, 1);;
         System.out.println("veza");
         if(from != null)
         {
@@ -39,9 +39,13 @@ public class AddAgregacijaState implements State {
                 {
                     if (selectForConnection.intersects(painter.getShape().getBounds())) {
                         to = painter;
-                        Agregacija con = new Agregacija("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
+                        /*Agregacija con = new Agregacija("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
                         dw.getDiagram().addChild(con);
                         dw.getPainters().add(new AgregacijaPainter(con));
+                        from = null;
+                        to = null;*/
+                        AddAgregacijaCommand addAgregacijaCommand = new AddAgregacijaCommand(dw, new Point(x, y),from, to);
+                        dw.getCommandManager().addCommand(addAgregacijaCommand);
                         from = null;
                         to = null;
                         dw.repaint();
@@ -59,9 +63,8 @@ public class AddAgregacijaState implements State {
                     from = painter;
                     break;
                 }
-            }*/
-        AddAgregacijaCommand addAgregacijaCommand = new AddAgregacijaCommand(dw, new Point(x, y),from, to);
-        dw.getCommandManager().addCommand(addAgregacijaCommand);
+            }
+
 
     }
 

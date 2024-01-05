@@ -35,6 +35,7 @@ public class GsonSerializer implements Serializer {
         gsonBuilder.registerTypeAdapter(Package.class, new PackageSerializer());
         gsonBuilder.registerTypeAdapter(Point.class, new PointAdapter());
         gsonBuilder.registerTypeAdapter(Dimension.class, new DimensionAdapter());
+        gsonBuilder.setPrettyPrinting();
         gson = gsonBuilder.create();
     }
     @Override

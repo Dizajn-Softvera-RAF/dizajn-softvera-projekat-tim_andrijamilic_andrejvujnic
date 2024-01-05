@@ -16,6 +16,8 @@ public class AddAgregacijaCommand extends AbstractCommand {
     private Point point;
     private Painter from;
     private Painter to;
+    private Agregacija agregacija;
+    private AgregacijaPainter ap;
 
     public AddAgregacijaCommand(DiagramView diagramView, Point point, Painter from, Painter to) {
         this.dw = diagramView;
@@ -25,47 +27,18 @@ public class AddAgregacijaCommand extends AbstractCommand {
     }
     @Override
     public void doCommand() {
-        Rectangle2D selectForConnection = new Rectangle2D.Double(point.x , point.y, 1, 1);;
-        System.out.println("veza");
-        if(from != null)
-        {
-            for (Painter painter : dw.getPainters()) {
-                if(!(painter.getDiagramElement() instanceof InterClass)) continue;
-
-                if(!dw.getPainters().contains(from))
-                {
-                    from = null;
-                }
-                else
-                {
-                    if (selectForConnection.intersects(painter.getShape().getBounds())) {
-                        to = painter;
-                        Agregacija con = new Agregacija("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
-                        dw.getDiagram().addChild(con);
-                        dw.getPainters().add(new AgregacijaPainter(con));
-                        from = null;
-                        to = null;
-                        dw.repaint();
-                        return;
-                    }
-                }
-
-            }
-
-        }
-        for (Painter painter : dw.getPainters()) {
-            if(!(painter.getDiagramElement() instanceof InterClass)) continue;
-
-            if (selectForConnection.intersects(painter.getShape().getBounds())) {
-                from = painter;
-                break;
-            }
-        }
+        Agregacija con = new Agregacija("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
+        agregacija =  con;
+        dw.getDiagram().addChild(con);
+        ap = new AgregacijaPainter(agregacija);
+        dw.getPainters().add(ap);
 
     }
 
     @Override
     public void undoCommand() {
-
+        dw.getDiagram().removeChild(agregacija);
+        dw.getPainters().remove(ap);
+        dw.repaint();
     }
 }
