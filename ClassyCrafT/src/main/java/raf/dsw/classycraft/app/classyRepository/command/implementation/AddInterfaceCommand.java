@@ -15,18 +15,17 @@ public class AddInterfaceCommand extends AbstractCommand {
     private Point point;
     private DiagramElement diagramElement;
 
-    public AddInterfaceCommand(DiagramView diagramView, Point point) {
+    public AddInterfaceCommand(DiagramView diagramView, Point point, Interface i) {
         this.dw = diagramView;
         this.point = point;
+        diagramElement = i;
     }
     @Override
     public void doCommand() {
-        Interface i = new Interface("Interface", dw.getDiagram(), new Point(point.x, point.y));
-        InterfejsPainter ip = new InterfejsPainter(i);
-        diagramElement = i;
-        dw.getDiagram().addChild(i);
+        InterfejsPainter ip = new InterfejsPainter(diagramElement);
+        dw.getDiagram().addChild(diagramElement);
         dw.getPainters().add(ip);
-        i.setPainter(ip);
+        diagramElement.setPainter(ip);
     }
 
     @Override

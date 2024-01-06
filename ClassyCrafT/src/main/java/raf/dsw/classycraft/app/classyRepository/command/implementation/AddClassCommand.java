@@ -19,21 +19,19 @@ public class AddClassCommand extends AbstractCommand {
     private Point point;
     private DiagramElement diagramElement;
 
-    public AddClassCommand(DiagramView diagramView, Point point) {
+    public AddClassCommand(DiagramView diagramView, Point point, Klasa klasa) {
         this.dw = diagramView;
         this.point = point;
+        diagramElement = klasa;
     }
     @Override
     public void doCommand() {
         System.out.println("add do");
-        Klasa k = new Klasa("Klasa", dw.getDiagram(), new Point(point.x, point.y));
 
-        KlasaPainter kp = new KlasaPainter(k);
-        diagramElement = k;
-        dw.getDiagram().addChild(k);
-        //System.out.println(dw.getDiagram().getChildren());
+        KlasaPainter kp = new KlasaPainter(diagramElement);
+        dw.getDiagram().addChild(diagramElement);
         dw.getPainters().add(kp);
-        k.setPainter(kp);
+        diagramElement.setPainter(kp);
     }
 
     @Override

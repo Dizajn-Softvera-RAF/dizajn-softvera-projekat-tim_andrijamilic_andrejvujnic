@@ -4,23 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 import raf.dsw.classycraft.app.classyRepository.command.CommandManager;
 import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
-import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
-import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.Klasa;
-import raf.dsw.classycraft.app.classyRepository.implementation.Package;
 import raf.dsw.classycraft.app.gui.swing.painter.Painter;
-import raf.dsw.classycraft.app.gui.swing.painter.interClassPainter.KlasaPainter;
 import raf.dsw.classycraft.app.observer.ISubscriber;
 import raf.dsw.classycraft.app.state.State;
 import raf.dsw.classycraft.app.state.StateMouseListener;
-import raf.dsw.classycraft.app.state.concrete.AddClassState;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.geom.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @Setter

@@ -1,5 +1,7 @@
 package raf.dsw.classycraft.app.state.concrete;
 
+import raf.dsw.classycraft.app.classyRepository.command.implementation.AddAgregacijaCommand;
+import raf.dsw.classycraft.app.classyRepository.command.implementation.AddKompozicijaCommand;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.InterClass;
 import raf.dsw.classycraft.app.classyRepository.implementation.connection.Generalizacija;
 import raf.dsw.classycraft.app.classyRepository.implementation.connection.Kompozicija;
@@ -9,6 +11,7 @@ import raf.dsw.classycraft.app.gui.swing.painter.connectionPainter.KompozicijaPa
 import raf.dsw.classycraft.app.gui.swing.view.DiagramView;
 import raf.dsw.classycraft.app.state.State;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
@@ -37,9 +40,13 @@ public class AddKompozicijaState implements State {
                 {
                     if (selectForConnection.intersects(painter.getShape().getBounds())) {
                         to = painter;
-                        Kompozicija con = new Kompozicija("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
-                        dw.getDiagram().addChild(con);
-                        dw.getPainters().add(new KompozicijaPainter(con));
+//                        Kompozicija con = new Kompozicija("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
+//                        dw.getDiagram().addChild(con);
+//                        dw.getPainters().add(new KompozicijaPainter(con));
+//                        from = null;
+//                        to = null;
+                        AddKompozicijaCommand addKompozicijaCommand = new AddKompozicijaCommand(dw, new Point(x, y),from, to);
+                        dw.getCommandManager().addCommand(addKompozicijaCommand);
                         from = null;
                         to = null;
                         dw.repaint();

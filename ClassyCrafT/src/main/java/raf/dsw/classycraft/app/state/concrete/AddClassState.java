@@ -36,7 +36,7 @@ public class AddClassState implements State{
         dw.getPainters().add(kp);
         k.setPainter(kp);*/
 
-        AddClassCommand addClassCommand = new AddClassCommand(dw, new Point(x, y));
+        AddClassCommand addClassCommand = new AddClassCommand(dw, new Point(x, y), new Klasa("Klasa", dw.getDiagram(), new Point(x, y)));
         dw.getCommandManager().addCommand(addClassCommand);
 
     }

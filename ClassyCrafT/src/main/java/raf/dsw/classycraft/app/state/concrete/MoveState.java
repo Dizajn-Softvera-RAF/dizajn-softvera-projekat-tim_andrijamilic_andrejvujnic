@@ -20,6 +20,8 @@ public class MoveState implements State {
     private int startY;
     private int prvi;
     private int drugi;
+
+    private ArrayList<DiagramElement> selelected;
     public MoveState(){
     }
     @Override
@@ -34,13 +36,14 @@ public class MoveState implements State {
 
         prvi = x;
         drugi = y;
-
+        selelected = getSelectedModels((ArrayList<Painter>) dw.getSelectedPainters());
     }
 
     @Override
     public void misOtpusten(int x, int y, DiagramView dw) {
-        updateSelectedPainters((ArrayList<Painter>) dw.getPainters(),   prvi - x,  drugi - y);
-        MoveCommand moveCommand = new MoveCommand(dw, x, y, startX, startY, prvi, drugi);
+        updateSelectedPainters((ArrayList<Painter>) dw.getSelectedPainters(),   prvi - x,  drugi - y);
+        ArrayList<Painter> a = (ArrayList<Painter>) dw.getSelectedPainters();
+        MoveCommand moveCommand = new MoveCommand(dw, x, y, startX, startY, prvi, drugi, selelected);
         dw.getCommandManager().addCommand(moveCommand);
     }
 
@@ -101,5 +104,15 @@ public class MoveState implements State {
 
         }
 
+    }
+    public ArrayList<DiagramElement> getSelectedModels(ArrayList<Painter> selectedPainters) {
+
+        ArrayList<DiagramElement> models = new ArrayList<>();
+
+        for (Painter painter : selectedPainters) {
+            models.add(painter.getDiagramElement());
+        }
+
+        return models;
     }
 }

@@ -21,7 +21,7 @@ public class AddEnumState implements State {
         dw.getPainters().add(ep);
         e.setPainter(ep);
         */
-        AddEnumCommand addEnumCommand = new AddEnumCommand(dw, new Point(x, y));
+        AddEnumCommand addEnumCommand = new AddEnumCommand(dw, new Point(x, y), new Enum("Enum", dw.getDiagram(), new Point(x, y)));
         dw.getCommandManager().addCommand(addEnumCommand);
     }
 

@@ -21,7 +21,7 @@ public class AddInterfaceState implements State {
         dw.getPainters().add(ip);
         i.setPainter(ip);
         */
-        AddInterfaceCommand addInterfaceCommand = new AddInterfaceCommand(dw, new Point(x, y));
+        AddInterfaceCommand addInterfaceCommand = new AddInterfaceCommand(dw, new Point(x, y), new Interface("Interface", dw.getDiagram(), new Point(x, y)));
         dw.getCommandManager().addCommand(addInterfaceCommand);
     }
 
