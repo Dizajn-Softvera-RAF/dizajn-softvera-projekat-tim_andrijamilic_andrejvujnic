@@ -1,5 +1,7 @@
 package raf.dsw.classycraft.app.state.concrete;
 
+import raf.dsw.classycraft.app.classyRepository.command.implementation.AddAgregacijaCommand;
+import raf.dsw.classycraft.app.classyRepository.command.implementation.AddZavisnostCommand;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.InterClass;
 import raf.dsw.classycraft.app.classyRepository.implementation.connection.Generalizacija;
 import raf.dsw.classycraft.app.classyRepository.implementation.connection.Zavisnost;
@@ -9,6 +11,7 @@ import raf.dsw.classycraft.app.gui.swing.painter.connectionPainter.ZavisnostPain
 import raf.dsw.classycraft.app.gui.swing.view.DiagramView;
 import raf.dsw.classycraft.app.state.State;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
@@ -37,9 +40,13 @@ public class AddZavisnostState implements State {
                 {
                     if (selectForConnection.intersects(painter.getShape().getBounds())) {
                         to = painter;
-                        Zavisnost con = new Zavisnost("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
-                        dw.getDiagram().addChild(con);
-                        dw.getPainters().add(new ZavisnostPainter(con));
+//                        Zavisnost con = new Zavisnost("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
+//                        dw.getDiagram().addChild(con);
+//                        dw.getPainters().add(new ZavisnostPainter(con));
+//                        from = null;
+//                        to = null;
+                        AddZavisnostCommand addZavisnostCommand = new AddZavisnostCommand(dw, new Point(x, y),from, to);
+                        dw.getCommandManager().addCommand(addZavisnostCommand);
                         from = null;
                         to = null;
                         dw.repaint();

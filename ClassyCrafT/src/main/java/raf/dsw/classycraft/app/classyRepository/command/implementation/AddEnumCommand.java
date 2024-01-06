@@ -14,18 +14,17 @@ public class AddEnumCommand extends AbstractCommand {
     private Point point;
     private DiagramElement diagramElement;
 
-    public AddEnumCommand(DiagramView diagramView, Point point) {
+    public AddEnumCommand(DiagramView diagramView, Point point, Enum e) {
         this.dw = diagramView;
         this.point = point;
+        diagramElement = e;
     }
     @Override
     public void doCommand() {
-        Enum e = new Enum("Enum", dw.getDiagram(), new Point(point.x, point.y));
-        EnumPainter ep = new EnumPainter(e);
-        diagramElement = e;
-        dw.getDiagram().addChild(e);
+        EnumPainter ep = new EnumPainter(diagramElement);
+        dw.getDiagram().addChild(diagramElement);
         dw.getPainters().add(ep);
-        e.setPainter(ep);
+        diagramElement.setPainter(ep);
     }
 
     @Override

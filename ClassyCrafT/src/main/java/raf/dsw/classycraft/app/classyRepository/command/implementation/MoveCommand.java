@@ -8,6 +8,8 @@ import raf.dsw.classycraft.app.classyRepository.implementation.connection.Connec
 import raf.dsw.classycraft.app.gui.swing.painter.Painter;
 import raf.dsw.classycraft.app.gui.swing.painter.connectionPainter.ConnectionPainter;
 import raf.dsw.classycraft.app.gui.swing.view.DiagramView;
+import raf.dsw.classycraft.app.gui.swing.view.MainFrame;
+import raf.dsw.classycraft.app.gui.swing.view.PackageView;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -22,9 +24,9 @@ public class MoveCommand extends AbstractCommand {
     private int oldY;
     private int x;
     private int y;
-    private ArrayList<Painter> selectedModels;
+    private ArrayList<DiagramElement> selectedModels;
 
-    public MoveCommand(DiagramView dw, int x, int y, int startX, int startY, int oldX, int oldY) {
+    public MoveCommand(DiagramView dw, int x, int y, int startX, int startY, int oldX, int oldY, ArrayList<DiagramElement> a) {
         this.dw = dw;
         this.startX = startX;
         this.startY = startY;
@@ -32,8 +34,7 @@ public class MoveCommand extends AbstractCommand {
         this.y = y;
         this.oldY = oldY;
         this.oldX = oldX;
-        selectedModels = (ArrayList<Painter>) dw.getSelectedPainters();
-
+        this.selectedModels = a;
     }
     @Override
     public void doCommand() {
@@ -43,28 +44,16 @@ public class MoveCommand extends AbstractCommand {
 
     @Override
     public void undoCommand() {
-
-        /*for(Painter p : selected){
-            if (p instanceof ConnectionPainter) {
-                continue;
-            }
-            InterClass o = (InterClass) p.getDiagramElement();
-            int newX = ((InterClass) p.getDiagramElement()).getPosition().x;
-            int newY = ((InterClass) p.getDiagramElement()).getPosition().y;
-
-            Point newPoint = new Point(newX + (oldX - newX), newY + (oldY - newY));
-
-            o.setPosition(newPoint);
-
-            Rectangle2D rect = (Rectangle2D) p.getShape();
-            rect.setFrame(newPoint, rect.getBounds().getSize());
-
-        }*/
         updateSelectedPainters(selectedModels, oldX - x, oldY - y);
         dw.repaint();
     }
 
-    public void updateSelectedPainters(ArrayList<Painter> painters, int adjustedX, int adjustedY) {
+    public void updateSelectedPainters(ArrayList<DiagramElement> p, int adjustedX, int adjustedY) {
+        ArrayList<Painter> painters = new ArrayList<>();
+        for(DiagramElement de : p){
+            painters.add(de.getPainter());
+        }
+
         for (Painter painter : painters) {
             if (painter instanceof ConnectionPainter) {
                 continue;
@@ -78,9 +67,7 @@ public class MoveCommand extends AbstractCommand {
             rect.setFrame(newPoint, rect.getBounds().getSize());
 
         }
-
     }
-
 
 
 }

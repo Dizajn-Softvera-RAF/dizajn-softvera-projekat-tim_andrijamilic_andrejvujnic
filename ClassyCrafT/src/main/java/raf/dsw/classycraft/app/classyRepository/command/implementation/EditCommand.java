@@ -27,13 +27,11 @@ public class EditCommand extends AbstractCommand {
     private MouseEvent event;
     private EditView ed;
 
-    private ArrayList<ClassContent> kk;
-
     private ClassContent cc;
     private String string;
     private DiagramElement diagramElement;
 
-    private ArrayList<Painter> selected;
+    private ArrayList<DiagramElement> selecte;
 
     public EditCommand(int x, int y, DiagramView dw, MouseEvent event, EditView ed) {
         this.x = x;
@@ -41,12 +39,15 @@ public class EditCommand extends AbstractCommand {
         this.dw = dw;
         this.event = event;
         this.ed = ed;
-        selected = (ArrayList<Painter>) this.dw.getSelectedPainters();
+        this.selecte = getSelectedModels((ArrayList<Painter>) dw.getSelectedPainters());
     }
 
     public void doCommand() {
-       // ArrayList<Painter> selected = (ArrayList)this.dw.getSelectedPainters();
-
+        ArrayList<Painter> selected = new ArrayList<>();
+        for(DiagramElement de : selecte){
+            selected.add(de.getPainter());
+        }
+        System.out.println("velicina u edit " +selected.size());
         for(Iterator var2 = selected.iterator(); var2.hasNext(); this.dw.repaint()) {
             Painter p = (Painter)var2.next();
             DiagramElement de = p.getDiagramElement();
@@ -79,25 +80,25 @@ public class EditCommand extends AbstractCommand {
     }
 
     public void undoCommand() {
-//        ArrayList<Painter> selected = (ArrayList)this.dw.getPainters();
-//
-//        for(Iterator var2 = selected.iterator(); var2.hasNext(); this.dw.repaint()) {
-//            Painter p = (Painter)var2.next();
-//            DiagramElement de = p.getDiagramElement();
-//            if (de instanceof Klasa) {
-//                ArrayList<ClassContent> cc = (ArrayList)((Klasa)de).getKontent();
-//                ClassContent k = (ClassContent)cc.get(cc.size() - 1);
-//                cc.remove(k);
-//            }
-//        }
         if(diagramElement instanceof Klasa){
             ((Klasa) diagramElement).getKontent().remove(cc);
 
         }else if(diagramElement instanceof Interface){
+
             ((Interface) diagramElement).getKontent().remove(string);
         }else if(diagramElement instanceof Enum){
             ((Enum) diagramElement).getKontent().remove(string);
         }
         dw.repaint();
+    }
+    public ArrayList<DiagramElement> getSelectedModels(ArrayList<Painter> selectedPainters) {
+
+        ArrayList<DiagramElement> models = new ArrayList<>();
+
+        for (Painter painter : selectedPainters) {
+            models.add(painter.getDiagramElement());
+        }
+
+        return models;
     }
 }
