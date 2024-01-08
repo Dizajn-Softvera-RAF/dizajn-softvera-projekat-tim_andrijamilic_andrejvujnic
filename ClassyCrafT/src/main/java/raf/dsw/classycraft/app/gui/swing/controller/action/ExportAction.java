@@ -10,17 +10,15 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
 
-public class SaveAsAction extends AbstractClassyAction {
-
-    public SaveAsAction()
+public class ExportAction extends AbstractClassyAction {
+    public ExportAction()
     {
-        putValue(SMALL_ICON, loadIcon("/images/saveas.png"));
-        putValue(NAME, "Save as");
-        putValue(SHORT_DESCRIPTION, "Save as");
+        putValue(SMALL_ICON, loadIcon("/images/load.png"));
+        putValue(NAME, "Load");
+        putValue(SHORT_DESCRIPTION, "Load");
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
         JFileChooser jfc = new JFileChooser();
 
         if (MainFrame.getInstance().getClassyTree().getSelectedNode() == null || !(MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode() instanceof Project))
@@ -32,15 +30,21 @@ public class SaveAsAction extends AbstractClassyAction {
         Project project = (Project) MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
         File projectFile = null;
 
-        jfc.setSelectedFile(new File(project.getName()));
+        if (!project.isChanged()) {
+            return;
+        }
+
+        jfc.setSelectedFile(new File(project.getName() + ".json"));
 
         if (jfc.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
             projectFile = jfc.getSelectedFile();
             project.setFilePath(projectFile.getPath());
+            if(!projectFile.getPath().contains(".json"))
+                project.setFilePath(projectFile.getPath() + ".json");
         } else
             return;
+
         ApplicationFramework.getInstance().getSerializer().saveProject(project);
         project.setChanged(false);
     }
 }
-

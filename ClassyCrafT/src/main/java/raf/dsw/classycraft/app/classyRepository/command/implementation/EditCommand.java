@@ -67,8 +67,8 @@ public class EditCommand extends AbstractCommand {
             }else if(de instanceof Interface){
                 String kP = this.ed.getTextField().getText();
                 String kV = (String)this.ed.getJComboBox().getSelectedItem();
-                string = kV + " " + kP;
-                ((Interface) de).getKontent().add(string);
+                Metoda metoda = new Metoda(kV, kP);
+                ((Interface) de).getKontent().add(metoda);
             }else if(de instanceof Enum){
                 String kP = this.ed.getTextField().getText();
                 string = kP;
