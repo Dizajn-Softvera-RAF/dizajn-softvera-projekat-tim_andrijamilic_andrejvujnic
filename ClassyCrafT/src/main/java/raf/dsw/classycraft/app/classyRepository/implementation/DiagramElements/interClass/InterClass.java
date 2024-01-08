@@ -8,7 +8,7 @@ import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.D
 import java.awt.*;
 @Getter
 @Setter
-public abstract class InterClass extends DiagramElement {
+public abstract class InterClass extends DiagramElement implements Cloneable {
     private boolean vidljivost = true;
 //    private String naziv;
 //    private Color boja;
@@ -18,5 +18,9 @@ public abstract class InterClass extends DiagramElement {
 
         super(name, parent);
         this.position = position;
+    }
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

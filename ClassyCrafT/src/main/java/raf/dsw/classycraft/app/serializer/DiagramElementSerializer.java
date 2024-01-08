@@ -8,6 +8,7 @@ import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.i
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.Interface;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.Klasa;
 import raf.dsw.classycraft.app.classyRepository.implementation.connection.Agregacija;
+import raf.dsw.classycraft.app.gui.swing.painter.connectionPainter.AgregacijaPainter;
 import raf.dsw.classycraft.app.gui.swing.painter.interClassPainter.EnumPainter;
 import raf.dsw.classycraft.app.gui.swing.painter.interClassPainter.InterfejsPainter;
 import raf.dsw.classycraft.app.gui.swing.painter.interClassPainter.KlasaPainter;
@@ -61,14 +62,12 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
     public DiagramElement deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
 
         JsonObject jsonObject = jsonElement.getAsJsonObject();
-        System.out.println("objekat" + jsonObject);
-        System.out.println(jsonObject.get("painter").getAsJsonObject().get("diagramElement").getAsJsonObject().get("class"));
+
         if(jsonObject.get("painter") == null || jsonObject.get("painter").getAsJsonObject().get("diagramElement") == null || jsonObject.get("painter").getAsJsonObject().get("diagramElement").getAsJsonObject().get("class") == null) return null;
 
         jsonObject = jsonObject.get("painter").getAsJsonObject().get("diagramElement").getAsJsonObject();
 
-        //Color color = jsonDeserializationContext.deserialize(jsonObject.get("color"), Color.class);
-        Color color = Color.YELLOW;
+        Color color = jsonDeserializationContext.deserialize(jsonObject.get("color"), Color.class);
         int stroke = jsonObject.get("stroke").getAsInt();
 
         String className = jsonObject.get("class").getAsString();
@@ -76,6 +75,7 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
             String name = jsonObject.get("name").getAsString();
             Point coords = jsonDeserializationContext.deserialize(jsonObject.get("coordinates"), Point.class);
             Dimension dimension = jsonDeserializationContext.deserialize(jsonObject.get("size"), Dimension.class);
+
             DiagramView dw = ((PackageView)(MainFrame.getInstance().getSplit().getRightComponent())).getDW();
             Diagram diagram = dw.getDiagram();
 
@@ -86,7 +86,8 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
             dw.getPainters().add(kp);
             k.setPainter(kp);
             return k;
-        } else if (className.equals("Interface")) {
+        }
+        else if (className.equals("Interface")) {
             String name = jsonObject.get("name").getAsString();
             Point coords = jsonDeserializationContext.deserialize(jsonObject.get("coordinates"), Point.class);
             Dimension dimension = jsonDeserializationContext.deserialize(jsonObject.get("size"), Dimension.class);
@@ -119,18 +120,23 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
         }
         else if (className.equals("Agregacija")) {
             String name = jsonObject.get("name").getAsString();
-            Point coords = jsonDeserializationContext.deserialize(jsonObject.get("coordinates"), Point.class);
-            Dimension dimension = jsonDeserializationContext.deserialize(jsonObject.get("size"), Dimension.class);
+            InterClass od = jsonDeserializationContext.deserialize(jsonObject.get("OD"), InterClass.class);
+            InterClass doo = jsonDeserializationContext.deserialize(jsonObject.get("DO"), InterClass.class);
             DiagramView dw = ((PackageView) (MainFrame.getInstance().getSplit().getRightComponent())).getDW();
             Diagram diagram = dw.getDiagram();
 
-            Enum i = new Enum(name, diagram, coords);
-            EnumPainter ip = new EnumPainter(i);
-            dw.getDiagram().addChild(i);
-            //System.out.println(dw.getDiagram().getChildren());
-            dw.getPainters().add(ip);
-            i.setPainter(ip);
-            return i;
+            Agregacija agregacija;
+            AgregacijaPainter ap;
+            DiagramElement diagramElement;
+
+            Agregacija con = new Agregacija("Agregacija", dw.getDiagram(),od, doo);
+            agregacija =  con;
+            dw.getDiagram().addChild(con);
+            ap = new AgregacijaPainter(con);
+            dw.getPainters().add(ap);
+            con.setPainter(ap);
+
+            return con;
         }
         System.out.println("jeste null");
 

@@ -4,7 +4,6 @@ import com.google.gson.*;
 import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
 import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
-import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.InterClass;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
