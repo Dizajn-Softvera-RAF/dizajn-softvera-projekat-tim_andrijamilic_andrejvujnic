@@ -71,6 +71,7 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
         int stroke = jsonObject.get("stroke").getAsInt();
 
         String className = jsonObject.get("class").getAsString();
+        System.out.println(className);
         if (className.equals("Klasa")) {
             String name = jsonObject.get("name").getAsString();
             Point coords = jsonDeserializationContext.deserialize(jsonObject.get("coordinates"), Point.class);
@@ -119,17 +120,20 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
             return e;
         }
         else if (className.equals("Agregacija")) {
+            System.out.println("Agregacija");
             String name = jsonObject.get("name").getAsString();
             InterClass od = jsonDeserializationContext.deserialize(jsonObject.get("OD"), InterClass.class);
             InterClass doo = jsonDeserializationContext.deserialize(jsonObject.get("DO"), InterClass.class);
             DiagramView dw = ((PackageView) (MainFrame.getInstance().getSplit().getRightComponent())).getDW();
             Diagram diagram = dw.getDiagram();
+            //System.out.println("Od " + od);
+            //System.out.println("Doo " + doo);
 
             Agregacija agregacija;
             AgregacijaPainter ap;
             DiagramElement diagramElement;
 
-            Agregacija con = new Agregacija("Agregacija", dw.getDiagram(),od, doo);
+            Agregacija con = new Agregacija("Agregacija", diagram, od, doo);
             agregacija =  con;
             dw.getDiagram().addChild(con);
             ap = new AgregacijaPainter(con);

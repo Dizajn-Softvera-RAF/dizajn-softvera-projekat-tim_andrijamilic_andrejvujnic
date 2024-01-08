@@ -51,11 +51,15 @@ public class MoveCommand extends AbstractCommand {
     public void updateSelectedPainters(ArrayList<DiagramElement> p, int adjustedX, int adjustedY) {
         ArrayList<Painter> painters = new ArrayList<>();
         for(DiagramElement de : p){
+            System.out.println("Move update " + de);
             painters.add(de.getPainter());
         }
 
         for (Painter painter : painters) {
             if (painter instanceof ConnectionPainter) {
+                continue;
+            }
+            if(painter == null){
                 continue;
             }
             InterClass o = (InterClass) painter.getDiagramElement();
@@ -65,7 +69,7 @@ public class MoveCommand extends AbstractCommand {
 
             Rectangle2D rect = (Rectangle2D) painter.getShape();
             rect.setFrame(newPoint, rect.getBounds().getSize());
-
+            dw.repaint();
         }
     }
 

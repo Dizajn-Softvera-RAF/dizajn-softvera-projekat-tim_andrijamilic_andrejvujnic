@@ -47,7 +47,6 @@ public class EditCommand extends AbstractCommand {
         for(DiagramElement de : selecte){
             selected.add(de.getPainter());
         }
-        System.out.println("velicina u edit " +selected.size());
         for(Iterator var2 = selected.iterator(); var2.hasNext(); this.dw.repaint()) {
             Painter p = (Painter)var2.next();
             DiagramElement de = p.getDiagramElement();
