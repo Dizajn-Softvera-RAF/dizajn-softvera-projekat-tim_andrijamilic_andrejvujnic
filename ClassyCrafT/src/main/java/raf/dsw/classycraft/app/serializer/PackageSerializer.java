@@ -35,14 +35,12 @@ public class PackageSerializer implements JsonSerializer<Package>, JsonDeseriali
 
         ArrayList<ClassyNode> children = new ArrayList<>();
 
-        Package p = new Package();
-        p.setName(name);
-
         for (JsonElement element : jsonObject.getAsJsonArray("children")) {
             children.add(jsonDeserializationContext.deserialize(element, Diagram.class));
         }
 
-
+        Package p = new Package();
+        p.setName(name);
         p.setChildren(children);
 
         return p;

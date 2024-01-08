@@ -26,13 +26,13 @@ public class GsonSerializer implements Serializer {
     private GsonBuilder gsonBuilder = new GsonBuilder();
 
     public GsonSerializer() {
-        DiagramElementSerializer elementModelSerializer = new DiagramElementSerializer();
+        DiagramElementSerializer diagramElementSerializer = new DiagramElementSerializer();
         gsonBuilder.registerTypeAdapter(Color.class, new ColorAdapter());
         gsonBuilder.registerTypeAdapter(Diagram.class, new DiagramSerializer());
-        gsonBuilder.registerTypeAdapter(Project.class, new ProjectSerializer());
-        gsonBuilder.registerTypeAdapter(DiagramElement.class, elementModelSerializer);
-        gsonBuilder.registerTypeAdapter(InterClass.class, elementModelSerializer);
         gsonBuilder.registerTypeAdapter(Package.class, new PackageSerializer());
+        gsonBuilder.registerTypeAdapter(Project.class, new ProjectSerializer());
+        gsonBuilder.registerTypeAdapter(DiagramElement.class, diagramElementSerializer);
+        gsonBuilder.registerTypeAdapter(InterClass.class, diagramElementSerializer);
         gsonBuilder.registerTypeAdapter(Point.class, new PointAdapter());
         gsonBuilder.registerTypeAdapter(Dimension.class, new DimensionAdapter());
         gsonBuilder.setPrettyPrinting();

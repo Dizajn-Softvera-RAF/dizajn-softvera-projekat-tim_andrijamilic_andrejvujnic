@@ -2,7 +2,6 @@ package raf.dsw.classycraft.app.serializer;
 
 import com.google.gson.*;
 import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
-import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
 import raf.dsw.classycraft.app.classyRepository.implementation.Package;
 import raf.dsw.classycraft.app.classyRepository.implementation.Project;
 
@@ -15,9 +14,9 @@ public class ProjectSerializer implements JsonSerializer<Project>, JsonDeseriali
         JsonObject result = new JsonObject();
 
         result.add("name", new JsonPrimitive(project.getName()));
+        result.add("author", new JsonPrimitive(project.getAuthor()));
         result.add("path", new JsonPrimitive(project.getFilePath()));
 
-        //da li treba serijalizacija za autora
         JsonArray children = new JsonArray();
 
         for (ClassyNode classyNode : project.getChildren()) {
@@ -34,21 +33,19 @@ public class ProjectSerializer implements JsonSerializer<Project>, JsonDeseriali
         JsonObject jsonObject = json.getAsJsonObject();
 
         String name = jsonObject.get("name").getAsString();
+        String author = jsonObject.get("author").getAsString();
         String path = jsonObject.get("path").getAsString();
 
         ArrayList<ClassyNode> children = new ArrayList<>();
-
-        Project project = new Project();
-        project.setName(name);
-        project.setFilePath(path);
-
-
 
         for (JsonElement element : jsonObject.getAsJsonArray("children")) {
             children.add(jsonDeserializationContext.deserialize(element, Package.class));
         }
 
-
+        Project project = new Project();
+        project.setName(name);
+        project.setAuthor(author);
+        project.setFilePath(path);
         project.setChildren(children);
 
         return project;

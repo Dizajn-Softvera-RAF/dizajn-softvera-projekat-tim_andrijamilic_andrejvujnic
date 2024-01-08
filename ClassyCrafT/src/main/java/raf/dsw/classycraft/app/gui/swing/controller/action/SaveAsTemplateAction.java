@@ -19,7 +19,7 @@ public class SaveAsTemplateAction extends AbstractClassyAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFileChooser fileChooser = new JFileChooser();
+        JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir") + "/ClassyCraft/src/main/resources/templates");
 
         Diagram diagram = getDiagramToSave();
 
