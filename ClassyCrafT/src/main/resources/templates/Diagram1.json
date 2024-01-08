@@ -1,0 +1,79 @@
+{
+  "class": "Diagram",
+  "name": "Diagram1",
+  "models": [
+    {
+      "kontent": [],
+      "size": "50x50",
+      "vidljivost": true,
+      "position": "113,56",
+      "stroke": 0,
+      "painter": {
+        "shape": {
+          "x": 113.0,
+          "y": 56.0,
+          "width": 50.0,
+          "height": 50.0
+        },
+        "diagramElement": {
+          "class": "Klasa",
+          "stroke": 0,
+          "name": "Klasa",
+          "coordinates": "113,56",
+          "size": "50x50"
+        },
+        "selected": false
+      },
+      "name": "Klasa"
+    },
+    {
+      "kontent": [],
+      "size": "50x50",
+      "vidljivost": true,
+      "position": "318,53",
+      "stroke": 0,
+      "painter": {
+        "shape": {
+          "x": 318.0,
+          "y": 53.0,
+          "width": 50.0,
+          "height": 50.0
+        },
+        "diagramElement": {
+          "class": "Klasa",
+          "stroke": 0,
+          "name": "Klasa",
+          "coordinates": "318,53",
+          "size": "50x50"
+        },
+        "selected": false
+      },
+      "name": "Klasa"
+    },
+    {
+      "kontent": [],
+      "size": "50x50",
+      "vidljivost": true,
+      "position": "231,138",
+      "stroke": 0,
+      "painter": {
+        "shape": {
+          "x": 231.0,
+          "y": 138.0,
+          "width": 50.0,
+          "height": 50.0
+        },
+        "diagramElement": {
+          "class": "Klasa",
+          "stroke": 0,
+          "name": "Klasa",
+          "coordinates": "231,138",
+          "size": "50x50"
+        },
+        "selected": false
+      },
+      "name": "Klasa"
+    }
+  ],
+  "template": true
+}

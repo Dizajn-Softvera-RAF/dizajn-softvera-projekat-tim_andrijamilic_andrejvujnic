@@ -1,0 +1,55 @@
+{
+  "class": "Diagram",
+  "name": "Diagram1",
+  "models": [
+    {
+      "kontent": [],
+      "size": "50x50",
+      "vidljivost": true,
+      "position": "117,59",
+      "stroke": 0,
+      "painter": {
+        "shape": {
+          "x": 117.0,
+          "y": 59.0,
+          "width": 50.0,
+          "height": 50.0
+        },
+        "diagramElement": {
+          "class": "Klasa",
+          "stroke": 0,
+          "name": "Klasa",
+          "coordinates": "117,59",
+          "size": "50x50"
+        },
+        "selected": false
+      },
+      "name": "Klasa"
+    },
+    {
+      "size": "50x50",
+      "kontent": [],
+      "vidljivost": true,
+      "position": "281,70",
+      "stroke": 0,
+      "painter": {
+        "shape": {
+          "x": 281.0,
+          "y": 70.0,
+          "width": 50.0,
+          "height": 50.0
+        },
+        "diagramElement": {
+          "class": "Interface",
+          "stroke": 0,
+          "name": "Interface",
+          "coordinates": "281,70",
+          "size": "50x50"
+        },
+        "selected": false
+      },
+      "name": "Interface"
+    }
+  ],
+  "template": true
+}
