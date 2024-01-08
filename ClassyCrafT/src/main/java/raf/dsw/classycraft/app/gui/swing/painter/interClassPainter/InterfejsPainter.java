@@ -3,6 +3,7 @@ package raf.dsw.classycraft.app.gui.swing.painter.interClassPainter;
 import raf.dsw.classycraft.app.classyRepository.composite.ClassyNode;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.classContet.ClassContent;
+import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.classContet.Metoda;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.Interface;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.Klasa;
 
@@ -27,6 +28,7 @@ public class InterfejsPainter extends InterClassPainter{
         g.fill(getShape());
 
         g.setStroke(new BasicStroke(2));
+        g.setPaint(Color.BLUE);
 
         if (isSelected())
             g.setPaint(Color.BLACK);
@@ -36,8 +38,8 @@ public class InterfejsPainter extends InterClassPainter{
         int b = 10;
 
         for(Iterator var5 = i.getKontent().iterator(); var5.hasNext(); b += 10) {
-            String cc = (String) var5.next();
-            String a = cc;
+            Metoda cc = (Metoda) var5.next();
+            String a = cc.toString();
             g.drawString(a, (int)i.getPosition().getX(), (int)i.getPosition().getY() + b);
         }
 

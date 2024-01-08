@@ -26,6 +26,7 @@ public class EnumPainter extends InterClassPainter{
         g.fill(getShape());
 
         g.setStroke(new BasicStroke(2));
+        g.setPaint(Color.BLUE);
 
         if (isSelected())
             g.setPaint(Color.BLACK);

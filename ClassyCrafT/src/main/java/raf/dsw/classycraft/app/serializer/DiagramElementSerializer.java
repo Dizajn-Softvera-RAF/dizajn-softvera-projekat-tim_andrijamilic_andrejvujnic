@@ -3,6 +3,9 @@ package raf.dsw.classycraft.app.serializer;
 import com.google.gson.*;
 import raf.dsw.classycraft.app.classyRepository.implementation.Diagram;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.DiagramElement;
+import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.classContet.Atribut;
+import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.classContet.ClassContent;
+import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.classContet.Metoda;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.Enum;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.InterClass;
 import raf.dsw.classycraft.app.classyRepository.implementation.DiagramElements.interClass.Interface;
@@ -17,7 +20,10 @@ import raf.dsw.classycraft.app.gui.swing.view.MainFrame;
 import raf.dsw.classycraft.app.gui.swing.view.PackageView;
 
 import java.awt.*;
+import java.lang.reflect.Method;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DiagramElementSerializer implements JsonSerializer<DiagramElement>, JsonDeserializer<DiagramElement> {
 
@@ -33,6 +39,7 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
             jsonObject.add("name", new JsonPrimitive(klasa.getName()));
             jsonObject.add("coordinates", jsonSerializationContext.serialize(klasa.getPosition()));
             jsonObject.add("size", jsonSerializationContext.serialize(klasa.getSize()));
+            jsonObject.add("kontent", jsonSerializationContext.serialize(klasa.getKontent()));
         }
         else if(diagramElement instanceof Interface)
         {
@@ -40,6 +47,7 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
             jsonObject.add("name", new JsonPrimitive(interfejs.getName()));
             jsonObject.add("coordinates", jsonSerializationContext.serialize(interfejs.getPosition()));
             jsonObject.add("size", jsonSerializationContext.serialize(interfejs.getSize()));
+            jsonObject.add("kontent", jsonSerializationContext.serialize(interfejs.getKontent()));
         }
         else if(diagramElement instanceof Enum)
         {
@@ -47,6 +55,7 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
             jsonObject.add("name", new JsonPrimitive(e.getName()));
             jsonObject.add("coordinates", jsonSerializationContext.serialize(e.getPosition()));
             jsonObject.add("size", jsonSerializationContext.serialize(e.getSize()));
+            jsonObject.add("kontent", jsonSerializationContext.serialize(e.getKontent()));
         }
         else if(diagramElement instanceof Agregacija)
         {
@@ -74,6 +83,14 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
         System.out.println(className);
         if (className.equals("Klasa")) {
             String name = jsonObject.get("name").getAsString();
+
+            JsonArray cc = jsonObject.get("kontent").getAsJsonArray();
+            ArrayList<ClassContent> classContents = new ArrayList<>();
+            for(JsonElement c : cc){
+                Atribut atribut = new Atribut(c.getAsJsonObject().get("vidljivost").getAsString(), c.getAsJsonObject().get("naziv").getAsString());
+                classContents.add(atribut);
+            }
+            //ClassContent contents = jsonDeserializationContext.deserialize(jsonObject.get("kontent"), ClassContent.class);
             Point coords = jsonDeserializationContext.deserialize(jsonObject.get("coordinates"), Point.class);
             Dimension dimension = jsonDeserializationContext.deserialize(jsonObject.get("size"), Dimension.class);
 
@@ -81,6 +98,8 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
             Diagram diagram = dw.getDiagram();
 
             Klasa k = new Klasa(name, diagram, coords);
+
+            k.setKontent(classContents);
             KlasaPainter kp = new KlasaPainter(k);
             dw.getDiagram().addChild(k);
             //System.out.println(dw.getDiagram().getChildren());
@@ -90,15 +109,24 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
         }
         else if (className.equals("Interface")) {
             String name = jsonObject.get("name").getAsString();
+
+            JsonArray cc = jsonObject.get("kontent").getAsJsonArray();
+            ArrayList<Metoda> classContents = new ArrayList<>();
+            for(JsonElement c : cc){
+                Metoda metoda = new Metoda(c.getAsJsonObject().get("vidljivost").getAsString(), c.getAsJsonObject().get("naziv").getAsString());
+                classContents.add(metoda);
+            }
+
             Point coords = jsonDeserializationContext.deserialize(jsonObject.get("coordinates"), Point.class);
             Dimension dimension = jsonDeserializationContext.deserialize(jsonObject.get("size"), Dimension.class);
             DiagramView dw = ((PackageView)(MainFrame.getInstance().getSplit().getRightComponent())).getDW();
             Diagram diagram = dw.getDiagram();
 
             Interface i = new Interface(name, diagram, coords);
+            i.setKontent(classContents);
             InterfejsPainter ip = new InterfejsPainter(i);
             dw.getDiagram().addChild(i);
-            //System.out.println(dw.getDiagram().getChildren());
+
             dw.getPainters().add(ip);
             i.setPainter(ip);
             return i;
@@ -106,12 +134,21 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
 
         else if (className.equals("Enum")) {
             String name = jsonObject.get("name").getAsString();
+
+            JsonArray cc = jsonObject.get("kontent").getAsJsonArray();
+            ArrayList<String> classContents = new ArrayList<>();
+            for(JsonElement c : cc){
+                String s = c.getAsString();
+                classContents.add(s);
+            }
+
             Point coords = jsonDeserializationContext.deserialize(jsonObject.get("coordinates"), Point.class);
             Dimension dimension = jsonDeserializationContext.deserialize(jsonObject.get("size"), Dimension.class);
             DiagramView dw = ((PackageView) (MainFrame.getInstance().getSplit().getRightComponent())).getDW();
             Diagram diagram = dw.getDiagram();
 
             Enum e = new Enum(name, diagram, coords);
+            e.setKontent(classContents);
             EnumPainter ep = new EnumPainter(e);
             dw.getDiagram().addChild(e);
             //System.out.println(dw.getDiagram().getChildren());
