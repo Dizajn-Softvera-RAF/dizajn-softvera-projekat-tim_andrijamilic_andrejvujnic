@@ -22,7 +22,6 @@ import raf.dsw.classycraft.app.gui.swing.tree.ClassyTree;
 import raf.dsw.classycraft.app.gui.swing.tree.ClassyTreeImpl;
 
 public class EditView extends JFrame {
-    private JButton bt1;
     private JButton bt2;
     private ClassyTree classyTree;
     private ActionManager actionManager;
@@ -58,14 +57,12 @@ public class EditView extends JFrame {
         this.setLocationRelativeTo((Component)null);
         this.setTitle("Option");
         this.tekst = new JLabel("Edit je otvoren");
-        this.bt1 = new JButton();
         this.bt2 = new JButton(new DodajKontetAction(this.x, this.y, this.dw, this.event, this));
         String[] s = new String[]{"none", "private", "public", "protected"};
         String[] s1 = new String[]{"none", "metoda", "atribut"};
         this.izbor = new JComboBox(s1);
         this.jComboBox = new JComboBox(s);
         this.textField = new JTextField();
-        this.bt1.setText("Obrisi");
         this.bt2.setText("Dodaj");
         JPanel panel = new JPanel();
         this.setSize(500, 500);
@@ -76,16 +73,12 @@ public class EditView extends JFrame {
         panel.add(this.jComboBox);
         panel.add(new JLabel("Potpis metode bez vidljivosti"));
         panel.add(this.textField);
-        panel.add(this.bt1);
         panel.add(this.bt2);
         panel.setLayout(new BoxLayout(panel, 1));
         this.add(panel);
         panel.setVisible(true);
     }
 
-    public JButton getBt1() {
-        return this.bt1;
-    }
 
     public JButton getBt2() {
         return this.bt2;
@@ -129,10 +122,6 @@ public class EditView extends JFrame {
 
     public MouseEvent getEvent() {
         return this.event;
-    }
-
-    public void setBt1(JButton bt1) {
-        this.bt1 = bt1;
     }
 
     public void setBt2(JButton bt2) {

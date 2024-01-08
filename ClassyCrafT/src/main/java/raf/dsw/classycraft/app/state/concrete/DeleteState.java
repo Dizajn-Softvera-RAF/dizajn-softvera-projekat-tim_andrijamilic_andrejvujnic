@@ -16,20 +16,6 @@ import java.util.ArrayList;
 public class DeleteState implements State {
     @Override
     public void misKliknut(int x, int y, DiagramView dw, MouseEvent event) {
-        /*System.out.println("delete");
-
-        ArrayList<DiagramElement> l = getSelectedModels((ArrayList<Painter>) dw.getSelectedPainters());
-        ArrayList<Painter> selected = (ArrayList<Painter>) dw.getSelectedPainters();
-
-        for(Painter pe : selected)
-        {
-            dw.getPainters().remove(pe);
-        }
-        for(DiagramElement d : l )
-        {
-            dw.getDiagram().removeChild(d);
-        }
-        dw.repaint();*/
         ArrayList<DiagramElement> l = getSelectedModels((ArrayList<Painter>) dw.getSelectedPainters());
         DeleteCommand deleteCommand = new DeleteCommand(dw, l);
         dw.getCommandManager().addCommand(deleteCommand);

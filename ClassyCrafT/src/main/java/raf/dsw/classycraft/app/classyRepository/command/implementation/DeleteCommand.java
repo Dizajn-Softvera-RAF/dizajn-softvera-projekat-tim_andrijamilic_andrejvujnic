@@ -23,14 +23,7 @@ public class DeleteCommand extends AbstractCommand {
     }
     @Override
     public void doCommand() {
-        System.out.println("delete do");
-
-
-        //ArrayList<DiagramElement> l = getSelectedModels((ArrayList<Painter>) dw.getSelectedPainters());
         ArrayList<Painter> selected = (ArrayList<Painter>) dw.getSelectedPainters();
-        //for(DiagramElement d : l){
-            //models.add(d);
-        //}
 
         for(Painter pe : selected)
         {
@@ -45,8 +38,6 @@ public class DeleteCommand extends AbstractCommand {
 
     @Override
     public void undoCommand() {
-        System.out.println("delete undo");
-
         for(DiagramElement d : models )
         {
             dw.getDiagram().addChild(d);

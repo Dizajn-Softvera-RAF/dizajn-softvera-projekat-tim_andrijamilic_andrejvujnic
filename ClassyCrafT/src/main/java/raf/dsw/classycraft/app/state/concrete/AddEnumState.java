@@ -14,14 +14,7 @@ import java.awt.event.MouseEvent;
 public class AddEnumState implements State {
     @Override
     public void misKliknut(int x, int y, DiagramView dw, MouseEvent event) {
-       /* System.out.println("add");
-        Enum e = new Enum("Enum", dw.getDiagram(), new Point(x, y));
-        EnumPainter ep = new EnumPainter(e);
-        dw.getDiagram().addChild(e);
-        dw.getPainters().add(ep);
-        e.setPainter(ep);
-        */
-        AddEnumCommand addEnumCommand = new AddEnumCommand(dw, new Point(x, y), new Enum("Enum", dw.getDiagram(), new Point(x, y)));
+        AddEnumCommand addEnumCommand = new AddEnumCommand(dw, new Point(x, y), new Enum("Enum" + dw.getCount(), dw.getDiagram(), new Point(x, y)));
         dw.getCommandManager().addCommand(addEnumCommand);
     }
 

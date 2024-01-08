@@ -10,7 +10,6 @@ import java.util.HashMap;
 public class SwingGui implements Gui {
 
     private MainFrame instance;
-    //private HashMap<Diagram, CommandManager> commandManager;
     private CommandManager commandManager;
 
     public SwingGui(){

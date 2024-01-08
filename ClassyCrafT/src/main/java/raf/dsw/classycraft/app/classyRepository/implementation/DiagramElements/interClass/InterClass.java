@@ -10,8 +10,6 @@ import java.awt.*;
 @Setter
 public abstract class InterClass extends DiagramElement{
     private boolean vidljivost = true;
-//    private String naziv;
-//    private Color boja;
     private Point position;
 
     public InterClass(String name, ClassyNode parent, Point position) {

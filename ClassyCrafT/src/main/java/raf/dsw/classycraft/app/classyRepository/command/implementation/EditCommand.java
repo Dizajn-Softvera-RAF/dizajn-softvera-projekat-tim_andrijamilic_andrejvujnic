@@ -26,6 +26,7 @@ public class EditCommand extends AbstractCommand {
     private DiagramView dw;
     private MouseEvent event;
     private EditView ed;
+    private Metoda metoda;
 
     private ClassContent cc;
     private String string;
@@ -67,7 +68,7 @@ public class EditCommand extends AbstractCommand {
             }else if(de instanceof Interface){
                 String kP = this.ed.getTextField().getText();
                 String kV = (String)this.ed.getJComboBox().getSelectedItem();
-                Metoda metoda = new Metoda(kV, kP);
+                metoda = new Metoda(kV, kP);
                 ((Interface) de).getKontent().add(metoda);
             }else if(de instanceof Enum){
                 String kP = this.ed.getTextField().getText();
@@ -84,7 +85,7 @@ public class EditCommand extends AbstractCommand {
 
         }else if(diagramElement instanceof Interface){
 
-            ((Interface) diagramElement).getKontent().remove(string);
+            ((Interface) diagramElement).getKontent().remove(metoda);
         }else if(diagramElement instanceof Enum){
             ((Enum) diagramElement).getKontent().remove(string);
         }

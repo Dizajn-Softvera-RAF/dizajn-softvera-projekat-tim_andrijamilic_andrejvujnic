@@ -73,21 +73,6 @@ public class MoveState implements State {
         startY = y;
 
         dw.repaint();
-        /*
-        ArrayList<DiagramElement> de = new ArrayList<>();
-        ArrayList<Painter> s = (ArrayList<Painter>) dw.getSelectedPainters();
-        for (Painter p : s)
-        {
-           de.add(p.getDiagramElement());
-        }
-        /*System.out.println("State");
-        System.out.println("x " + x);
-        System.out.println("StartX " + startX);
-        System.out.println("y " + x);
-        System.out.println("StartY" + startY);
-        MoveCommand moveCommand = new MoveCommand(dw, x, y, startX, startY);
-        dw.getCommandManager().addCommand(moveCommand);*/
-
     }
     public void updateSelectedPainters(ArrayList<Painter> painters, int adjustedX, int adjustedY) {
         for (Painter painter : painters) {

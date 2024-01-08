@@ -40,11 +40,6 @@ public class AddZavisnostState implements State {
                 {
                     if (selectForConnection.intersects(painter.getShape().getBounds())) {
                         to = painter;
-//                        Zavisnost con = new Zavisnost("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
-//                        dw.getDiagram().addChild(con);
-//                        dw.getPainters().add(new ZavisnostPainter(con));
-//                        from = null;
-//                        to = null;
                         AddZavisnostCommand addZavisnostCommand = new AddZavisnostCommand(dw, new Point(x, y),from, to);
                         dw.getCommandManager().addCommand(addZavisnostCommand);
                         from = null;

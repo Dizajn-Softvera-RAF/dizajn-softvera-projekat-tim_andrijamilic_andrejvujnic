@@ -26,8 +26,6 @@ public class AddClassCommand extends AbstractCommand {
     }
     @Override
     public void doCommand() {
-        System.out.println("add do");
-
         KlasaPainter kp = new KlasaPainter(diagramElement);
         dw.getDiagram().addChild(diagramElement);
         dw.getPainters().add(kp);

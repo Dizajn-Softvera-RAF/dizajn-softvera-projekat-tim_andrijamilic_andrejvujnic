@@ -13,38 +13,13 @@ import java.io.File;
 public class ExportAction extends AbstractClassyAction {
     public ExportAction()
     {
-        putValue(SMALL_ICON, loadIcon("/images/load.png"));
-        putValue(NAME, "Load");
-        putValue(SHORT_DESCRIPTION, "Load");
+        putValue(SMALL_ICON, loadIcon("/images/export.png"));
+        putValue(NAME, "Export");
+        putValue(SHORT_DESCRIPTION, "Export");
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFileChooser jfc = new JFileChooser();
 
-        if (MainFrame.getInstance().getClassyTree().getSelectedNode() == null || !(MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode() instanceof Project))
-        {
-            ApplicationFramework.getInstance().getMessageGenerator().generateMessage("Projekat koji zelite da sacuvate mora bili otvoren ili selektovan u Project Explorer-u", MessageType.ERROR);
-            return;
-        }
-
-        Project project = (Project) MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
-        File projectFile = null;
-
-        if (!project.isChanged()) {
-            return;
-        }
-
-        jfc.setSelectedFile(new File(project.getName() + ".json"));
-
-        if (jfc.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
-            projectFile = jfc.getSelectedFile();
-            project.setFilePath(projectFile.getPath());
-            if(!projectFile.getPath().contains(".json"))
-                project.setFilePath(projectFile.getPath() + ".json");
-        } else
-            return;
-
-        ApplicationFramework.getInstance().getSerializer().saveProject(project);
-        project.setChanged(false);
     }
+
 }
