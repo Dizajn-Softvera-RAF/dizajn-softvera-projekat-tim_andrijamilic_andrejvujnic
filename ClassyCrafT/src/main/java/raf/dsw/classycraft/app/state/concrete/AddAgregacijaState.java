@@ -39,11 +39,6 @@ public class AddAgregacijaState implements State {
                 {
                     if (selectForConnection.intersects(painter.getShape().getBounds())) {
                         to = painter;
-                        /*Agregacija con = new Agregacija("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
-                        dw.getDiagram().addChild(con);
-                        dw.getPainters().add(new AgregacijaPainter(con));
-                        from = null;
-                        to = null;*/
                         AddAgregacijaCommand addAgregacijaCommand = new AddAgregacijaCommand(dw, new Point(x, y),from, to);
                         dw.getCommandManager().addCommand(addAgregacijaCommand);
                         from = null;

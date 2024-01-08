@@ -16,9 +16,6 @@ import java.awt.geom.Point2D;
 import java.sql.SQLOutput;
 
 public class StateMouseListener extends MouseAdapter {
-
-    private DiagramView dw;
-    //menjano
     public StateMouseListener(){
 
     }

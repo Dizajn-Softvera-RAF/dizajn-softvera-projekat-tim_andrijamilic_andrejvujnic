@@ -76,8 +76,6 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
 
         jsonObject = jsonObject.get("painter").getAsJsonObject().get("diagramElement").getAsJsonObject();
 
-        Color color = jsonDeserializationContext.deserialize(jsonObject.get("color"), Color.class);
-        int stroke = jsonObject.get("stroke").getAsInt();
 
         String className = jsonObject.get("class").getAsString();
         System.out.println(className);
@@ -90,7 +88,7 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
                 Atribut atribut = new Atribut(c.getAsJsonObject().get("vidljivost").getAsString(), c.getAsJsonObject().get("naziv").getAsString());
                 classContents.add(atribut);
             }
-            //ClassContent contents = jsonDeserializationContext.deserialize(jsonObject.get("kontent"), ClassContent.class);
+
             Point coords = jsonDeserializationContext.deserialize(jsonObject.get("coordinates"), Point.class);
             Dimension dimension = jsonDeserializationContext.deserialize(jsonObject.get("size"), Dimension.class);
 
@@ -102,7 +100,6 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
             k.setKontent(classContents);
             KlasaPainter kp = new KlasaPainter(k);
             dw.getDiagram().addChild(k);
-            //System.out.println(dw.getDiagram().getChildren());
             dw.getPainters().add(kp);
             k.setPainter(kp);
             return k;
@@ -151,7 +148,6 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
             e.setKontent(classContents);
             EnumPainter ep = new EnumPainter(e);
             dw.getDiagram().addChild(e);
-            //System.out.println(dw.getDiagram().getChildren());
             dw.getPainters().add(ep);
             e.setPainter(ep);
             return e;
@@ -163,15 +159,11 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
             InterClass doo = jsonDeserializationContext.deserialize(jsonObject.get("DO"), InterClass.class);
             DiagramView dw = ((PackageView) (MainFrame.getInstance().getSplit().getRightComponent())).getDW();
             Diagram diagram = dw.getDiagram();
-            //System.out.println("Od " + od);
-            //System.out.println("Doo " + doo);
 
-            Agregacija agregacija;
             AgregacijaPainter ap;
-            DiagramElement diagramElement;
 
             Agregacija con = new Agregacija("Agregacija", diagram, od, doo);
-            agregacija =  con;
+
             dw.getDiagram().addChild(con);
             ap = new AgregacijaPainter(con);
             dw.getPainters().add(ap);
@@ -179,7 +171,6 @@ public class DiagramElementSerializer implements JsonSerializer<DiagramElement>,
 
             return con;
         }
-        System.out.println("jeste null");
 
         return null;
     }

@@ -14,7 +14,6 @@ import java.util.List;
 public class Enum extends InterClass {
 
     private List<String> kontent = new ArrayList<>();
-//    private Color boja;
     private Dimension size;
 
     public Enum(String name, ClassyNode parent, Point position) {

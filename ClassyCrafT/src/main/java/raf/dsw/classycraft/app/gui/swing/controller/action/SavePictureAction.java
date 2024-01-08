@@ -46,7 +46,6 @@ public class SavePictureAction extends AbstractClassyAction {
 
                 ImageIO.write(bi,"png",file);
 
-                // ukoliko korisnik nije stavio da je slika .png, postavice sam
                 if (!file.getName().endsWith(".png")) {
                     file.renameTo(new File(file.getPath() + ".png"));
                 }

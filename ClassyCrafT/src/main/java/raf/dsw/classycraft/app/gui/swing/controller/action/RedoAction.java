@@ -17,8 +17,6 @@ public class RedoAction extends AbstractClassyAction {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        //MainFrame.getInstance().getPackageView().getDiagramView().getCommandManager().doCommand();
-        //ApplicationFramework.getInstance().getGui().getCommandManager().doCommand();
         ((PackageView)(MainFrame.getInstance().getSplit().getRightComponent())).getDW().getCommandManager().doCommand();
     }
 }

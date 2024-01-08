@@ -59,7 +59,7 @@ public class MainFrame extends JFrame implements ISubscriber {
 
         JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200,150));
-        /*JSplitPane*/ split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
+        split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,scroll,desktop);
         getContentPane().add(split,BorderLayout.CENTER);
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);

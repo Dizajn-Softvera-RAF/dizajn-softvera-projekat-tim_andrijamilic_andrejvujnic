@@ -13,9 +13,8 @@ import java.util.List;
 public class Klasa extends InterClass {
 
     private List<ClassContent> kontent = new ArrayList<>();
-//    private Color boja;
     private Dimension size;
-//    private String name;
+
     public Klasa(String name, ClassyNode parent, Point position) {
         super(name, parent, position);
         size = new Dimension(50,50);

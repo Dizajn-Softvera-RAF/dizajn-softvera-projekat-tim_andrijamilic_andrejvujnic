@@ -40,11 +40,6 @@ public class AddKompozicijaState implements State {
                 {
                     if (selectForConnection.intersects(painter.getShape().getBounds())) {
                         to = painter;
-//                        Kompozicija con = new Kompozicija("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
-//                        dw.getDiagram().addChild(con);
-//                        dw.getPainters().add(new KompozicijaPainter(con));
-//                        from = null;
-//                        to = null;
                         AddKompozicijaCommand addKompozicijaCommand = new AddKompozicijaCommand(dw, new Point(x, y),from, to);
                         dw.getCommandManager().addCommand(addKompozicijaCommand);
                         from = null;

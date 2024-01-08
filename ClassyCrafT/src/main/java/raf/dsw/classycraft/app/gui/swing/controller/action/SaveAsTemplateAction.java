@@ -35,7 +35,6 @@ public class SaveAsTemplateAction extends AbstractClassyAction {
 
         File projectFile = fileChooser.getSelectedFile();
 
-        // ukoliko template nije u .json formatu, sacuvati ga tako
         String projectPath = projectFile.getPath();
         if (!projectPath.endsWith(".json")) projectPath = projectPath.concat(".json");
 

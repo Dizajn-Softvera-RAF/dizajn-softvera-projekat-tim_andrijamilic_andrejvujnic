@@ -41,11 +41,9 @@ public class LoadTemplateAction extends AbstractClassyAction {
             ex.printStackTrace();
             return;
         }
-        System.out.println("modeliiii");
+
         for (ClassyNode model : templateDiagram.getChildren()) {
-            System.out.println("modeli " + model);
             diagram.addChild(model);
-            //lista modela je null
         }
     }
 }

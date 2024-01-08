@@ -38,11 +38,6 @@ public class AddGeneralizacijeState implements State {
                 {
                     if (selectForConnection.intersects(painter.getShape().getBounds())) {
                         to = painter;
-//                        Generalizacija con = new Generalizacija("connection1", dw.getDiagram(), (InterClass) from.getDiagramElement(), (InterClass) to.getDiagramElement());
-//                        dw.getDiagram().addChild(con);
-//                        dw.getPainters().add(new GeneralizacijaPainter(con));
-//                        from = null;
-//                        to = null;
                         AddGeneralizacijaCommand addGeneralizacijaCommand = new AddGeneralizacijaCommand(dw, new Point(x, y),from, to);
                         dw.getCommandManager().addCommand(addGeneralizacijaCommand);
                         from = null;

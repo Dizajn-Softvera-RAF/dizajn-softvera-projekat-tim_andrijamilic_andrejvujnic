@@ -21,7 +21,6 @@ public class Diagram extends ClassyNodeComposite implements IPublisher {
     private boolean template;
     private static int counter = 0;
     private List<ISubscriber> subs = new ArrayList<>();
-//    private ArrayList<DiagramElement> models = new ArrayList<>();
 
     public Diagram(String name, ClassyNode parent) {
         super(name, parent);

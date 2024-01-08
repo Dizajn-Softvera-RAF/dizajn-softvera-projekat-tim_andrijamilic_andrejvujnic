@@ -17,8 +17,6 @@ public class UndoAction extends AbstractClassyAction {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
         ((PackageView)(MainFrame.getInstance().getSplit().getRightComponent())).getDW().getCommandManager().undoCommand();
-        //ApplicationFramework.getInstance().getGui().getCommandManager().undoCommand();
     }
 }

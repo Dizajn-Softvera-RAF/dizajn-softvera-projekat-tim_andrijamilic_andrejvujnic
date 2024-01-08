@@ -26,6 +26,7 @@ public class DiagramView extends JPanel implements ISubscriber {
     private Diagram diagram;
     private State currentState;
     private AffineTransform transform = new AffineTransform();
+    private static int count = 0;
 
     public DiagramView(Diagram model)
     {
@@ -66,7 +67,6 @@ public class DiagramView extends JPanel implements ISubscriber {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setComposite(AlphaComposite.getInstance(3, 0.8F));
-        //g2.scale(transform.getScaleX(), transform.getScaleY());
         g2.transform(transform);
         for (Painter p : painters) {
             p.paint(g2);
@@ -100,6 +100,11 @@ public class DiagramView extends JPanel implements ISubscriber {
     public void setSelekcijaRect(Rectangle2D selekcijaRect) {
         this.selekcijaRect = selekcijaRect;
         this.repaint();
+    }
+
+    public int getCount()
+    {
+        return ++count;
     }
 
 }

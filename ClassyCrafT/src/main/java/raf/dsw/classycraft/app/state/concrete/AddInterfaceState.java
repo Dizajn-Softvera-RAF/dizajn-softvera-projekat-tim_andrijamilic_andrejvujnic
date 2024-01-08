@@ -14,14 +14,7 @@ import java.awt.event.MouseEvent;
 public class AddInterfaceState implements State {
     @Override
     public void misKliknut(int x, int y, DiagramView dw, MouseEvent event) {
-       /* System.out.println("add");
-        Interface i = new Interface("Interface", dw.getDiagram(), new Point(x, y));
-        InterfejsPainter ip = new InterfejsPainter(i);
-        dw.getDiagram().addChild(i);
-        dw.getPainters().add(ip);
-        i.setPainter(ip);
-        */
-        AddInterfaceCommand addInterfaceCommand = new AddInterfaceCommand(dw, new Point(x, y), new Interface("Interface", dw.getDiagram(), new Point(x, y)));
+        AddInterfaceCommand addInterfaceCommand = new AddInterfaceCommand(dw, new Point(x, y), new Interface("Interface" + dw.getCount(), dw.getDiagram(), new Point(x, y)));
         dw.getCommandManager().addCommand(addInterfaceCommand);
     }
 

@@ -19,7 +19,7 @@ public class DiagramSerializer implements JsonSerializer<Diagram>, JsonDeseriali
         for (ClassyNode model : diagram.getChildren()) {
             models.add(jsonSerializationContext.serialize(model));
         }
-        // stavimo user
+
         result.add("models", models);
         result.add("template", new JsonPrimitive(diagram.isTemplate()));
         return result;
@@ -34,7 +34,6 @@ public class DiagramSerializer implements JsonSerializer<Diagram>, JsonDeseriali
 
         ArrayList<ClassyNode> models = new ArrayList<>();
 
-        System.out.println("diagram serializeer");
         for (JsonElement element : jsonObject.getAsJsonArray("models")) {
             System.out.println(element);
             models.add(jsonDeserializationContext.deserialize(element, DiagramElement.class));

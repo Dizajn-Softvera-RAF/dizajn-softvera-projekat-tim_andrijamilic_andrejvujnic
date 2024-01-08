@@ -32,11 +32,13 @@ public class SaveAsAction extends AbstractClassyAction {
         Project project = (Project) MainFrame.getInstance().getClassyTree().getSelectedNode().getClassyNode();
         File projectFile = null;
 
-        jfc.setSelectedFile(new File(project.getName()));
+        jfc.setSelectedFile(new File(project.getName() + ".json"));
 
         if (jfc.showSaveDialog(MainFrame.getInstance()) == JFileChooser.APPROVE_OPTION) {
             projectFile = jfc.getSelectedFile();
             project.setFilePath(projectFile.getPath());
+            if(!projectFile.getPath().contains(".json"))
+                project.setFilePath(projectFile.getPath() + ".json");
         } else
             return;
         ApplicationFramework.getInstance().getSerializer().saveProject(project);
